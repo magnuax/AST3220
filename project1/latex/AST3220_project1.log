@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022/Debian) (preloaded format=xelatex 2023.1.30)  20 FEB 2023 17:55
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022/Debian) (preloaded format=xelatex 2023.1.30)  28 FEB 2023 12:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -590,6 +590,15 @@ Class revtex4-1 Info: multicol was not loaded (OK!) on input line 81.
 
 LaTeX Warning: Label `eq:Hdot' multiply defined.
 
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
 )
 \openout1 = `AST3220_project1.aux'.
 
@@ -759,20 +768,46 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 253.
 
-[2] [3] (./AST3220_project1.bbl) [4] (./AST3220_project1.aux)
+[2]
+File: figs//density_parameters.png Graphic file (type bmp)
+<figs//density_parameters.png>
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+File: figs//eos.png Graphic file (type bmp)
+<figs//eos.png>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+File: figs//Hubble.png Graphic file (type bmp)
+<figs//Hubble.png>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+File: figs//lum_distance.png Graphic file (type bmp)
+<figs//lum_distance.png>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[3]
+
+LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 344.
+
+(./AST3220_project1.bbl) [4] (./AST3220_project1.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `AST3220_project1.out' has not changed.
-(rerunfilecheck)             Checksum: B3C745018B79EBEC9208CA990C1016BA;2307.
+(rerunfilecheck)             Checksum: FD20B875BFB73358868D5D88C4788154;2852.
  ) 
 Here is how much of TeX's memory you used:
- 24575 strings out of 475864
- 442250 string characters out of 5804336
+ 24629 strings out of 475864
+ 443280 string characters out of 5804336
  988841 words of memory out of 5000000
- 45239 multiletter control sequences out of 15000+600000
+ 45285 multiletter control sequences out of 15000+600000
  474460 words of font info for 54 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  84i,11n,80p,450b,415s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on AST3220_project1.xdv (4 pages, 55504 bytes).
+Output written on AST3220_project1.xdv (4 pages, 60160 bytes).

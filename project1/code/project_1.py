@@ -1,15 +1,15 @@
-import matplotlib.pyplot as plt
 import numpy as np
+from scipy.interpolate import interp1d
+import matplotlib.pyplot as plt
+from tabulate import tabulate
 from tqdm import tqdm
+import warnings
+
 from quintessence import QuintessenceModel
 from lambdaCDM import H_ΛCDM, d_L_ΛCDM
-from astropy.cosmology import WMAP9 as cosmo
 
+warnings.filterwarnings("ignore") # Hide matplotlib warnings lol
 plt.style.use("seaborn")
-
-# Import luminosity distance data: ()
-data = np.loadtxt("sndata.txt") # [], [Gpc], [Gpc]
-z_data, d_data, err = data[:,0][::-1], data[:,1][::-1], data[:,2][::-1]
 
 # Define physical parameters
 h  = 0.7                     # []               dimensionless Hubble constant
@@ -46,6 +46,7 @@ ax[1].set_title(r"$V(\phi) = V_{0} e^{-\kappa \zeta \phi}$")
 ax[0].set_title(r"$V(\phi) = M^{4+\alpha} \phi^{-\alpha}$")
 ax[1].set_xlabel("Redshift z")
 ax[1].invert_xaxis()
+ax[1].set_xlim(2e7, 0)
 plt.legend()
 plt.savefig("figs/density_parameters.png")
 # Plot equation of state parameter for quintessence
@@ -56,6 +57,7 @@ pow_model.plot_eos(N, ax, label=r"$V(\phi) = M^{4+\alpha} \phi^{-\alpha}$")  #, 
 
 ax.set_title(r"Equation of state $w_{\phi}$")
 ax.invert_xaxis()
+ax.set_xlim(2e7, 0)
 plt.legend()
 plt.savefig("figs/eos.png")
 
@@ -68,7 +70,7 @@ H0 = 100*h*1e3 # km s^-1 Gpc^-1
 H_exp = exp_model.H(N)
 H_pow = pow_model.H(N)
 H_Λ   = H_ΛCDM(z)
-#H_Λ = cosmo.H(z)/H0
+#H_Λ1 = cosmo.H(z)/(100)
 
 fig, ax = plt.subplots(figsize=(8,5))
 
@@ -77,7 +79,11 @@ fig.suptitle(r"$H(t)/H_{0}$")
 
 ax.plot(z, H_exp, label="H_exp")
 ax.plot(z, H_pow, label="H_pow")
-ax.plot(z, H_Λ*H0, label="H_ΛCDM")
+ax.plot(z, H_Λ, label="H_ΛCDM")
+#ax.plot(z, H_Λ1, "--",label="FASIT")
+
+ax.set_yscale('log')
+ax.set_xscale('log')
 
 ax.set_xlabel("Redshift z")
 
@@ -115,62 +121,68 @@ plt.savefig("figs/lum_distance.png")
 # -----------
 # Problem 13:
 # -----------
-steps = 100
-z = np.linspace(z_data[0], z_data[-1], steps)
-N = -np.log(1+z)
-print("z=",z)
-print()
+
 def chisquare(data, model, error):
     s = (model - data)**2/(error**2)
     return np.sum(s)
 
-H0 = 100*h*1e3 # km s^-1 Gpc^-1
+# Import luminosity distance data:
+data = np.loadtxt("sndata.txt") # [], [Gpc], [Gpc]
 
-step = int(steps/len(z_data))
-stop = step*len(z_data)
+z_data = data[:,0][::-1]
+d_data = data[:,1][::-1]
+err    = data[:,2][::-1]
 
-X_exp = chisquare(d_data, d_exp[:stop:step]*c/H0, err)
-X_pow = chisquare(d_data, d_pow[:stop:step]*c/H0, err)
-print(X_exp, X_pow)
+H0 = 100*h*1e3          # [km s^-1 Gpc^-1] Hubble parameter, different units
 
-densities = np.linspace(0,1,500)
-H = H_ΛCDM(z, 0.0)*0.7*100
-d_model = d_L_ΛCDM(z, H)[:stop:step]
+# Interpolate luminosity distance arrays in order to evaluate at datapoints
+d_exp = interp1d(z, d_exp*c/H0)
+d_pow = interp1d(z, d_pow*c/H0)
 
+X_exp = chisquare(d_data, d_exp(z_data)*c/H0, err)
+X_pow = chisquare(d_data, d_pow(z_data)*c/H0, err)
+# Create formatted table
+table = zip(["Exponential", "Power law"], [X_exp, X_pow])
+table = tabulate(table, headers=["Potential", "χ2"], tablefmt="github")
+print("\nProblem 13:\n\n", table, "\n\n", sep="")
+
+# -----------
+# Problem 14:
+# -----------
+
+steps = 10000
+z = np.linspace(2, 0, steps)
+N = -np.log(1+z)
+
+densities = np.linspace(0,1,10000)
 
 X = np.zeros(len(densities))
 for i, Ω_m0 in enumerate(tqdm(densities)):
-    H = H_ΛCDM(z, Ω_m0)
-    d_model = d_L_ΛCDM(z, H)[:stop:step]*c/H0
-    X[i] = chisquare(d_data, d_model, err)
+    d_model = d_L_ΛCDM(z, Ω_m0)*c/H0
+    d_model = interp1d(z, d_model)
 
+    X[i] = chisquare(d_data, d_model(z_data), err)
+
+# Find least X^2:
 idx_min = np.argmin(X)
 X_best = X[idx_min]
 Ω_best = densities[idx_min]
 
-print(X)
-print(X_best, Ω_best)
+print(f"\nBest fit for ΛCDM: \nΩ_m0 = {Ω_best:.5f} \nχ2   = {X_best:.5e}")
 
-H = H_ΛCDM(z, Ω_best)
-d_model = d_L_ΛCDM(z, H)*c/H0
-
+d_model = d_L_ΛCDM(z, Ω_best)*c/H0
 fig, ax = plt.subplots(figsize=(8,5))
 
-plt.plot(z, d_model, label=f"Best fit, Ω = {Ω_best}")
+# Plot that shit
+plt.plot(z, d_model, label=f"Best fit, Ω_m0 = {Ω_best:.4f}")
+
 plt.errorbar(z_data, d_data, err,  fmt="--k", capsize=2,
                 markeredgewidth=1, linewidth=0.6, elinewidth=0.6)
 plt.fill_between(z_data, (d_data-err), (d_data+err),
                 alpha=0.2, color="k", label="data")
-
-H = H_ΛCDM(z, 0.3)
-d_3 = d_L_ΛCDM(z, H)*c/H0
-plt.plot(z, d_3, label="Ω_m0 = 0.3")
 
 plt.title(r"$\chi^2$ fit of $\Omega_{m0}$ for $\Lambda CDM$")
 plt.ylabel(r"$d_L(z)$ [Gpc]")
 plt.xlabel("Redshift z")
 plt.legend()
 plt.savefig("figs/lum_distance_fit.png")
-
-
-# [km s^-1 Gpc^-1]

@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.integrate import solve_ivp, quad
+from scipy.integrate import solve_ivp, quad, cumulative_trapezoid
 
 
 class QuintessenceModel():
@@ -31,7 +31,7 @@ class QuintessenceModel():
         """
         N_span = (N[0], N[-1])
         self.sol = solve_ivp(self.eom, N_span, x_init, args=(self.Γ,),
-                            method="DOP853", dense_output=True)
+                            method="RK45", dense_output=True, rtol=1e-8, atol=1e-8)
 
 
     def H(self, N):
@@ -41,19 +41,13 @@ class QuintessenceModel():
         """
         Ω_q0, Ω_r0, Ω_m0 = self.density_parameters(0)
 
-
-        H = np.zeros(len(N))
+        N = N[::-1]
         w = self.eos(N)
-        for i, _N in enumerate(N):
-            integrand = 1 + w[:i+1]
-            I = np.trapz(integrand, N[:i+1])
-            H[i] = np.sqrt(Ω_m0*np.exp(-3*_N) + Ω_r0*np.exp(-4*_N) + Ω_q0*np.exp(-3*I))
+        integrand = 1 + w
+        I = cumulative_trapezoid(integrand, N, initial=1)
+        H = np.sqrt(Ω_m0*np.exp(-3*N) + Ω_r0*np.exp(-4*N) + Ω_q0*np.exp(-3*I))
 
-        #   integrand = lambda N: 1 + self.eos(N)
-        #I, err = quad(self.eos, N, 0)
-        #H = np.sqrt(Ω_m0*np.exp(-3*N) + Ω_r0*np.exp(-4*N) + Ω_q0*np.exp(-3*(1+I)))
-
-        return H
+        return H[::-1]
 
     def age(self):
         #x = 1/(1+z)
@@ -66,17 +60,13 @@ class QuintessenceModel():
         """
         Calculates the dimensionless luminosity distance as function of distance.
         """
+        z = z[::-1]
         N = -np.log(z+1)
         H = self.H(N)
 
+        d_L = (1+z)*cumulative_trapezoid(1/H, z, initial=0)
 
-        d_L = np.zeros(len(z))
-        for i, _z in enumerate(z):
-            d_L[i] = (1+_z)*np.trapz(1/H[:i+1:-1], z[:i+1:-1])
-        #integrand = lambda N: self.H(N)
-        #I, err = quad(self.H, 0, N)
-
-        return d_L
+        return d_L[::-1]
 
     def density_parameters(self, N):
         x1, x2, x3 = self.sol.sol(N)[:3]
@@ -101,17 +91,17 @@ class QuintessenceModel():
         Ω = Ω_q + Ω_r + Ω_m
 
         z = np.exp(-N)-1
-        ax.plot(z, Ω, "--k", label=r"$\sum_i Ω_i$")
-        ax.plot(z, Ω_q, label=r"$\Omega_{\phi}$")
-        ax.plot(z, Ω_r, label=r"$\Omega_{r}$")
-        ax.plot(z, Ω_m, label=r"$\Omega_{m}$")
+        ax.semilogx(z, Ω, "--k", label=r"$\sum_i Ω_i$")
+        ax.semilogx(z, Ω_q, label=r"$\Omega_{\phi}$")
+        ax.semilogx(z, Ω_r, label=r"$\Omega_{r}$")
+        ax.semilogx(z, Ω_m, label=r"$\Omega_{m}$")
         ax.set_ylabel(r"$\Omega_i(z)$")
 
     def plot_eos(self, N, ax, label):
         z = np.exp(-N)-1
         w = self.eos(N)
 
-        ax.plot(z, w, label=label)
+        ax.semilogx(z, w, label=label)
         ax.set_xlabel("Redshift z")
 
 if __name__=="__main__":
