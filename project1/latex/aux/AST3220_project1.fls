@@ -907,6 +907,12 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT ./figs//density_parameters.png
 INPUT figs//density_parameters.png
 INPUT ./figs//eos.png
@@ -915,10 +921,10 @@ INPUT ./figs//Hubble_param.png
 INPUT figs//Hubble_param.png
 INPUT ./figs//lum_distance.png
 INPUT figs//lum_distance.png
-INPUT ./AST3220_project1.bbl
-INPUT AST3220_project1.bbl
-INPUT ./AST3220_project1.bbl
-INPUT AST3220_project1.bbl
+INPUT aux/AST3220_project1.bbl
+INPUT aux/AST3220_project1.bbl
+INPUT aux/AST3220_project1.bbl
+INPUT aux/AST3220_project1.bbl
 INPUT aux/AST3220_project1.aux
 INPUT aux/AST3220_project1.out
 INPUT aux/AST3220_project1.out

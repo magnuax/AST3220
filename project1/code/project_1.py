@@ -24,6 +24,7 @@ steps = 10000
 Ni = -np.log(1+2e7)
 N_span = (Ni, 0)
 N = np.linspace(Ni, 0, steps)
+z = np.exp(-N)-1
 
 # Solve equations of motions
 exp_model = QuintessenceModel(Γ=1)
@@ -54,6 +55,9 @@ fig, ax = plt.subplots(figsize=(8,5))
 
 exp_model.plot_eos(N, ax, label=r"$V(\phi) = V_{0} e^{-\kappa \zeta \phi}$")
 pow_model.plot_eos(N, ax, label=r"$V(\phi) = M^{4+\alpha} \phi^{-\alpha}$")  #, \ \ \alpha=1$")
+# Plot their absolute difference
+diff = np.abs(exp_model.eos(N) - pow_model.eos(N))
+plt.plot(z, diff, "--k", label="Absolute difference")
 
 ax.set_title(r"Equation of state $w_{\phi}$")
 ax.invert_xaxis()
@@ -64,7 +68,6 @@ plt.savefig("figs/eos.png")
 # -----------
 # Problem 10:
 # -----------
-z = np.exp(-N)-1
 h=0.7
 H0 = 100*h*1e3 # km s^-1 Gpc^-1
 H_exp = exp_model.H(N)

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022/Debian) (preloaded format=xelatex 2023.1.30)  15 MAR 2023 17:17
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022/Debian) (preloaded format=xelatex 2023.1.30)  15 MAR 2023 19:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -756,36 +756,72 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 257.
 
 [2]
+Underfull \hbox (badness 10000) in paragraph at lines 305--312
+
+ []
+
+
+Underfull \hbox (badness 3000) in paragraph at lines 305--312
+\TU/lmr/m/n/10 state parameter for quintessence in terms of the
+ []
+
 File: figs//density_parameters.png Graphic file (type bmp)
 <figs//density_parameters.png>
+
+Underfull \hbox (badness 10000) in paragraph at lines 314--333
+
+ []
+
+
+Underfull \hbox (badness 1596) in paragraph at lines 314--333
+\TU/lmr/m/n/10 while the universe today is governed primarily by
+ []
+
 File: figs//eos.png Graphic file (type bmp)
 <figs//eos.png>
 
-Overfull \hbox (14.1701pt too wide) in paragraph at lines 322--323
+Overfull \hbox (14.1701pt too wide) in paragraph at lines 336--337
  [][] 
  []
 
-File: figs//Hubble_param.png Graphic file (type bmp)
-<figs//Hubble_param.png>
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [3]
 
-LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 341.
+LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 349.
 
-./AST3220_project1.tex:358: Missing $ inserted.
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 368.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\Lambda' on input line 368.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 368.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 372--380
+\TU/lmr/m/n/10 The dimensionless Hubble parameters for both
+ []
+
+File: figs//Hubble_param.png Graphic file (type bmp)
+<figs//Hubble_param.png>
+./AST3220_project1.tex:406: Missing $ inserted.
 <inserted text> 
                 $
-l.358  V_
+l.406  V_
          {exp}(z)     & 0.973745 \\
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-./AST3220_project1.tex:358: Extra }, or forgotten $.
+./AST3220_project1.tex:406: Extra }, or forgotten $.
 <template> \unskip \hfil }
                           \hskip \tabmidsep \relax \hskip -.5\arrayrulewidth...
-l.358  V_{exp}(z)     &
+l.406  V_{exp}(z)     &
                         0.973745 \\
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -793,18 +829,18 @@ you forgot something else, as in `\hbox{$x}'. In such cases
 the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
-./AST3220_project1.tex:358: Missing $ inserted.
+./AST3220_project1.tex:406: Missing $ inserted.
 <inserted text> 
                 $
-l.358  V_{exp}(z)     &
+l.406  V_{exp}(z)     &
                         0.973745 \\
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-./AST3220_project1.tex:358: Missing } inserted.
+./AST3220_project1.tex:406: Missing } inserted.
 <inserted text> 
                 }
-l.358  V_{exp}(z)     &
+l.406  V_{exp}(z)     &
                         0.973745 \\
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -812,18 +848,18 @@ With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-./AST3220_project1.tex:359: Missing $ inserted.
+./AST3220_project1.tex:407: Missing $ inserted.
 <inserted text> 
                 $
-l.359  V_
+l.407  V_
          {pow}(z) & 0.994003 \\
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-./AST3220_project1.tex:359: Extra }, or forgotten $.
+./AST3220_project1.tex:407: Extra }, or forgotten $.
 <template> \unskip \hfil }
                           \hskip \tabmidsep \relax \hskip -.5\arrayrulewidth...
-l.359  V_{pow}(z) &
+l.407  V_{pow}(z) &
                     0.994003 \\
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -831,18 +867,18 @@ you forgot something else, as in `\hbox{$x}'. In such cases
 the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
-./AST3220_project1.tex:359: Missing $ inserted.
+./AST3220_project1.tex:407: Missing $ inserted.
 <inserted text> 
                 $
-l.359  V_{pow}(z) &
+l.407  V_{pow}(z) &
                     0.994003 \\
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-./AST3220_project1.tex:359: Missing } inserted.
+./AST3220_project1.tex:407: Missing } inserted.
 <inserted text> 
                 }
-l.359  V_{pow}(z) &
+l.407  V_{pow}(z) &
                     0.994003 \\
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -850,19 +886,25 @@ With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
+[4]
 File: figs//lum_distance.png Graphic file (type bmp)
 <figs//lum_distance.png>
-[4] (./AST3220_project1.bbl) [5] (aux/AST3220_project1.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 470--470
+ 
+ []
+
+[5] (aux/AST3220_project1.bbl) [6] (aux/AST3220_project1.aux)
 Package rerunfilecheck Info: File `AST3220_project1.out' has not changed.
-(rerunfilecheck)             Checksum: D734B77068C5831ED08612D6972B8737;2571.
+(rerunfilecheck)             Checksum: 05CAB1FF7192B86AF1C5884D6EFAB538;2831.
  ) 
 Here is how much of TeX's memory you used:
- 24635 strings out of 475864
- 443463 string characters out of 5804336
- 990853 words of memory out of 5000000
- 45290 multiletter control sequences out of 15000+600000
- 474460 words of font info for 54 fonts, out of 8000000 for 9000
+ 24663 strings out of 475864
+ 443977 string characters out of 5804336
+ 990901 words of memory out of 5000000
+ 45305 multiletter control sequences out of 15000+600000
+ 476035 words of font info for 64 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 84i,11n,80p,450b,415s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,11n,80p,450b,411s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on aux/AST3220_project1.xdv (5 pages, 82176 bytes).
+Output written on aux/AST3220_project1.xdv (6 pages, 105920 bytes).
