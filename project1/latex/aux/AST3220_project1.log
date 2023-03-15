@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022/Debian) (preloaded format=xelatex 2023.1.30)  8 MAR 2023 15:11
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022/Debian) (preloaded format=xelatex 2023.1.30)  15 MAR 2023 17:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -578,72 +578,62 @@ Package: subfigure 2002/03/15 v2.1.5 subfigure package
 \subfig@top=\skip59
 \subfig@bottom=\skip60
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 28.
+Package hyperref Info: Option `colorlinks' set `true' on input line 31.
  (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
-Class revtex4-1 Info: Unrecognized LaTeX tabular. Please update this document class! (Proceeding with fingers crossed.) on input line 81.
-Class revtex4-1 Info: cite was not loaded (OK!) on input line 81.
-Class revtex4-1 Info: mcite was not loaded (OK!) on input line 81.
-Class revtex4-1 Info: multicol was not loaded (OK!) on input line 81.
- (./AST3220_project1.aux
-
-LaTeX Warning: Label `eq:Hdot' multiply defined.
-
-
-LaTeX Warning: Label `' multiply defined.
-
-
-LaTeX Warning: Label `' multiply defined.
-
-)
+Class revtex4-1 Info: Unrecognized LaTeX tabular. Please update this document class! (Proceeding with fingers crossed.) on input line 84.
+Class revtex4-1 Info: cite was not loaded (OK!) on input line 84.
+Class revtex4-1 Info: mcite was not loaded (OK!) on input line 84.
+Class revtex4-1 Info: multicol was not loaded (OK!) on input line 84.
+ (aux/AST3220_project1.aux)
 \openout1 = `AST3220_project1.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 81.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 81.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 84.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 84.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-Package hyperref Info: Link coloring ON on input line 81.
- (./AST3220_project1.out) (./AST3220_project1.out)
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+Package hyperref Info: Link coloring ON on input line 84.
+ (aux/AST3220_project1.out) (aux/AST3220_project1.out)
 \@outlinefile=\write5
 \openout5 = `AST3220_project1.out'.
 
 \c@lstlisting=\count328
-Class revtex4-1 Info: Taking \maketitle back from hyperref on input line 81.
+Class revtex4-1 Info: Taking \maketitle back from hyperref on input line 84.
 \openout3 = `AST3220_project1Notes.bib'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 92.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 94.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 92.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 94.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-./AST3220_project1.tex:130: Extra }, or forgotten \right.
+./AST3220_project1.tex:132: Extra }, or forgotten \right.
 <template> }
             $}\ifmeasuring@ \savefieldlength@ \fi \set@field \hfil \endtempl...
-l.130 \end{align}
+l.132 \end{align}
                  
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -651,10 +641,10 @@ you forgot something else, as in `\hbox{$x}'. In such cases
 the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
-./AST3220_project1.tex:130: Missing \right. inserted.
+./AST3220_project1.tex:132: Missing \right. inserted.
 <inserted text> 
                 \right .
-l.130 \end{align}
+l.132 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -662,10 +652,10 @@ With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-./AST3220_project1.tex:130: Missing \right. inserted.
+./AST3220_project1.tex:132: Missing \right. inserted.
 <inserted text> 
                 \right .
-l.130 \end{align}
+l.132 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -673,10 +663,10 @@ With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-./AST3220_project1.tex:130: Missing } inserted.
+./AST3220_project1.tex:132: Missing } inserted.
 <inserted text> 
                 }
-l.130 \end{align}
+l.132 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -684,10 +674,10 @@ With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-./AST3220_project1.tex:130: Extra }, or forgotten \right.
+./AST3220_project1.tex:132: Extra }, or forgotten \right.
 <template> }
             $}\ifmeasuring@ \savefieldlength@ \fi \set@field \hfil \endtempl...
-l.130 \end{align}
+l.132 \end{align}
                  
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -695,10 +685,10 @@ you forgot something else, as in `\hbox{$x}'. In such cases
 the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
-./AST3220_project1.tex:130: Missing \right. inserted.
+./AST3220_project1.tex:132: Missing \right. inserted.
 <inserted text> 
                 \right .
-l.130 \end{align}
+l.132 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -706,10 +696,10 @@ With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-./AST3220_project1.tex:130: Missing \right. inserted.
+./AST3220_project1.tex:132: Missing \right. inserted.
 <inserted text> 
                 \right .
-l.130 \end{align}
+l.132 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -717,10 +707,10 @@ With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-./AST3220_project1.tex:130: Missing } inserted.
+./AST3220_project1.tex:132: Missing } inserted.
 <inserted text> 
                 }
-l.130 \end{align}
+l.132 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -731,39 +721,39 @@ my insertion and my current dilemma will both disappear.
 [1]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 221.
+(hyperref)                removing `math shift' on input line 225.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 221.
+(hyperref)                removing `subscript' on input line 225.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 221.
+(hyperref)                removing `math shift' on input line 225.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 241.
+(hyperref)                removing `math shift' on input line 245.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 241.
+(hyperref)                removing `subscript' on input line 245.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 241.
+(hyperref)                removing `math shift' on input line 245.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 253.
+(hyperref)                removing `math shift' on input line 257.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 253.
+(hyperref)                removing `subscript' on input line 257.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 253.
+(hyperref)                removing `math shift' on input line 257.
 
 [2]
 File: figs//density_parameters.png Graphic file (type bmp)
@@ -771,7 +761,7 @@ File: figs//density_parameters.png Graphic file (type bmp)
 File: figs//eos.png Graphic file (type bmp)
 <figs//eos.png>
 
-Overfull \hbox (14.1701pt too wide) in paragraph at lines 318--319
+Overfull \hbox (14.1701pt too wide) in paragraph at lines 322--323
  [][] 
  []
 
@@ -780,18 +770,22 @@ File: figs//Hubble_param.png Graphic file (type bmp)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-./AST3220_project1.tex:340: Missing $ inserted.
+[3]
+
+LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 341.
+
+./AST3220_project1.tex:358: Missing $ inserted.
 <inserted text> 
                 $
-l.340  V_
+l.358  V_
          {exp}(z)     & 0.973745 \\
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-./AST3220_project1.tex:340: Extra }, or forgotten $.
+./AST3220_project1.tex:358: Extra }, or forgotten $.
 <template> \unskip \hfil }
                           \hskip \tabmidsep \relax \hskip -.5\arrayrulewidth...
-l.340  V_{exp}(z)     &
+l.358  V_{exp}(z)     &
                         0.973745 \\
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -799,18 +793,18 @@ you forgot something else, as in `\hbox{$x}'. In such cases
 the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
-./AST3220_project1.tex:340: Missing $ inserted.
+./AST3220_project1.tex:358: Missing $ inserted.
 <inserted text> 
                 $
-l.340  V_{exp}(z)     &
+l.358  V_{exp}(z)     &
                         0.973745 \\
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-./AST3220_project1.tex:340: Missing } inserted.
+./AST3220_project1.tex:358: Missing } inserted.
 <inserted text> 
                 }
-l.340  V_{exp}(z)     &
+l.358  V_{exp}(z)     &
                         0.973745 \\
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -818,18 +812,18 @@ With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-./AST3220_project1.tex:341: Missing $ inserted.
+./AST3220_project1.tex:359: Missing $ inserted.
 <inserted text> 
                 $
-l.341  V_
+l.359  V_
          {pow}(z) & 0.994003 \\
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-./AST3220_project1.tex:341: Extra }, or forgotten $.
+./AST3220_project1.tex:359: Extra }, or forgotten $.
 <template> \unskip \hfil }
                           \hskip \tabmidsep \relax \hskip -.5\arrayrulewidth...
-l.341  V_{pow}(z) &
+l.359  V_{pow}(z) &
                     0.994003 \\
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -837,18 +831,18 @@ you forgot something else, as in `\hbox{$x}'. In such cases
 the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
-./AST3220_project1.tex:341: Missing $ inserted.
+./AST3220_project1.tex:359: Missing $ inserted.
 <inserted text> 
                 $
-l.341  V_{pow}(z) &
+l.359  V_{pow}(z) &
                     0.994003 \\
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-./AST3220_project1.tex:341: Missing } inserted.
+./AST3220_project1.tex:359: Missing } inserted.
 <inserted text> 
                 }
-l.341  V_{pow}(z) &
+l.359  V_{pow}(z) &
                     0.994003 \\
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -858,27 +852,17 @@ my insertion and my current dilemma will both disappear.
 
 File: figs//lum_distance.png Graphic file (type bmp)
 <figs//lum_distance.png>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[3]
-
-LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 373.
-
-[4] (./AST3220_project1.bbl) [5] (./AST3220_project1.aux)
-
-LaTeX Warning: There were multiply-defined labels.
-
+[4] (./AST3220_project1.bbl) [5] (aux/AST3220_project1.aux)
 Package rerunfilecheck Info: File `AST3220_project1.out' has not changed.
-(rerunfilecheck)             Checksum: FD20B875BFB73358868D5D88C4788154;2852.
+(rerunfilecheck)             Checksum: D734B77068C5831ED08612D6972B8737;2571.
  ) 
 Here is how much of TeX's memory you used:
- 24633 strings out of 475864
- 443384 string characters out of 5804336
- 988841 words of memory out of 5000000
- 45289 multiletter control sequences out of 15000+600000
+ 24635 strings out of 475864
+ 443463 string characters out of 5804336
+ 990853 words of memory out of 5000000
+ 45290 multiletter control sequences out of 15000+600000
  474460 words of font info for 54 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  84i,11n,80p,450b,415s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on AST3220_project1.xdv (5 pages, 71700 bytes).
+Output written on aux/AST3220_project1.xdv (5 pages, 82176 bytes).
