@@ -25,3 +25,9 @@ def d_L_ΛCDM(z, Ω_m0=0.3):
     d = (1+z)*integrate.cumulative_trapezoid(1/H, z, initial=0)
 
     return d[::-1]
+
+def age_ΛCDM(z):
+    integrand =  -1/((1+z)*H_ΛCDM(z)) 
+    H0t0 = integrate.trapezoid(integrand, z)
+
+    return H0t0

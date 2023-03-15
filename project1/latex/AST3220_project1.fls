@@ -911,8 +911,8 @@ INPUT ./figs//density_parameters.png
 INPUT figs//density_parameters.png
 INPUT ./figs//eos.png
 INPUT figs//eos.png
-INPUT ./figs//Hubble.png
-INPUT figs//Hubble.png
+INPUT ./figs//Hubble_param.png
+INPUT figs//Hubble_param.png
 INPUT ./figs//lum_distance.png
 INPUT figs//lum_distance.png
 INPUT ./AST3220_project1.bbl

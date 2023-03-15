@@ -1,16 +1,16 @@
 # Fdb version 3
-["bibtex AST3220_project1"] 1677584950 "AST3220_project1.aux" "AST3220_project1.bbl" "AST3220_project1" 1677585217
+["bibtex AST3220_project1"] 1678284632 "AST3220_project1.aux" "AST3220_project1.bbl" "AST3220_project1" 1678284691
   "/usr/share/texlive/texmf-dist/bibtex/bst/revtex4-1/apsrev4-1.bst" 1602107945 71515 e333383ed72bf24aa6de7e8cabb55f84 ""
-  "AST3220_project1.aux" 1677585216 4671 c5bc5b5df02e6104846ae94009424b03 "xelatex"
-  "AST3220_project1Notes.bib" 1677585216 103 48ad29797468f16e2853d8797278d7af "xelatex"
+  "AST3220_project1.aux" 1678284689 6008 49db914b0364bc274bc41927f247330f "xelatex"
+  "AST3220_project1Notes.bib" 1678284689 103 48ad29797468f16e2853d8797278d7af "xelatex"
   (generated)
   "AST3220_project1.bbl"
   "AST3220_project1.blg"
-["xdvipdfmx"] 1677585216 "AST3220_project1.xdv" "AST3220_project1.pdf" "AST3220_project1" 1677585217
-  "AST3220_project1.xdv" 1677585216 60160 3f50fc74e60f3e8337bffbd5ad81d92d "xelatex"
+["xdvipdfmx"] 1678284690 "AST3220_project1.xdv" "AST3220_project1.pdf" "AST3220_project1" 1678284691
+  "AST3220_project1.xdv" 1678284689 71700 1df7dbc70ef6a835d443ef97c0fae60b "xelatex"
   (generated)
   "AST3220_project1.pdf"
-["xelatex"] 1677585215 "AST3220_project1.tex" "AST3220_project1.xdv" "AST3220_project1" 1677585217
+["xelatex"] 1678284675 "AST3220_project1.tex" "AST3220_project1.xdv" "AST3220_project1" 1678284691
   "/etc/texmf/web2c/texmf.cnf" 1661242560 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
@@ -168,14 +168,14 @@
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1658757727 39561 34c98e380bf7c7201ee6a7909aff625a ""
   "/usr/share/texmf/web2c/texmf.cnf" 1658757727 39561 34c98e380bf7c7201ee6a7909aff625a ""
   "/var/lib/texmf/web2c/xetex/xelatex.fmt" 1675088793 5466511 daf6ec9f20c714cbeae8c7ccbad27847 ""
-  "AST3220_project1.aux" 1677585216 4671 c5bc5b5df02e6104846ae94009424b03 "xelatex"
-  "AST3220_project1.bbl" 1677584950 1983 c789b8b2e2ff60989c671635ad8473c2 "bibtex AST3220_project1"
-  "AST3220_project1.out" 1677585216 2852 fd20b875bfb73358868d5d88c4788154 "xelatex"
-  "AST3220_project1.tex" 1677585215 14342 f4345d98a233e00d7b230616cf86a752 ""
-  "figs//Hubble.png" 1677076802 34963 936ca208893c19ab4b79e7386f84d774 ""
-  "figs//density_parameters.png" 1677068373 61202 c41e90832a64e479ebd10a517e8869cc ""
-  "figs//eos.png" 1677076566 31888 0135a716ac0f03a30555595e27652e47 ""
-  "figs//lum_distance.png" 1677096595 28844 9b36da06f58ea10ef2efdce384dbf2cc ""
+  "AST3220_project1.aux" 1678284689 6008 49db914b0364bc274bc41927f247330f "xelatex"
+  "AST3220_project1.bbl" 1678284632 1983 c789b8b2e2ff60989c671635ad8473c2 "bibtex AST3220_project1"
+  "AST3220_project1.out" 1678284689 2852 fd20b875bfb73358868d5d88c4788154 "xelatex"
+  "AST3220_project1.tex" 1678284690 15775 8c5b36d09d903f3c1700f5b8d1e4ab28 ""
+  "figs//Hubble_param.png" 1678282799 44151 7459489504d797bae8ecd836e59f0e2a ""
+  "figs//density_parameters.png" 1678282798 73039 340486c23f9958a0863c174c5e58b17e ""
+  "figs//eos.png" 1678282799 43532 89abf4a9f5b77ea60c9fbb75de2c9d2a ""
+  "figs//lum_distance.png" 1678282799 50855 28247a566d65d36e5c68252f09045bd4 ""
   (generated)
   "AST3220_project1.aux"
   "AST3220_project1.log"

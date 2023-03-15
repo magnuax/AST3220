@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.integrate import solve_ivp, quad, cumulative_trapezoid
+from scipy.integrate import solve_ivp, quad, cumulative_trapezoid, trapezoid
 
 
 class QuintessenceModel():
@@ -49,12 +49,12 @@ class QuintessenceModel():
 
         return H[::-1]
 
-    def age(self):
+    def age(self, N):
         #x = 1/(1+z)
-        integrand = lambda z: 1/((1+z)*self.H(z))
-        H0t = quad(integrand, 0, np.inf)
+        integrand =  1/self.H(N)        #lambda z: 1/((1+z)*self.H(z))
+        H0t0 = trapezoid(integrand, N)
 
-        return H0t
+        return H0t0
 
     def d_L(self, z):
         """

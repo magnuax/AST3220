@@ -6,10 +6,10 @@ from tqdm import tqdm
 import warnings
 
 from quintessence import QuintessenceModel
-from lambdaCDM import H_ΛCDM, d_L_ΛCDM
+from lambdaCDM import H_ΛCDM, age_ΛCDM, d_L_ΛCDM
 
 warnings.filterwarnings("ignore") # Hide matplotlib warnings lol
-plt.style.use("seaborn")
+plt.style.use("bmh")
 
 # Define physical parameters
 h  = 0.7                     # []               dimensionless Hubble constant
@@ -91,7 +91,17 @@ ax.invert_xaxis()
 plt.legend()
 plt.savefig("figs/Hubble_param.png")
 
+# -----------
+# Problem 11:
+# -----------
 
+H0t0_exp = exp_model.age(N)
+H0t0_pow = pow_model.age(N)
+H0t0_ΛCDM = age_ΛCDM(z)
+
+table = zip(["exp", "pow", "ΛCDM"], [H0t0_exp, H0t0_pow, H0t0_ΛCDM])
+table = tabulate(table, headers=["Model", "H0t0"], tablefmt="github")
+print("\nProblem 10:\n\n", table, "\n", sep="")
 # -----------
 # Problem 12:
 # -----------
