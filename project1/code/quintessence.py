@@ -7,8 +7,6 @@ class QuintessenceModel():
     def __init__(self, Γ):
         self.Γ = Γ
 
-
-
     def eom(self, N, X, Γ):
         """
         Calculates rhs of equations of motion. Takes vector X(N) = [x1, x2, x3, λ] and
@@ -50,15 +48,17 @@ class QuintessenceModel():
         return H[::-1]
 
     def age(self, N):
-        #x = 1/(1+z)
-        integrand =  1/self.H(N)        #lambda z: 1/((1+z)*self.H(z))
+        """
+        Estimates current age of the quintessence universe.
+        """
+        integrand =  1/self.H(N)
         H0t0 = trapezoid(integrand, N)
 
         return H0t0
 
     def d_L(self, z):
         """
-        Calculates the dimensionless luminosity distance as function of distance.
+        Calculates the dimensionless luminosity distance as function of redshift.
         """
         z = z[::-1]
         N = -np.log(z+1)
@@ -69,6 +69,9 @@ class QuintessenceModel():
         return d_L[::-1]
 
     def density_parameters(self, N):
+        """
+        Calculates density parameters from the dimensionless variables x1,x2,x3.
+        """
         x1, x2, x3 = self.sol.sol(N)[:3]
 
         Ω_q = x1**2 + x2**2
@@ -78,14 +81,18 @@ class QuintessenceModel():
         return Ω_q, Ω_r, Ω_m
 
     def eos(self, N):
+        """
+        Calculates equation of state parameter using the dimensionless
+        variables x1,x2,x3.
+        """
         x1, x2 = self.sol.sol(N)[:2]
         w = (x1**2 - x2**2)/(x1**2 + x2**2)
         return w
 
     def plot_Ω(self, N, ax):
         """
-        Self explanatory - Plots density parameters against redshift. Also plots
-        the sum of the density parameters (=1) for quality control.
+        Plots density parameters against redshift. Also plots he sum of the
+        density parameters (=1) for quality control.
         """
         Ω_q, Ω_r, Ω_m = self.density_parameters(N)
         Ω = Ω_q + Ω_r + Ω_m
@@ -98,6 +105,9 @@ class QuintessenceModel():
         ax.set_ylabel(r"$\Omega_i(z)$")
 
     def plot_eos(self, N, ax, label):
+        """
+        Plots equation of state parameter against redshift.
+        """
         z = np.exp(-N)-1
         w = self.eos(N)
 

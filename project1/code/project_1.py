@@ -8,7 +8,7 @@ import warnings
 from quintessence import QuintessenceModel
 from lambdaCDM import H_ΛCDM, age_ΛCDM, d_L_ΛCDM
 
-warnings.filterwarnings("ignore") # Hide matplotlib warnings lol
+warnings.filterwarnings("ignore") # Hide matplotlib warnings heheh
 plt.style.use("bmh")
 
 # Define physical parameters
@@ -148,12 +148,13 @@ err    = data[:,2][::-1]
 
 H0 = 100*h*1e3          # [km s^-1 Gpc^-1] Hubble parameter, different units
 
+
 # Interpolate luminosity distance arrays in order to evaluate at datapoints
 d_exp = interp1d(z, d_exp*c/H0)
 d_pow = interp1d(z, d_pow*c/H0)
 
-X_exp = chisquare(d_data, d_exp(z_data)*c/H0, err)
-X_pow = chisquare(d_data, d_pow(z_data)*c/H0, err)
+X_exp = chisquare(d_data, d_exp(z_data), err)
+X_pow = chisquare(d_data, d_pow(z_data), err)
 # Create formatted table
 table = zip(["Exponential", "Power law"], [X_exp, X_pow])
 table = tabulate(table, headers=["Potential", "χ2"], tablefmt="github")
