@@ -6,6 +6,7 @@ from astropy.cosmology import WMAP9 as cosmo
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import os
+from tqdm import tqdm
 plt.style.use("bmh")
 dir = os.path.dirname(os.path.abspath(__file__))
 dir = os.path.dirname(dir)
@@ -13,28 +14,28 @@ dir = dir + "/latex/figs/"
 
 class BBN:
     def __init__(self):
-        # Physical constants:
         self.set_physical_constants()
-        self.τ    = 1700            # [s]
-        self.q    = 2.53             # []
-        #self.h    = 0.7              # []
-        #self.H0   = 100*self.h*1e-6 *(3.09*1e22*1e2)# [cm s^-1 Mpc^-1 ]
-        self.T0   = 2.725       # [K]
-        self.N_eff = 3
-        self.ρ_c0 = 9.2e-27 * 1e-3   # [Kg/m^3]
+        # Parameters used to calculate reaction rates
+        self.τ    = 1700                 # [s]
+        self.q    = 2.53                 # [ ]
+        # No. of neutrino species:
+        self.N_eff = 3                   # [ ]
+        # Critical density & baryon/radiation density parameters:
+        self.ρ_c0 = 9.2e-27 * 1e-3   # [g/cm^3]
         self.Ω_b0 = 0.05
         self.Ω_r0 = 8*np.pi**3/45 * self.G/self.H0**2 * (self.k_B*self.T0)**4 /(
                     self.hbar**3*self.c**5)*(1 + self.N_eff*7/8*(4/11)**(4/3))
 
     def set_physical_constants(self):
-        self.k_B  = const.k_B.cgs.value
-        self.hbar = const.hbar.cgs.value
-        self.m_u  = const.u.cgs.value
-        self.m_n  = const.m_n.cgs.value
-        self.m_p  = const.m_p.cgs.value
-        self.c    = const.c.cgs.value
-        self.G    = const.G.cgs.value
-        self.H0   = cosmo.H(0).cgs.value
+        self.T0   = 2.725                       # [K]     Photon temp. today
+        self.k_B  = const.k_B.cgs.value         # [erg/K] Boltzmann constant
+        self.hbar = const.hbar.cgs.value        # [erg s] Reduced planck constant
+        self.m_u  = const.u.cgs.value           # [g]     Atomic mass unit
+        self.m_n  = const.m_n.cgs.value         # [g]     Neutron mass
+        self.m_p  = const.m_p.cgs.value         # [g]     Proton mass
+        self.c    = const.c.cgs.value           # [cm/s]  Speed of light
+        self.G    = const.G.cgs.value           # [??]    Gravitational constant
+        self.H0   = cosmo.H(0).cgs.value        # [s^-1]  Hubble constants
 
 
     def t(self, T):
@@ -50,7 +51,7 @@ class BBN:
         """
         a = np.sqrt(2*self.H0*t)*self.Ω_r0**(1/4) # [cm]
         return a
-
+0
     def H(self, t):
         """
         Hubble parameter as function of cosmic time
@@ -69,7 +70,7 @@ class BBN:
     def rate_pn_Dγ(self, T, ρ_b):
         T9 = T*1e-9
         pn = ρ_b*2.5e4
-        λ = 4.68e9 * pn/ρ_b * T9**(0.5) * np.exp(-25.82/T9)
+        λ = 4.68e9 * pn/ρ_b * T9**(1.5) * np.exp(-25.82/T9)
         return pn, λ
 
     def I_dec(self, x, q, T):
@@ -82,24 +83,30 @@ class BBN:
         I = (I_1 + I_2)/self.τ
         return I
 
-    def density_equations(self, lnT, Y):
+    def density_equations(self, lnT, Y, pbar, state):
         """
         Differential equations for evolution of relative neutron/proton density
+        (pbar & state are used to generate progress bar)
         """
+        # Update progress bar:
+        last_T, dT = state
+        n = int((lnT-last_T)/dT)
+        pbar.update(n)
+        state[0] = last_T + dT * n
+
+        # Find baryon density and reaction rates:
         Y_n, Y_p, Y_D = Y
 
-        T = np.exp(lnT)
-        t = self.t(T)
-        H = self.H(t)
-        a = self.a(t)          # [cm]
-        μ = 1/(1*Y_n + 1*Y_p + 0.5*Y_D)
-        ρ_b = self.Ω_b0*self.ρ_c0*μ*self.m_u/(a**3)  # [g/cm**3]
+        T = np.exp(lnT)                   # [K]       Photon temperature (CGS)
+        t = self.t(T)                     # [s]       Cosmic time (CGS)
+        H = self.H(t)                     # [s^-1]    Hubbøle parameter (CGS)
+        a = self.a(t)                     # [cm]      Scale factor (CGS)
+        ρ_b = self.Ω_b0*self.ρ_c0/(a**3)  # [g/cm**3] Baryon density (CGS)
 
         pn = ρ_b*2.5e4
         rate_np     = self.rate_np(T, self.q)
         rate_pn     = self.rate_np(T, -self.q)
         pn, rate_Dn = self.rate_pn_Dγ(T, ρ_b)
-
 
         # Weak interactions:
         dY_p = -1/H*(-Y_p*rate_pn + Y_n*rate_np)
@@ -109,6 +116,7 @@ class BBN:
         dY_n = dY_n - 1/H*(-Y_p*Y_n*pn + Y_D*rate_Dn)
         dY_p = dY_p - 1/H*(-Y_p*Y_n*pn + Y_D*rate_Dn)
         dY_D = 0    - 1/H*( Y_p*Y_n*pn - Y_D*rate_Dn)
+
 
 
         return [dY_n, dY_p, dY_D]
@@ -130,10 +138,18 @@ class BBN:
         Y_eom  = self.density_equations
         lnT_i = np.log(T_i)
         lnT_f = np.log(T_f)
+        lnT_span = [lnT_i, lnT_f]
 
-        self.sol = solve_ivp(Y_eom, [lnT_i, lnT_f], y0=Y_init, method="Radau",
-                            rtol=1e-5, atol=1e-5)
+        with tqdm(total=1000, unit="‰") as pbar:
+            self.sol = solve_ivp(Y_eom, lnT_span,
+                            y0 = Y_init,
+                            args = [pbar, [lnT_i, (lnT_f-lnT_i)/1000]],
+                            method = "Radau",
+                            rtol = 1e-12,
+                            atol = 1e-12)
+
         print(self.sol.message)
+
 
     def plot_Y(self):
         """
