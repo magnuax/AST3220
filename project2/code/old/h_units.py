@@ -51,7 +51,7 @@ class BBN:
         """
         a = np.sqrt(2*self.H0*t)*self.Ω_r0**(1/4) # [cm]
         return a
-0
+
     def H(self, t):
         """
         Hubble parameter as function of cosmic time

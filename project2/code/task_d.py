@@ -13,7 +13,7 @@ def t(T):
 temps = np.array([1e8, 1e9, 1e10])
 names = ["10^8", "10^9", "10^10"]
 ages  = t(temps)*31556926           #[s]
-headers = ["Temp. [K]", "Age [yr]"]
+headers = ["Temp. [K]", "Age [s]"]
 table = tabulate(zip(names,ages), headers=headers, tablefmt="github")
 
 print(table)
