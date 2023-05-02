@@ -1,26 +1,42 @@
 # Fdb version 3
-["bibtex aux/AST3220_project2"] 1683025569 "aux/AST3220_project2.aux" "aux/AST3220_project2.bbl" "aux/AST3220_project2" 1683025570
+["bibtex aux/AST3220_project2"] 1683042651 "aux/AST3220_project2.aux" "aux/AST3220_project2.bbl" "aux/AST3220_project2" 1683042652
   "/usr/share/texlive/texmf-dist/bibtex/bst/revtex4-1/apsrev4-1.bst" 1602107945 71515 e333383ed72bf24aa6de7e8cabb55f84 ""
-  "aux/AST3220_project2.aux" 1683025569 2128 3410915aeeb92267e707c30da79d3c41 "xelatex"
-  "aux/AST3220_project2Notes.bib" 1683025569 103 48ad29797468f16e2853d8797278d7af "xelatex"
+  "aux/AST3220_project2.aux" 1683042652 2794 ee8613c87e61fae435ea6a9825d6830e "xelatex"
+  "aux/AST3220_project2Notes.bib" 1683042652 103 48ad29797468f16e2853d8797278d7af "xelatex"
   (generated)
   "aux/AST3220_project2.bbl"
   "aux/AST3220_project2.blg"
-["xdvipdfmx"] 1683025570 "aux/AST3220_project2.xdv" "aux/AST3220_project2.pdf" "aux/AST3220_project2" 1683025570
-  "aux/AST3220_project2.xdv" 1683025569 35120 c9d5b5b9af77603def071e4b606a19eb "xelatex"
+["xdvipdfmx"] 1683042652 "aux/AST3220_project2.xdv" "aux/AST3220_project2.pdf" "aux/AST3220_project2" 1683042652
+  "aux/AST3220_project2.xdv" 1683042652 44864 1c00965c798ebe9bd1e2b6e63bd7411e "xelatex"
   (generated)
   "aux/AST3220_project2.pdf"
-["xelatex"] 1683025569 "AST3220_project2.tex" "aux/AST3220_project2.xdv" "AST3220_project2" 1683025570
+["xelatex"] 1683042651 "AST3220_project2.tex" "aux/AST3220_project2.xdv" "AST3220_project2" 1683042652
   "/etc/texmf/web2c/texmf.cnf" 1661242560 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy9.tfm" 1246382020 1112 cbc11b646ccc26599775160605aaee3a ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex9.tfm" 1246382020 996 a18840b13b499c08ac2de96a99eda4bc ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmmib5.tfm" 1246382020 1496 c79f6914c6d39ffb3759967363d1be79 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmmib6.tfm" 1246382020 1516 a3bf6a5e7ec4401b1f52092dfaaed242 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmmib9.tfm" 1246382020 1528 159d57adcba064aab4277245c826577d ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5.tfm" 1246382020 924 9904cf1d39e9767e7a3622f2a125a565 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm" 1246382020 928 2dc8d444221b7a635bb58038579b861a ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm" 1246382020 908 2921f8a10601f252058503cc6570e581 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm" 1246382020 940 75ac932a52f80982a9f8ea75d03a34cf ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm" 1246382020 940 228d6584342e91276bf566bcf9716b83 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm" 1136768653 1332 f817c21a1ba54560425663374f1b651a ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx6.tfm" 1136768653 1344 8a0be4fe4d376203000810ad4dc81558 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx9.tfm" 1136768653 1328 5442e22a7072966dbaf88ca900acf3f0 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1136768653 1512 f21f83efb36853c0b70002322c1ab3ad ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi9.tfm" 1136768653 1524 d89e2d087a9828407a196f428428ef4a ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr6.tfm" 1136768653 1300 b62933e007d01cfd073f79b963c01526 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr9.tfm" 1136768653 1292 6b21b9c2c7bebb38aa2273f7ca0fb3af ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1136768653 1116 933a60c408fc0a863a92debe84b2d294 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy9.tfm" 1136768653 1116 25a7bf822c58caf309a702ef79f4afbb ""
   "/usr/share/texlive/texmf-dist/tex/generic/atbegshi/atbegshi.sty" 1575674566 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
   "/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf" 1496785618 7008 9ff5fdcc865b01beca2b0fe4a46231d4 ""
   "/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty" 1658348618 151308 f48d89beb96c9b108345f21bd476da55 ""
@@ -161,10 +177,10 @@
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1658757727 39561 34c98e380bf7c7201ee6a7909aff625a ""
   "/usr/share/texmf/web2c/texmf.cnf" 1658757727 39561 34c98e380bf7c7201ee6a7909aff625a ""
   "/var/lib/texmf/web2c/xetex/xelatex.fmt" 1675088793 5466511 daf6ec9f20c714cbeae8c7ccbad27847 ""
-  "AST3220_project2.tex" 1683025568 9796 24b5287a29586f08d7ad428d15feb841 ""
-  "aux/AST3220_project2.aux" 1683025569 2128 3410915aeeb92267e707c30da79d3c41 "xelatex"
-  "aux/AST3220_project2.bbl" 1683025569 1983 c789b8b2e2ff60989c671635ad8473c2 "bibtex aux/AST3220_project2"
-  "aux/AST3220_project2.out" 1683025569 1240 f4bc118861ea658657f7accd8149f110 "xelatex"
+  "AST3220_project2.tex" 1683042650 11401 7bd5b11696aa0093dd088dca489085b7 ""
+  "aux/AST3220_project2.aux" 1683042652 2794 ee8613c87e61fae435ea6a9825d6830e "xelatex"
+  "aux/AST3220_project2.bbl" 1683042651 1983 c789b8b2e2ff60989c671635ad8473c2 "bibtex aux/AST3220_project2"
+  "aux/AST3220_project2.out" 1683042652 1585 c21a64d6de364aacffe07d14b53594e9 "xelatex"
   (generated)
   "aux/AST3220_project2.aux"
   "aux/AST3220_project2.log"

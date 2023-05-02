@@ -199,8 +199,59 @@ With $\rho_{c0}=\frac{3H_0^2}{8\pi G}$ as the critical density, we then find
 							&= \frac{4\pi^3}{45}\frac{G}{H_0^2}\frac{(k_b T_0)^4}{\hbar^3 c^5}
 								\left[1 + N_{\mathrm{eff}}\ \frac{7}{8}	\left(\frac{4}{11}\right)^{4/3}\right]
 \end{align}
+BLABLABLBALBALABSdpåkaslåldkoåad
 
 \section{Problem d)}
+\subsubsection{Scale factor}
+At the BBN, the Friedmann equations simplify to
+\begin{align}
+	\frac{1}{a} \d{a}{t} = H_0 \sqrt{\Omega_{r0}a^{-2}}
+\end{align}
+With some rearranging we see this is a separable differential equation, which
+we solve for $a(t)$:
+\begin{align}
+					 			 a\ \frac{da}{dt} &= H_0 \sqrt{\Omega_{r0}}\ \\
+	\Rightarrow\ \ \int_0^a a'\ da' &= H_0 \sqrt{\Omega_{r0}} \int_0^t dt' \\
+	\Rightarrow\ \   \frac{1}{2}a^2 &= H_0\sqrt{\Omega_{r0}}t \\
+	\Rightarrow\ \ 	  				    a &= \sqrt{2 H_0 t}\  \left(\Omega_{r0}\right)^{1/4}
+	\label{eq:a(t)}
+\end{align}
+
+\subsubsection{Cosmic time}
+To find the cosmic time as a function of the photon temperature, we use the
+relation
+\begin{align}
+	T = T_0 a^{-1} \ \ \Rightarrow \ \ a = \frac{T_0}{T}
+\end{align}
+Inserting this into eq. (\ref{eq:a(t)}) and squaring both sides we get
+\begin{align}
+	\left(\frac{T_0}{T}\right)^2 &= 2 H_0 t \sqrt{(\Omega_{r0})} \\
+\end{align}
+Which is easily solved:
+\begin{align}
+	t(T) = \frac{1}{2 H_0 \sqrt{\Omega_{r0}}} \left(\frac{T_0}{T}\right)^2
+\end{align}
+A table of this expression evaluated at temperatures $10^10$, $10^9$ and $10^8$
+is attached in table (\ref{tab:t(T)})
+
+\begin{table}[h!]
+	\begin{tabular}{lc}
+	\hline
+	      $T$ [K] &   $t(T)$ [s] \\
+	\hline
+	\hline
+	 $10^{10}$ 			& $\ \ \ \ \ \ 1.7774 \hspace{0.91cm} $ \\
+	 $10^9$    			& $\ \ \ \ \ \ 1.7774\cross 10^2$ \\
+	 $10^8$    			& $\ \ \ \ \ \ 1.7774\cross 10^4$ \\
+	\hline
+	\hline
+	\end{tabular}
+	\caption{Age of the universe at different temperatures.}
+	\label{tab:t(T)}
+\end{table}
+
+\section{Problem e)}
+
 
 \begin{acknowledgments}  % if you disagree with the spelling, blame Americans
 I would like thank myself for writing this beautiful document.

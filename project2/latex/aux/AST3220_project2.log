@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022/Debian) (preloaded format=xelatex 2023.1.30)  2 MAY 2023 13:06
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022/Debian) (preloaded format=xelatex 2023.1.30)  2 MAY 2023 17:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -776,20 +776,33 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[1] (aux/AST3220_project2.bbl) [2] (aux/AST3220_project2.aux)
+[1]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 205.
+
+
+LaTeX Warning: Command \d invalid in math mode on input line 209.
+
+Missing character: There is no ạ ("1EA1) in font cmmi10!
+
+LaTeX Warning: Command \d invalid in math mode on input line 209.
+
+Missing character: There is no ạ ("1EA1) in font cmmi10!
+[2] (aux/AST3220_project2.bbl) [3] (aux/AST3220_project2.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `AST3220_project2.out' has not changed.
-(rerunfilecheck)             Checksum: F4BC118861EA658657F7ACCD8149F110;1240.
+(rerunfilecheck)             Checksum: C21A64D6DE364AACFFE07D14B53594E9;1585.
  ) 
 Here is how much of TeX's memory you used:
- 24548 strings out of 475864
- 442033 string characters out of 5804336
- 985853 words of memory out of 5000000
- 45218 multiletter control sequences out of 15000+600000
- 471358 words of font info for 42 fonts, out of 8000000 for 9000
+ 24602 strings out of 475864
+ 442632 string characters out of 5804336
+ 984853 words of memory out of 5000000
+ 45254 multiletter control sequences out of 15000+600000
+ 477230 words of font info for 64 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 84i,11n,80p,450b,415s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,13n,80p,450b,415s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on aux/AST3220_project2.xdv (2 pages, 35120 bytes).
+Output written on aux/AST3220_project2.xdv (3 pages, 44864 bytes).

@@ -7,6 +7,7 @@ from astropy.cosmology import WMAP9 as cosmo
 import matplotlib.pyplot as plt
 import os
 from tqdm import tqdm
+from tabulate import tabulate
 plt.style.use("bmh")
 dir = os.path.dirname(os.path.abspath(__file__))
 dir = os.path.dirname(dir)
@@ -22,7 +23,6 @@ class BBN:
         self.N_eff = 3                   # [ ]
         # Critical density & baryon/radiation density parameters:
         self.ρ_c0 = 9.2e-27 * 1e-3   # [g/cm^3]
-        self.Ω_b0 = 0.05
         self.Ω_r0 = 8*np.pi**3/45 * self.G/self.H0**2 * (self.k_B*self.T0)**4 /(
                     self.hbar**3*self.c**5)*(1 + self.N_eff*7/8*(4/11)**(4/3))
 
@@ -350,9 +350,12 @@ class BBN:
 
         probability = 1/np.sqrt(2*np.pi*np.prod(error**2)) * np.exp(-0.5*χ)
         probability = probability/np.max(probability)
-        param_best  = parameter[ np.argmax(probability) ]
 
-        return probability, param_best
+        idx_best   = np.argmax(probability)
+        param_best = parameter[idx_best]
+        χ_best     = χ[idx_best]
+
+        return probability, param_best, χ_best
 
     def plot_mass_fractions(self, filename="mass_fractions.npy"):
         """
@@ -427,7 +430,7 @@ class BBN:
         error = np.array([0.03e-5, 0.3e-10, 0.003])
         data  = np.array([2.57e-5, 1.6e-10, 0.254])
 
-        P, Ω_best = self._find_best_fit(Ω_b0, model, data, error)
+        P, Ω_best, χ_best = self._find_best_fit(Ω_b0, model, data, error)
         print(f"Optimal Ω_b0: {Ω_best}")
 
         fig, ax = plt.subplots(nrows=3,
@@ -438,6 +441,8 @@ class BBN:
 
         ax[0].vlines(Ω_best, 0.32, 0.20, "k", ":")
         ax[1].vlines(Ω_best, 1e-11, 1e-3, "k", ":")
+        ax[2].vlines(Ω_best, -0.1, 1.1, "k", ":", label=f"$\chi^2=${χ_best:.3f}\n"+
+                                                 r"$\Omega_{b0}=$"+f"{Ω_best:.3f}")
 
         ax[0].semilogx(Ω_b0, Y_4xHe4, color="C3", label="$\mathrm{He}^4$")
         ax[1].semilogx(Ω_b0, Y_D_p  , color="C0", label="$\mathrm{D}$"   )
@@ -445,12 +450,13 @@ class BBN:
         ax[1].semilogx(Ω_b0, Y_Li7_p, color="C1", label="$\mathrm{Li}^7$")
         ax[2].semilogx(Ω_b0, P, color="k")
 
-        axes   = [ax[0], ax[1], ax[1]]
+        axes   = [ax[1], ax[1], ax[0]]
         colors = ["C0", "C1", "C3"]
         for i, (axs, c) in enumerate(zip(axes, colors)):
             y1 = data[i]+error[i]
             y2 = data[i]-error[i]
-            axs.fill_between(Ω_b0, y1, y2, color=c, alpha=0.2)
+            axs.fill_between(Ω_b0, y1, y2, color=c, alpha=0.4)
+
 
         ax[0].set_ylabel(r"$4Y_{\mathrm{He}^4}$")
         ax[1].set_ylabel(r"$Y_{i} / Y_{p}$")
@@ -461,9 +467,11 @@ class BBN:
         ax[0].set_ylim(0.20, 0.32)
         ax[1].set_ylim(1e-11, 1e-3)
         ax[2].set_xlim(1e-2 , 1e0)
+        ax[2].set_ylim(-0.1, 1.1)
 
-        ax[0].legend()
-        ax[1].legend()
+
+        for i in range(3):
+            ax[i].legend(loc="upper left")
 
         plt.show()
 
@@ -480,7 +488,7 @@ class BBN:
         error = np.array([0.03e-5, 0.3e-10, 0.003])
         data  = np.array([2.57e-5, 1.6e-10, 0.254])
 
-        P, N_best = self._find_best_fit(N_eff, model, error, data)
+        P, N_best, χ_best = self._find_best_fit(N_eff, model, data, error)
         print(f"Optimal N_eff: {N_best}")
 
         fig, ax = plt.subplots(nrows=4,
@@ -491,6 +499,8 @@ class BBN:
         ax[0].vlines(N_best, 0.22, 0.30, "k", ":")
         ax[1].vlines(N_best, 1e-5, 4e-5, "k", ":")
         ax[2].vlines(N_best, 5e-10, 1e-10, "k", ":")
+        ax[3].vlines(N_best, -0.1, 1.1, "k", ":", label=f"$\chi^2=${χ_best:.3f}\n"+
+                                               r"$N_{eff}=$"+f"{N_best:.3f}")
 
         ax[0].plot(N_eff, Y_4xHe4, color="C3", label="$\mathrm{He}^4$")
         ax[1].plot(N_eff, Y_D_p  , color="C0", label="$\mathrm{D}$"   )
@@ -498,11 +508,12 @@ class BBN:
         ax[2].plot(N_eff, Y_Li7_p, color="C1", label="$\mathrm{Li}^7$")
         ax[3].plot(N_eff, P, color="k")
 
+        axes   = [ax[1], ax[2], ax[0]]
         colors = ["C0", "C1", "C3"]
-        for i, c in enumerate(colors):
+        for i, (axs, c) in enumerate(zip(axes, colors)):
             y1 = data[i]+error[i]
             y2 = data[i]-error[i]
-            ax[i].fill_between(N_eff, y1, y2, color=c, alpha=0.2)
+            axs.fill_between(N_eff, y1, y2, color=c, alpha=0.4)
 
         ax[0].set_ylabel(r"$4Y_{\mathrm{He}^4}$")
         ax[1].set_ylabel(r"$Y_{i} / Y_{p}$")
@@ -514,25 +525,32 @@ class BBN:
         ax[1].set_ylim(1e-5, 4e-5)
         ax[2].set_ylim(1e-10, 5e-10)
         ax[3].set_xlim(1, 5)
+        ax[3].set_ylim(-0.1, 1.1)
 
-        ax[0].legend()
-        ax[1].legend()
-        ax[2].legend()
+        for i in range(4):
+            ax[i].legend(loc="upper left")
 
         plt.show()
 
 if __name__=="__main__":
-
     model = BBN()
+
+    # Task d):
+    headers      = np.array(["T [K]", "t(T) [s]"])
+    temperatures = np.array([1e10, 1e9, 1e8])
+    cosmic_times = model._get_cosmic_time(temperatures)
+    table = zip(temperatures, cosmic_times)
+    table = tabulate(table, headers=headers, tablefmt="github", floatfmt=".4e")
+    print(table)
+
+    exit()
     """
     model.solve(T_i=100e9, T_f=0.01e9)
     plt.savefig(dir+"densities_i.png")
     model.plot_mass_fractions()
     model.import_solution()
-    """
-    model.calculate_relic_abundances_Ω_b0()
     model.calculate_relic_abundances_N_eff()
-
+    model.calculate_relic_abundances_Ω_b0()
+    """
     model.plot_relic_abundances_Ω()
-    model.Ω_b0 = 0.0645
     model.plot_relic_abundances_N()
