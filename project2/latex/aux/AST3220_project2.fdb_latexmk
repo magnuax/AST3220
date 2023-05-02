@@ -1,16 +1,16 @@
 # Fdb version 3
-["bibtex aux/AST3220_project2"] 1680090855 "aux/AST3220_project2.aux" "aux/AST3220_project2.bbl" "aux/AST3220_project2" 1680180741
+["bibtex aux/AST3220_project2"] 1683025569 "aux/AST3220_project2.aux" "aux/AST3220_project2.bbl" "aux/AST3220_project2" 1683025570
   "/usr/share/texlive/texmf-dist/bibtex/bst/revtex4-1/apsrev4-1.bst" 1602107945 71515 e333383ed72bf24aa6de7e8cabb55f84 ""
-  "aux/AST3220_project2.aux" 1680180741 1908 a10c1b6e476a0ca6986e3d11bec2a3c4 "xelatex"
-  "aux/AST3220_project2Notes.bib" 1680180741 103 48ad29797468f16e2853d8797278d7af "xelatex"
+  "aux/AST3220_project2.aux" 1683025569 2128 3410915aeeb92267e707c30da79d3c41 "xelatex"
+  "aux/AST3220_project2Notes.bib" 1683025569 103 48ad29797468f16e2853d8797278d7af "xelatex"
   (generated)
   "aux/AST3220_project2.bbl"
   "aux/AST3220_project2.blg"
-["xdvipdfmx"] 1680180741 "aux/AST3220_project2.xdv" "aux/AST3220_project2.pdf" "aux/AST3220_project2" 1680180741
-  "aux/AST3220_project2.xdv" 1680180741 29244 6295a749bd854598af023db65f8a25d9 "xelatex"
+["xdvipdfmx"] 1683025570 "aux/AST3220_project2.xdv" "aux/AST3220_project2.pdf" "aux/AST3220_project2" 1683025570
+  "aux/AST3220_project2.xdv" 1683025569 35120 c9d5b5b9af77603def071e4b606a19eb "xelatex"
   (generated)
   "aux/AST3220_project2.pdf"
-["xelatex"] 1680180740 "AST3220_project2.tex" "aux/AST3220_project2.xdv" "AST3220_project2" 1680180741
+["xelatex"] 1683025569 "AST3220_project2.tex" "aux/AST3220_project2.xdv" "AST3220_project2" 1683025570
   "/etc/texmf/web2c/texmf.cnf" 1661242560 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
@@ -161,10 +161,10 @@
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1658757727 39561 34c98e380bf7c7201ee6a7909aff625a ""
   "/usr/share/texmf/web2c/texmf.cnf" 1658757727 39561 34c98e380bf7c7201ee6a7909aff625a ""
   "/var/lib/texmf/web2c/xetex/xelatex.fmt" 1675088793 5466511 daf6ec9f20c714cbeae8c7ccbad27847 ""
-  "AST3220_project2.tex" 1680180740 8641 88f47acce57540ce53dab6ec0209a9ec ""
-  "aux/AST3220_project2.aux" 1680180741 1908 a10c1b6e476a0ca6986e3d11bec2a3c4 "xelatex"
-  "aux/AST3220_project2.bbl" 1680090855 1983 c789b8b2e2ff60989c671635ad8473c2 "bibtex aux/AST3220_project2"
-  "aux/AST3220_project2.out" 1680180741 1002 4fdbd51782c5970ec7dc6968ec2fdb35 "xelatex"
+  "AST3220_project2.tex" 1683025568 9796 24b5287a29586f08d7ad428d15feb841 ""
+  "aux/AST3220_project2.aux" 1683025569 2128 3410915aeeb92267e707c30da79d3c41 "xelatex"
+  "aux/AST3220_project2.bbl" 1683025569 1983 c789b8b2e2ff60989c671635ad8473c2 "bibtex aux/AST3220_project2"
+  "aux/AST3220_project2.out" 1683025569 1240 f4bc118861ea658657f7accd8149f110 "xelatex"
   (generated)
   "aux/AST3220_project2.aux"
   "aux/AST3220_project2.log"

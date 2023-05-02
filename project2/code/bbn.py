@@ -14,7 +14,7 @@ dir = dir + "/latex/figs/"
 
 class BBN:
     def __init__(self):
-        self.set_physical_constants()
+        self._set_physical_constants()
         # Parameters used to calculate reaction rates
         self.τ    = 1700                 # [s]
         self.q    = 2.53                 # [ ]
@@ -26,7 +26,7 @@ class BBN:
         self.Ω_r0 = 8*np.pi**3/45 * self.G/self.H0**2 * (self.k_B*self.T0)**4 /(
                     self.hbar**3*self.c**5)*(1 + self.N_eff*7/8*(4/11)**(4/3))
 
-    def set_physical_constants(self):
+    def _set_physical_constants(self):
         self.T0   = 2.725                       # [K]     Photon temp. today
         self.k_B  = const.k_B.cgs.value         # [erg/K] Boltzmann constant
         self.hbar = const.hbar.cgs.value        # [erg s] Reduced planck constant
@@ -37,29 +37,29 @@ class BBN:
         self.G    = const.G.cgs.value           # [??]    Gravitational constant
         self.H0   = cosmo.H(0).cgs.value        # [s^-1]  Hubble constants
 
-    def t(self, T):
+    def _get_cosmic_time(self, T):
         """
         Cosmic time as a function of photon temperature
         """
         t = 1/(2*self.H0*np.sqrt(self.Ω_r0)) * (self.T0/T)**2
         return t
 
-    def a(self, t):
+    def _get_scale_factor(self, t):
         """
         Scale factor as function of cosmic time [s]
         """
         a = np.sqrt(2*self.H0*t)*self.Ω_r0**(1/4) # [cm]
         return a
 
-    def H(self, t):
+    def _get_hubble_parameter(self, t):
         """
         Hubble parameter as function of cosmic time
         """
-        a = self.a(t)
+        a = self._get_scale_factor(t)
         H = self.H0*np.sqrt(self.Ω_r0)/(a**2)
         return H
 
-    def calculate_reaction_rates(self, T9, Tν9, ρ_b):
+    def _calculate_reaction_rates(self, T9, Tν9, ρ_b):
         """
         Calculates reaction rates for reactions (1)-(11) and ... in table 2
         """
@@ -67,8 +67,8 @@ class BBN:
         # 1) n + nu <-> p + e-
         # 2) n + e- <-> p + nu_bar
         # 3) n <-> p + e- + nu_bar
-        self.rate_λw_n = quad(self.I_dec, 1, np.inf, args=(self.q,T9, Tν9))[0]
-        self.rate_λw_p = quad(self.I_dec, 1, np.inf, args=(-self.q,T9, Tν9))[0]
+        self.rate_λw_n = quad(self._I_dec, 1, np.inf, args=(self.q,T9, Tν9))[0]
+        self.rate_λw_p = quad(self._I_dec, 1, np.inf, args=(-self.q,T9, Tν9))[0]
 
         """Table 2b) Strong & EM interactions"""
         # 1) p + n <-> D + γ
@@ -133,7 +133,7 @@ class BBN:
         self.rate_nBe7_He4 = 1.2e7*ρ_b*T9
         self.rate_He4He4_n = 4.64*self.rate_nBe7_He4*np.exp(-220.4/T9)
 
-    def I_dec(self, x, q, T9, Tν9):
+    def _I_dec(self, x, q, T9, Tν9):
         Z  = 5.93/(T9)           #const.m_e*const.c**2/(const.k_B*T)
         Zν = 5.93/(Tν9)          #const.m_e*const.c**2/(const.k_B*Tν)
 
@@ -142,7 +142,7 @@ class BBN:
         I = (I_1 + I_2)/self.τ
         return I
 
-    def density_equations(self, lnT, Y, Ω_b0, pbar, state):
+    def _density_equations(self, lnT, Y, Ω_b0, pbar, state):
         """
         Differential equations for evolution of relative neutron/proton density
         (pbar & state are used to generate progress bar,
@@ -159,15 +159,15 @@ class BBN:
         dY_p, dY_n, dY_D, dY_T, dY_He3, dY_He4, dY_Li7, dY_Be7 = 0,0,0,0,0,0,0,0
 
         T = np.exp(lnT)                   # [K]       Photon temperature (CGS)
-        t = self.t(T)                     # [s]       Cosmic time (CGS)
-        H = self.H(t)                     # [s^-1]    Hubbøle parameter (CGS)
-        a = self.a(t)                     # [cm]      Scale factor (CGS)
+        t = self._get_cosmic_time(T)                     # [s]       Cosmic time (CGS)
+        H = self._get_hubble_parameter(t)                     # [s^-1]    Hubbøle parameter (CGS)
+        a = self._get_scale_factor(t)                     # [cm]      Scale factor (CGS)
         ρ_b = Ω_b0*self.ρ_c0/(a**3)       # [g/cm**3] Baryon density (CGS)
 
         T9  = T*1e-9
         Tν9 = np.cbrt(4/11)*T9
 
-        self.calculate_reaction_rates(T9, Tν9, ρ_b)
+        self._calculate_reaction_rates(T9, Tν9, ρ_b)
 
         """ a) Weak interactions"""
         # 1) n + nu <-> p + e-
@@ -252,7 +252,7 @@ class BBN:
 
         return [dY_p, dY_n, dY_D, dY_T, dY_He3, dY_He4, dY_Li7, dY_Be7]
 
-    def initial_conditions(self, T_i):
+    def _get_initial_conditions(self, T_i):
         """
         Calculates initial conditions for density_equations
         """
@@ -264,8 +264,8 @@ class BBN:
         """
         Finds mass fractions as function of photon temperature T
         """
-        Y_init = self.initial_conditions(T_i)
-        Y_eom  = self.density_equations
+        Y_init = self._get_initial_conditions(T_i)
+        Y_eom  = self._density_equations
         lnT_i = np.log(T_i)
         lnT_f = np.log(T_f)
         lnT_span = [lnT_i, lnT_f]
@@ -279,23 +279,89 @@ class BBN:
                             atol = 1e-12)
 
         if save:
-            mass_fractions = [self.sol.t, *self.sol.y]
-            np.save("mass_fractions.npy", mass_fractions)
+            self._store_solution(self.sol.t, *self.sol.y, "mass_fractions.npy")
+        else:
+            return self.sol.t, self.sol.y
 
-    def import_solution(self, filename="mass_fractions.npy"):
-        self.sol = np.load(filename)
-        self.log_T = self.sol[0]
-        self.Y     = self.sol[1:]
+    def _store_solution(self, param, number_densities, filename):
+        """
+        Docstring
+        """
+        solution = np.array([param, *number_densities])
+        np.save(filename, solution)
+        print(f"Results saved to file <{filename}>")
 
-    def plot_mass_fractions(self):
+    def calculate_relic_abundances_Ω_b0(self, filename="relic_abundances_j.npy"):
+        """
+        Docstring
+        """
+        N   = 20
+        T_i = 100e9
+        T_f = 0.01e9
+
+        Y_relic = np.zeros((8,N))
+        Ω_b0    = np.linspace(0.01, 1, N)
+
+        for i, Ω in enumerate(Ω_b0):
+            print(f"Calculating relic abundance {i+1}/{N} ... Ω_b0={Ω} ")
+            sol_t, sol_y = self.solve(T_i, T_f, Ω_b0=Ω)
+            Y_relic[:,i] = sol_y[:,-1]
+
+        self._store_solution(Ω_b0, Y_relic, filename)
+
+    def calculate_relic_abundances_N_eff(self, filename="relic_abundances_k.npy"):
+        """
+        Docstring
+        """
+        N   = 20
+        T_i = 100e9
+        T_f = 0.01e9
+
+        Y_relic = np.zeros((8,N))
+        N_eff   = np.linspace(1,5,N)
+
+        for i, _N in enumerate(N_eff):
+            print(f"Calculating relic abundance {i+1}/{N} ... N={_N} ")
+            self.N_eff = _N                   # [ ]
+            self.Ω_r0 = 8*np.pi**3/45 * self.G/self.H0**2 * (self.k_B*self.T0)**4 /(
+                        self.hbar**3*self.c**5)*(1 + self.N_eff*7/8*(4/11)**(4/3))
+
+            sol_t, sol_y = self.solve(T_i, T_f)
+            Y_relic[:,i] = sol_y[:,-1]
+
+        self.N_eff = 3
+        self._store_solution(N_eff, Y_relic, filename)
+
+    def _chi_square(self, data, model, error):
+        """
+        Docstring
+        """
+        s = (model - data)**2/(error**2)
+        return np.sum(s)
+
+    def _find_best_fit(self, parameter, model, data, error):
+        """
+        Docstring
+        """
+        N = len(parameter)
+        χ = np.zeros(N)
+        for i in range(N):
+            χ[i] = self._chi_square(data, model[:,i], error)
+
+        probability = 1/np.sqrt(2*np.pi*np.prod(error**2)) * np.exp(-0.5*χ)
+        probability = probability/np.max(probability)
+        param_best  = parameter[ np.argmax(probability) ]
+
+        return probability, param_best
+
+    def plot_mass_fractions(self, filename="mass_fractions.npy"):
         """
         Plots relative densities of neutron/proton against temperature
         """
-        sol = np.load("mass_fractions.npy")
-        T = np.exp(self.log_T)
-
+        sol = np.load(filename)
+        T   = np.exp(sol[0])
         # Create arrays with rel. densities, atomic number and element names
-        Y_i = self.Y
+        Y_i = sol[1:]
         A_i = np.array([1, 1, 2, 3, 3, 4, 7, 7])
         X_i = np.array([r"$n$"   , r"$p$"   , r"$D$"   , r"$T$",
                         r"$He^3$", r"$He^4$", r"$Li^7$", r"$Be^7$"])
@@ -316,86 +382,53 @@ class BBN:
         ax.set_ylabel(r"Mass fraction $A_i Y_i$")
         plt.legend()
 
-    def calculate_relic_abundances(self):
-        N = 10
+    def _interpolate_relic_abundances(self, solution, N=1000):
+        solution = np.where(solution<1e-20, 1e-20, solution)
 
-        T_i = 100e9
-        T_f = 0.01e9
-
-        self.Y0 = np.zeros((8,N))
-
-        Ω_b0 = np.linspace(0.01, 1, N)
-        for i, _Ω in enumerate(Ω_b0):
-            print(f"Calculating relic abundance {i}/20 ... Ω_b0={_Ω} ")
-            self.solve(T_i, T_f, _Ω)
-            self.Y0[:,i] = self.sol.y[:,-1]
-
-        print("Finished!")
-
-        # Save results as .npy file:
-        Y_p   = self.Y0[0,:]
-        Y_n   = self.Y0[1,:]
-        Y_D   = self.Y0[2,:]
-        Y_T   = self.Y0[3,:]
-        Y_He3 = self.Y0[4,:]
-        Y_He4 = self.Y0[4,:]
-        Y_Li7 = self.Y0[6,:]
-        Y_Be7 = self.Y0[7,:]
-
-        relic_abundances = np.array([Ω_b0,  Y_p,   Y_n,   Y_D,   Y_T,
-                                            Y_He3, Y_He4, Y_Li7, Y_Be7])
-        np.save("relic_abundances.npy", relic_abundances)
-
-    def chi_square(self, data, model, error):
-        s = (model - data)**2/(error**2)
-        return np.sum(s)
-
-    def plot_relic_abundances(self):
-        Y0 = np.load("relic_abundances.npy")
-
-        Y0 = np.where(Y0<1e-20, 1e-20, Y0)
-
-        Ω_b0  = Y0[0,:]
-        Y_p   = Y0[1,:]
-        Y_n   = Y0[2,:]
-        Y_D   = Y0[3,:]
-        Y_T   = Y0[4,:]
-        Y_He3 = Y0[5,:]
-        Y_He4 = Y0[6,:]
-        Y_Li7 = Y0[7,:]
-        Y_Be7 = Y0[8,:]
+        param = solution[0,:]
+        Y_p   = solution[1,:]
+        Y_n   = solution[2,:]
+        Y_D   = solution[3,:]
+        Y_T   = solution[4,:]
+        Y_He3 = solution[5,:]
+        Y_He4 = solution[6,:]
+        Y_Li7 = solution[7,:]
+        Y_Be7 = solution[8,:]
 
         Y_Li7 = Y_Li7 + Y_Be7
         Y_He3 = Y_He3 + Y_T
 
-        logY_D_p   = interp1d(Ω_b0, np.log(Y_D/Y_p)  , kind="cubic")
-        logY_Li7_p = interp1d(Ω_b0, np.log(Y_Li7/Y_p), kind="cubic")
-        logY_4xHe4 = interp1d(Ω_b0, np.log(4*Y_He4)  , kind="cubic")
-        logY_He3   = interp1d(Ω_b0, np.log(Y_He3/Y_p), kind="cubic")
+        logY_D_p   = interp1d(param, np.log(Y_D/Y_p)  , kind="cubic")
+        logY_Li7_p = interp1d(param, np.log(Y_Li7/Y_p), kind="cubic")
+        logY_4xHe4 = interp1d(param, np.log(4*Y_He4)  , kind="cubic")
+        logY_He3   = interp1d(param, np.log(Y_He3/Y_p), kind="cubic")
 
-        N = 1000
-        Ω_b0 = np.linspace(0.01, 1, N)
+        param_interp = np.linspace(param[0], param[-1], N)
 
-        Y_D_p   = np.exp( logY_D_p(Ω_b0)   )
-        Y_Li7_p = np.exp( logY_Li7_p(Ω_b0) )
-        Y_4xHe4 = np.exp( logY_4xHe4(Ω_b0) )
-        Y_He3   = np.exp( logY_He3(Ω_b0)   )
+        Y_D_p   = np.exp( logY_D_p(param_interp)   )
+        Y_Li7_p = np.exp( logY_Li7_p(param_interp) )
+        Y_4xHe4 = np.exp( logY_4xHe4(param_interp) )
+        Y_He3   = np.exp( logY_He3(param_interp)   )
+
+        Y_interp = np.array([Y_D_p, Y_Li7_p, Y_4xHe4, Y_He3])
+
+        return param_interp, Y_interp
+
+    def plot_relic_abundances_Ω(self, filename="relic_abundances_j.npy"):
+        """
+        Docstring
+        """
+        solution = np.load(filename)
+
+        Ω_b0, Y_relic = self._interpolate_relic_abundances(solution)
+        Y_D_p, Y_Li7_p, Y_4xHe4, Y_He3 = Y_relic
 
         model = np.array([Y_D_p, Y_Li7_p, Y_4xHe4])
         error = np.array([0.03e-5, 0.3e-10, 0.003])
         data  = np.array([2.57e-5, 1.6e-10, 0.254])
 
-        χ = np.zeros(N)
-        for i in range(N):
-            χ[i] = self.chi_square(data, model[:,i], error)
-
-        #χ = np.sqrt(χ)
-
-        P = 1/np.sqrt(2*np.pi*np.prod(error**2)) * np.exp(-0.5*χ)
-        P = P/np.max(P)
-
-        idx = np.argmax(P)
-        Ω_best = Ω_b0[idx]
+        P, Ω_best = self._find_best_fit(Ω_b0, model, data, error)
+        print(f"Optimal Ω_b0: {Ω_best}")
 
         fig, ax = plt.subplots(nrows=3,
                             sharex=True,
@@ -403,27 +436,29 @@ class BBN:
                             figsize=(7,8),
                             gridspec_kw={"height_ratios":[1,3,1]})
 
-        ax[0].semilogx([Ω_best, Ω_best], [0.325, 0.20], ":k")
-        ax[1].semilogx([Ω_best, Ω_best], [1e-11, 1e-3], ":k")
+        ax[0].vlines(Ω_best, 0.32, 0.20, "k", ":")
+        ax[1].vlines(Ω_best, 1e-11, 1e-3, "k", ":")
 
-        ax[0].semilogx(Ω_b0, Y_4xHe4, label="$\mathrm{He}^4$")
-        ax[1].semilogx(Ω_b0, Y_Li7_p, label="$\mathrm{Li}^7$")
-        ax[1].semilogx(Ω_b0, Y_D_p  , label="$\mathrm{D}$"   )
-        ax[1].semilogx(Ω_b0, Y_He3  , label="$\mathrm{He}^3$")
+        ax[0].semilogx(Ω_b0, Y_4xHe4, color="C3", label="$\mathrm{He}^4$")
+        ax[1].semilogx(Ω_b0, Y_D_p  , color="C0", label="$\mathrm{D}$"   )
+        ax[1].semilogx(Ω_b0, Y_He3  , color="C4", label="$\mathrm{He}^3$")
+        ax[1].semilogx(Ω_b0, Y_Li7_p, color="C1", label="$\mathrm{Li}^7$")
         ax[2].semilogx(Ω_b0, P, color="k")
 
-        """
-        ax[0].fill_between([Ω_b0[0], Ω_b0[-1]], [data[0]-error[0], data[0]+error[0]])
-        ax[1].fill_between([Ω_b0[0], Ω_b0[-1]], [data[1]-error[1], data[1]+error[1]])
-        ax[1].fill_between([Ω_b0[0], Ω_b0[-1]], [data[2]-error[2], data[2]+error[2]])
-        """
+        axes   = [ax[0], ax[1], ax[1]]
+        colors = ["C0", "C1", "C3"]
+        for i, (axs, c) in enumerate(zip(axes, colors)):
+            y1 = data[i]+error[i]
+            y2 = data[i]-error[i]
+            axs.fill_between(Ω_b0, y1, y2, color=c, alpha=0.2)
 
         ax[0].set_ylabel(r"$4Y_{\mathrm{He}^4}$")
         ax[1].set_ylabel(r"$Y_{i} / Y_{p}$")
         ax[2].set_ylabel(f"Normalized\nprobability")
         ax[2].set_xlabel(r"$\Omega_{b0}$")
 
-        ax[1].set_yscale("log")
+        ax[1].set_yscale("logit")
+        ax[0].set_ylim(0.20, 0.32)
         ax[1].set_ylim(1e-11, 1e-3)
         ax[2].set_xlim(1e-2 , 1e0)
 
@@ -432,15 +467,72 @@ class BBN:
 
         plt.show()
 
+    def plot_relic_abundances_N(self, filename="relic_abundances_k.npy"):
+        """
+        Docstring
+        """
+        solution = np.load(filename)
+
+        N_eff, Y_relic = self._interpolate_relic_abundances(solution)
+        Y_D_p, Y_Li7_p, Y_4xHe4, Y_He3 = Y_relic
+
+        model = np.array([Y_D_p, Y_Li7_p, Y_4xHe4])
+        error = np.array([0.03e-5, 0.3e-10, 0.003])
+        data  = np.array([2.57e-5, 1.6e-10, 0.254])
+
+        P, N_best = self._find_best_fit(N_eff, model, error, data)
+        print(f"Optimal N_eff: {N_best}")
+
+        fig, ax = plt.subplots(nrows=4,
+                            sharex=True,
+                            tight_layout=True,
+                            figsize=(7,8))
+
+        ax[0].vlines(N_best, 0.22, 0.30, "k", ":")
+        ax[1].vlines(N_best, 1e-5, 4e-5, "k", ":")
+        ax[2].vlines(N_best, 5e-10, 1e-10, "k", ":")
+
+        ax[0].plot(N_eff, Y_4xHe4, color="C3", label="$\mathrm{He}^4$")
+        ax[1].plot(N_eff, Y_D_p  , color="C0", label="$\mathrm{D}$"   )
+        ax[1].plot(N_eff, Y_He3  , color="C4", label="$\mathrm{He}^3$")
+        ax[2].plot(N_eff, Y_Li7_p, color="C1", label="$\mathrm{Li}^7$")
+        ax[3].plot(N_eff, P, color="k")
+
+        colors = ["C0", "C1", "C3"]
+        for i, c in enumerate(colors):
+            y1 = data[i]+error[i]
+            y2 = data[i]-error[i]
+            ax[i].fill_between(N_eff, y1, y2, color=c, alpha=0.2)
+
+        ax[0].set_ylabel(r"$4Y_{\mathrm{He}^4}$")
+        ax[1].set_ylabel(r"$Y_{i} / Y_{p}$")
+        ax[2].set_ylabel(r"$Y_{i} / Y_{p}$")
+        ax[3].set_ylabel(f"Normalized\nprobability")
+        ax[3].set_xlabel(r"$N_{eff}$")
+
+        ax[0].set_ylim(0.22, 0.30)
+        ax[1].set_ylim(1e-5, 4e-5)
+        ax[2].set_ylim(1e-10, 5e-10)
+        ax[3].set_xlim(1, 5)
+
+        ax[0].legend()
+        ax[1].legend()
+        ax[2].legend()
+
+        plt.show()
 
 if __name__=="__main__":
 
     model = BBN()
     """
     model.solve(T_i=100e9, T_f=0.01e9)
-    model.import_solution()
-    model.plot_mass_fractions()
     plt.savefig(dir+"densities_i.png")
+    model.plot_mass_fractions()
+    model.import_solution()
     """
-    model.calculate_relic_abundances()
-    model.plot_relic_abundances()
+    model.calculate_relic_abundances_Ω_b0()
+    model.calculate_relic_abundances_N_eff()
+
+    model.plot_relic_abundances_Ω()
+    model.Ω_b0 = 0.0645
+    model.plot_relic_abundances_N()

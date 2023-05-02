@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022/Debian) (preloaded format=xelatex 2023.1.30)  30 MAR 2023 14:52
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022/Debian) (preloaded format=xelatex 2023.1.30)  2 MAY 2023 13:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -781,15 +781,15 @@ and I'll forget about whatever was undefined.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `AST3220_project2.out' has not changed.
-(rerunfilecheck)             Checksum: 4FDBD51782C5970EC7DC6968EC2FDB35;1002.
+(rerunfilecheck)             Checksum: F4BC118861EA658657F7ACCD8149F110;1240.
  ) 
 Here is how much of TeX's memory you used:
  24548 strings out of 475864
  442033 string characters out of 5804336
- 984853 words of memory out of 5000000
+ 985853 words of memory out of 5000000
  45218 multiletter control sequences out of 15000+600000
  471358 words of font info for 42 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  84i,11n,80p,450b,415s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on aux/AST3220_project2.xdv (2 pages, 29244 bytes).
+Output written on aux/AST3220_project2.xdv (2 pages, 35120 bytes).
