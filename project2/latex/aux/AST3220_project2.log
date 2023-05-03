@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022/Debian) (preloaded format=xelatex 2023.1.30)  3 MAY 2023 16:03
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022/Debian) (preloaded format=xelatex 2023.1.30)  3 MAY 2023 19:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -577,15 +577,17 @@ Package: subfigure 2002/03/15 v2.1.5 subfigure package
 (/usr/share/texlive/texmf-dist/tex/latex/subfigure/subfigure.cfg)
 \subfig@top=\skip59
 \subfig@bottom=\skip60
+) (/usr/share/texlive/texmf-dist/tex/latex/pythonhighlight/pythonhighlight.sty
+Package: pythonhighlight 2017/02/09 python code highlighting; provided by Olivier Verdier <olivier.verdier@gmail.com>
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 30.
+Package hyperref Info: Option `colorlinks' set `true' on input line 31.
  (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
-Class revtex4-1 Info: Unrecognized LaTeX tabular. Please update this document class! (Proceeding with fingers crossed.) on input line 83.
-Class revtex4-1 Info: cite was not loaded (OK!) on input line 83.
-Class revtex4-1 Info: mcite was not loaded (OK!) on input line 83.
-Class revtex4-1 Info: multicol was not loaded (OK!) on input line 83.
+Class revtex4-1 Info: Unrecognized LaTeX tabular. Please update this document class! (Proceeding with fingers crossed.) on input line 84.
+Class revtex4-1 Info: cite was not loaded (OK!) on input line 84.
+Class revtex4-1 Info: mcite was not loaded (OK!) on input line 84.
+Class revtex4-1 Info: multicol was not loaded (OK!) on input line 84.
  (aux/AST3220_project2.aux
 
 LaTeX Warning: Label `eq:no_density' multiply defined.
@@ -593,41 +595,46 @@ LaTeX Warning: Label `eq:no_density' multiply defined.
 )
 \openout1 = `AST3220_project2.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 83.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 83.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 84.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 84.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-Package hyperref Info: Link coloring ON on input line 83.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+Package hyperref Info: Link coloring ON on input line 84.
  (aux/AST3220_project2.out) (aux/AST3220_project2.out)
 \@outlinefile=\write5
 \openout5 = `AST3220_project2.out'.
 
 \c@lstlisting=\count328
-Class revtex4-1 Info: Taking \maketitle back from hyperref on input line 83.
+Class revtex4-1 Info: Taking \maketitle back from hyperref on input line 84.
 \openout3 = `AST3220_project2Notes.bib'.
 
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\\' on input line 90.
+
 LaTeX Font Info:    Trying to load font information for U+msa on input line 94.
- (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 94.
@@ -745,37 +752,6 @@ With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-./AST3220_project2.tex:146: Undefined control sequence.
-<argument>  e^+ + e^- \rightleftharpoon 
-                                        \gamma + \gamma 
-l.146 \end{align}
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-./AST3220_project2.tex:146: Undefined control sequence.
-<argument>  e^+ + e^- \rightleftharpoon 
-                                        \gamma + \gamma 
-l.146 \end{align}
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-./AST3220_project2.tex:148: Undefined control sequence.
-l.148 ...ss of the electron and positron $k_B T \<
-                                                   0.511$, the average energ...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 [1]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
@@ -789,25 +765,47 @@ Missing character: There is no ạ ("1EA1) in font cmmi10!
 LaTeX Warning: Command \d invalid in math mode on input line 209.
 
 Missing character: There is no ạ ("1EA1) in font cmmi10!
-File: figs//densities.png Graphic file (type bmp)
-<figs//densities.png>
+[2]
+File: figs//densities_f.png Graphic file (type bmp)
+<figs//densities_f.png>
+File: figs//densities_h.png Graphic file (type bmp)
+<figs//densities_h.png>
+File: figs//densities_i.png Graphic file (type bmp)
+<figs//densities_i.png>
 
-Class revtex4-1 Warning: Float cannot be placed.
+Underfull \hbox (badness 10000) in paragraph at lines 332--350
 
-[2] (aux/AST3220_project2.bbl) [3] [4] (aux/AST3220_project2.aux)
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 332--350
+
+ []
+
+
+Underfull \hbox (badness 2717) in paragraph at lines 332--350
+\TU/lmr/m/n/10 We also note that by the time the temperature
+ []
+
+[3]
+File: figs//relic_abundances_j.png Graphic file (type bmp)
+<figs//relic_abundances_j.png>
+File: figs//relic_abundances_k.png Graphic file (type bmp)
+<figs//relic_abundances_k.png>
+ [4] (aux/AST3220_project2.bbl) [5] (aux/AST3220_project2.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `AST3220_project2.out' has not changed.
-(rerunfilecheck)             Checksum: E91A703C071C0EFBA906188806319363;1921.
+(rerunfilecheck)             Checksum: 7C3099859B6F0EAC4AA06C019B89B104;2303.
  ) 
 Here is how much of TeX's memory you used:
- 24617 strings out of 475864
- 442890 string characters out of 5804336
- 985853 words of memory out of 5000000
- 45264 multiletter control sequences out of 15000+600000
- 477230 words of font info for 64 fonts, out of 8000000 for 9000
+ 24692 strings out of 475864
+ 445196 string characters out of 5804336
+ 987702 words of memory out of 5000000
+ 45338 multiletter control sequences out of 15000+600000
+ 474476 words of font info for 56 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 84i,13n,80p,450b,415s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,12n,80p,450b,421s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on aux/AST3220_project2.xdv (4 pages, 56036 bytes).
+Output written on aux/AST3220_project2.xdv (5 pages, 75240 bytes).

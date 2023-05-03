@@ -20,6 +20,7 @@
 \usepackage{tikz}             % draw figures manually
 \usepackage{listings}         % display code
 \usepackage{subfigure}        % imports a lot of cool and useful figure commands
+\usepackage{pythonhighlight}
 
 % defines the color of hyperref objects
 % Blending two colors:  blue!80!black  =  80% blue and 20% black
@@ -81,12 +82,11 @@
 %% Don't ask me why, I don't know.
 
 \begin{document}
-\title{AST3220 - Project 1}   % self-explanatory
+\title{AST3220 - Project 2: \\ Big Bang Nuclesynthesis}   % self-explanatory
+\author{Candidate nr. 14}
 \date{\today}                             % self-explanatory
 \noaffiliation                            % ignore this
-\begin{abstract}                          % marks the beginning of the abstract
-This abstract is abstract.                % the body of the abstract
-\end{abstract}                            % marks the end of the abstract
+               % marks the end of the abstract
 \maketitle                                % creates the title, author, date & abstract
 
 % the fundamental components of scientific reports:
@@ -139,13 +139,13 @@ of entropy, which tells us that
 \begin{align}
 	g_{*s}(aT)^3 = const.
 \end{align}
-At the time where the universe had a temperature $k_B T \> 0.511$ Mev, electrons
+At the time where the universe had a temperature $k_B T > 0.511$ Mev, electrons
 and positrons were relativistic and the process
 \begin{align}
-	e^+ + e^- \rightleftharpoon \gamma + \gamma
+	e^+ + e^- \rightleftharpoons \gamma + \gamma
 \end{align}
 occured in both directions. However, as the temperature universe falls below the
-rest mass of the electron and positron $k_B T \< 0.511$, the average energy of a
+rest mass of the electron and positron $k_B T < 0.511$, the average energy of a
 photon collision is too small for an electrons-positron pair to be created.
 Since electrons and positrons will still anihilate through the process
 \begin{align}
@@ -231,18 +231,18 @@ Which is easily solved:
 \begin{align}
 	t(T) = \frac{1}{2 H_0 \sqrt{\Omega_{r0}}} \left(\frac{T_0}{T}\right)^2
 \end{align}
-A table of this expression evaluated at temperatures $10^10$, $10^9$ and $10^8$
+A table of this expression evaluated at temperatures $10^{10}$, $10^9$ and $10^8$
 is attached in table (\ref{tab:t(T)})
 
 \begin{table}[h!]
-	\begin{tabular}{lc}
+	\begin{tabular}{lr}
 	\hline
-	      $T$ [K] &   $t(T)$ [s] \\
+	      $T$ [K] &   $t(T)$ \\
 	\hline
 	\hline
-	 $10^{10}$ 			& $\ \ \ \ \ \ 1.7774 \hspace{0.91cm} $ \\
-	 $10^9$    			& $\ \ \ \ \ \ 1.7774\cross 10^2$ \\
-	 $10^8$    			& $\ \ \ \ \ \ 1.7774\cross 10^4$ \\
+	 $10^{10}$ 			& $\ \ \ \ \ \ 1.7774\ \mathrm{Sec}  $\\
+	 $10^9$    			& $\ \ \ \ \ \ 2\ \mathrm{Min},\ \ 57.7400\ \mathrm{Sec}$ \\
+	 $10^8$    			& $\ \ \ \ \ \ 5\ \mathrm{Hr},\  56\ \mathrm{Min},\ 14.0000\ \mathrm{Sec}$ \\
 	\hline
 	\hline
 	\end{tabular}
@@ -275,26 +275,33 @@ Which can be solved for $Y_n(T_i)$:
 \end{align}
 
 \section{Problem f)}
-Blabla. Figure attached in Fig. (\ref{fig:problem_f})
-\begin{figure*}[h!]
-	\includegraphics[width=12cm]{densities.png}
+At first, we try to solve the integral for the decay rates
+$\Gamma_{n\rightarrow p}$ and $\Gamma_{n\rightarrow p}$ using scipy's
+\textit{quad} integrator, but this turned out to be very slow.
+As one can see the integral should converge at a reasonable pace due to the
+exponential terms in the demoninators, we instead approximated the integral by
+making a cut-off at $x=250$. This was performed with an  implementation of
+simpsons method, using a step size of $dx\approx0.024$.
+The resulting plot can be seen in Fig. (\ref{fig:problem_f})
+\begin{figure}[h]
+	\includegraphics[width=\columnwidth]{densities_f.png}
 	\caption{Caption}
 	\label{fig:problem_f}
-\end{figure*}
+\end{figure}
 
 \section{Problem g)}
 From Problem a), we recall that
 \begin{align}
 	\frac{dn_i}{dt} + 3Hn_i = n_b H \frac{dY_i}{d\ln{T}}
 \end{align}
-Inserting
+Inserting the given expression
 \begin{align}
 	\frac{dn_i}{dt} + 3Hn_i
 	\ \	=\ \ &\sum\limits_{j\neq i} [n_j\Gamma_{j\rightarrow i} - n_i\Gamma_{i\rightarrow j}] \\
 		+ &\sum\limits_{jkl} [n_k n_l\gamma_{kl\rightarrow ij} - n_i n_j\gamma_{ij\rightarrow kl}]
 \end{align}
-and defining $\Gamma_{ij\rightarrow kl} = n_b \gamma_{ij\rightarrow kl}$, we see
-that
+and using the definition $\Gamma_{ij\rightarrow kl} = n_b \gamma_{ij\rightarrow kl}$,
+we see that
 \begin{align}
 		  \frac{dY_i}{d\ln{T}}
 		= \frac{1}{H}\bigg\{
@@ -308,7 +315,56 @@ that
 													- Y_i Y_j \Gamma_{ij\rightarrow kl}]
 			\bigg\}
 \end{align}
+Which is what we wanted to show.
 \section{Problem h)}
+Implementing the additional reactions results in Fig. (\ref{fig:problem_h}).
+The plot shows a drop in proton and neutron mass fraction as the temperature
+decreases past $\sim 10^9$K. This is due to the formation of deuterium, which
+has a sharp increase in its mass fraction before it stabilizes at
+$A_{D} Y_{D} \sim \frac{1}{4}$ due to neutrons supply being exhausted.
+\begin{figure}[h]
+	\includegraphics[width=\columnwidth]{densities_h.png}
+	\caption{Caption.}
+	\label{fig:problem_h}
+\end{figure}
+
+\section{Problem i)}
+Implementing the remaining reactions we get the plot shown in Fig.
+(\ref{fig:problem_i}). Ignoring neutrons and protons, the plot shows the
+production of most elements happens in the range $\sim 10^{10} - 10^9$ K with
+most of the mass fractions peaking at $\sim 10^{9}$K (i.e. $\sim 3$ minutes
+after the big bang).
+\\ \\
+The big exception to this is $Be^7$ which has sharply increases a little bit after
+this, while most other elements (an exception being $He^3$) quickly drops in their
+mass fractions. This is presumably due to being too large, and possibly requiring
+sufficient amounts of other elements to form.
+\\ \\
+We also note that by the time the temperature has decreased to $10^7$K, the
+production of elements seems to have halted completely.
+\begin{figure}[h]
+	\includegraphics[width=\columnwidth]{densities_i.png}
+	\caption{Caption.}
+	\label{fig:problem_i}
+\end{figure}
+
+\section{Problem j)}
+Blablabla logspace blabla. Plot in Fig. (\ref{fig:problem_j}).
+\begin{figure}[h]
+	\includegraphics[width=\columnwidth]{relic_abundances_j.png}
+	\caption{Caption.}
+	\label{fig:problem_j}
+\end{figure}
+
+\section{Problem k)}
+Blabla 3 neutrinos species (wow!) blablabla. Plot in Fig. (\ref{fig:problem_k}).
+\begin{figure}[h]
+	\includegraphics[width=\columnwidth]{relic_abundances_k.png}
+	\caption{Caption.}
+	\label{fig:problem_k}
+\end{figure}
+
+
 
 \begin{acknowledgments}  % if you disagree with the spelling, blame Americans
 I would like thank myself for writing this beautiful document.

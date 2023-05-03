@@ -131,7 +131,7 @@ class BBN:
 
         fig, ax = plt.subplots(figsize=(8,5), tight_layout=True)
         ax.set_yscale("log")
-        
+
         ax.semilogx(T, Y_n, "k", label="n")
         ax.semilogx(T, Yi_n, "k", linestyle="dotted")
         ax.semilogx(T, Y_p, "r", label="p")

@@ -90,3 +90,42 @@
             Y_Li7_p = np.exp( logY_Li7_p(Ω_b0) )
             Y_4xHe4 = np.exp( logY_4xHe4(Ω_b0) )
             Y_He3   = np.exp( logY_He3(Ω_b0)   )
+
+
+            
+def plot_mass_fractions(self, filename):
+    """
+    Plots relative densities of neutron/proton against temperature
+    """
+    sol = np.load(filename)
+    T   = np.exp(sol[0])
+    # Create arrays with rel. densities, atomic number and element names
+    Y_i = sol[1:]
+    A_i = np.array([1, 1, 2, 3, 3, 4, 7, 7])
+    X_i = np.array([r"$p$"   , r"$n$"   , r"$D$"   , r"$T$",
+                    r"$He^3$", r"$He^4$", r"$Li^7$", r"$Be^7$"])
+    # Use numpy broadcasting to calculate mass fraction
+    AiYi = A_i[:,None]*Y_i
+
+    fig, ax = plt.subplots(figsize=(8,5), tight_layout=True)
+    ax.set_yscale("log")
+
+    ax.semilogx(T, np.sum(AiYi, axis=0), "--k", label=r"$\Sigma_i A_i Y_i$")
+
+    """
+    for A, Y, X in zip(A_i, Y_i, X_i):
+        ax.semilogx(T, A*Y, label=X)
+    """
+    ax.semilogx(T, A_i[0]*Y_i[0], label=X_i[0])
+    ax.semilogx(T, A_i[1]*Y_i[1], label=X_i[1])
+    ax.semilogx(T, A_i[2]*Y_i[2], label=X_i[2])
+    Y_p0, Y_n0, _, _, _, _, _, _ = self._get_initial_conditions(T)
+    plt.semilogx(T, Y_p0, color="C0", linestyle=":")
+    plt.semilogx(T, Y_n0, color="C1", linestyle=":")
+
+    ax.set_ylim(1e-3, 2)
+    ax.set_xlim(1e11, 1e8)
+    ax.set_xlabel(r"$T$ [K]")
+    ax.set_ylabel(r"Mass fraction $A_i Y_i$")
+    plt.legend()
+    plt.show()

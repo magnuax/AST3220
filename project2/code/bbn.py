@@ -5,25 +5,30 @@ import astropy.constants as const
 import astropy.units as u
 from astropy.cosmology import WMAP9 as cosmo
 import matplotlib.pyplot as plt
-import os
 from tqdm import tqdm
 from tabulate import tabulate
 from time import perf_counter
 import warnings
-warnings.filterwarnings("ignore")
+import matplotlib as mpl
+warnings.filterwarnings("ignore")   # Remove overflow warnings from  integrating <BBN._I_dec>
 
 plt.style.use("bmh")
-dir = os.path.dirname(os.path.abspath(__file__))
-dir = os.path.dirname(dir)
-dir = dir + "/latex/figs/"
+small = 14
+big   = 16
+plt.rc('font', size=small)
+plt.rc('axes', titlesize=big)
+plt.rc('axes', labelsize=big)
+plt.rc('xtick', labelsize=small)
+plt.rc('ytick', labelsize=small)
+plt.rc('legend', fontsize=big)
 
-class BBN:
+class BigBangNucleosynthesis:
     def __init__(self):
         self._set_physical_constants()
         # Parameters used to calculate reaction rates
         self.τ    = 1700                 # [s]
         self.q    = 2.53                 # [ ]
-        # No. of neutrino species:
+        # Effective no. of neutrino species:
         self.N_eff = 3                   # [ ]
         # Critical density & baryon/radiation density parameters:
         self.ρ_c0 = 9.2e-27 * 1e-3   # [g/cm^3]
@@ -272,7 +277,7 @@ class BBN:
         Y_p = 1 - Y_n
         return [Y_p, Y_n, 0, 0, 0, 0, 0, 0]
 
-    def solve(self, T_i, T_f, Ω_b0=0.05, filename="mass_fractions.npy", save=False, pbar_desc=None):
+    def solve(self, T_i, T_f, Ω_b0=0.05, filename=None, pbar_desc=None):
         """
         Finds mass fractions as function of photon temperature T
         """
@@ -290,7 +295,7 @@ class BBN:
                             rtol = 1e-12,
                             atol = 1e-12)
 
-        if save:
+        if filename:
             self._store_solution(self.sol.t, self.sol.y, filename)
         else:
             return self.sol.t, self.sol.y
@@ -303,7 +308,7 @@ class BBN:
         np.save(filename, solution)
         print(f"Results saved to file <{filename}>")
 
-    def calculate_relic_abundances_Ω_b0(self, filename="relic_abundances_j.npy"):
+    def calculate_relic_abundances_Ω_b0(self, filename):
         """
         Docstring
         """
@@ -327,7 +332,7 @@ class BBN:
 
         self._store_solution(Ω_b0, Y_relic, filename)
 
-    def calculate_relic_abundances_N_eff(self, filename="relic_abundances_k.npy"):
+    def calculate_relic_abundances_N_eff(self):
         """
         Docstring
         """
@@ -379,7 +384,7 @@ class BBN:
 
         return probability, param_best, χ_best
 
-    def plot_mass_fractions(self, filename="mass_fractions.npy"):
+    def plot_mass_fractions(self, filename):
         """
         Plots relative densities of neutron/proton against temperature
         """
@@ -388,7 +393,7 @@ class BBN:
         # Create arrays with rel. densities, atomic number and element names
         Y_i = sol[1:]
         A_i = np.array([1, 1, 2, 3, 3, 4, 7, 7])
-        X_i = np.array([r"$n$"   , r"$p$"   , r"$D$"   , r"$T$",
+        X_i = np.array([r"$p$"   , r"$n$"   , r"$D$"   , r"$T$",
                         r"$He^3$", r"$He^4$", r"$Li^7$", r"$Be^7$"])
         # Use numpy broadcasting to calculate mass fraction
         AiYi = A_i[:,None]*Y_i
@@ -442,7 +447,7 @@ class BBN:
 
         return param_interp, Y_interp, Y_raw
 
-    def plot_relic_abundances_Ω(self, filename="relic_abundances_j.npy"):
+    def plot_relic_abundances_Ω(self, filename):
         """
         Docstring
         """
@@ -505,11 +510,11 @@ class BBN:
 
 
         for i in range(3):
-            ax[i].legend(loc="upper left")
+            ax[i].legend()
 
         plt.show()
 
-    def plot_relic_abundances_N(self, filename="relic_abundances_k.npy"):
+    def plot_relic_abundances_N(self, filename):
         """
         Docstring
         """
@@ -571,14 +576,14 @@ class BBN:
         ax[3].set_ylim(-0.1, 1.1)
 
         for i in range(4):
-            ax[i].legend(loc="upper left")
+            ax[i].legend()
 
         plt.show()
 
 if __name__=="__main__":
-    model = BBN()
+    model = BigBangNucleosynthesis()
 
-    # Task d):
+    # Problem d):
     headers      = np.array(["T [K]", "t(T) [s]"])
     temperatures = np.array([1e10, 1e9, 1e8])
     cosmic_times = model._get_cosmic_time(temperatures)
@@ -586,11 +591,19 @@ if __name__=="__main__":
     table = tabulate(table, headers=headers, tablefmt="github", floatfmt=".4e")
     print(table)
 
+    # Problems f) - i)
     """
-    model.solve(T_i=100e9, T_f=0.01e9)
-    model.plot_mass_fractions()
-    model.calculate_relic_abundances_Ω_b0("test_k.npy")
+    model.solve(T_i=100e9, T_f=0.01e9, filename="mass_fractions.npy")
     """
-    model.calculate_relic_abundances_N_eff("test_j.npy")
-    model.plot_relic_abundances_Ω("test_k.npy")
-    model.plot_relic_abundances_N("test_j.npy")
+    model.plot_mass_fractions("mass_fractions.npy")
+
+    # Problem j)
+    """
+    model.calculate_relic_abundances_Ω_b0("relic_abundances_j.npy")
+    """
+    model.plot_relic_abundances_Ω("relic_abundances_j.npy")
+    # Problem k)
+    """
+    model.calculate_relic_abundances_N_eff("relic_abundances_k.npy")
+    """
+    model.plot_relic_abundances_N("relic_abundances_k.npy")
