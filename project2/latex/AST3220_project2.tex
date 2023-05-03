@@ -251,7 +251,64 @@ is attached in table (\ref{tab:t(T)})
 \end{table}
 
 \section{Problem e)}
+Assuming protons and neutrons are non relativistic at this point, they follow
+the Maxwell Boltzmann distribuiton. At equilibruium we then have
+\begin{align}
+	\frac{n^{(0)}_n}{n^{(0)}_p} &= \frac{Y^{(0)}_n}{Y^{(0)}_p} \\
+			&= \left(\frac{m_p}{m_n}\right) e^{-(m_n - m_p)c^2/k_B T_i} \\
+			&\approx e^{-(m_n - m_p)c^2/k_B T_i}
+\end{align}
+where we have used that $m_p/m_n \approx 1$. Also assuming protons and neutrons
+make up all the baryonic mass, we have
+\begin{align}
+	Y_p + Y_n = \frac{n_p + n_n}{n_b} = 1 \ \ \Rightarrow \ \ Y_p = 1 - Y_n
+\end{align}
+Such that
+\begin{align}
+	\frac{Y_n}{Y_p} = \frac{Y_n}{1 - Y_n} = e^{-(m_n - m_p)c^2/k_B T_i}
+\end{align}
+Which can be solved for $Y_n(T_i)$:
+\begin{align}
+&Y_n(T_i)\ e^{(m_n - m_p)c^2/k_B T_i} = 1 - Y_n \\
+\Rightarrow\ \  &Y_n(T_i) \left[1 + e^{-(m_n - m_p)c^2/k_B T_i}\right] = 1 \\
+\Rightarrow\ \  &Y_n(T_i) = \left[1 + e^{-(m_n - m_p)c^2/k_B T_i}\right]^{-1}
+\end{align}
 
+\section{Problem f)}
+Blabla. Figure attached in Fig. (\ref{fig:problem_f})
+\begin{figure*}[h!]
+	\includegraphics[width=12cm]{densities.png}
+	\caption{Caption}
+	\label{fig:problem_f}
+\end{figure*}
+
+\section{Problem g)}
+From Problem a), we recall that
+\begin{align}
+	\frac{dn_i}{dt} + 3Hn_i = n_b H \frac{dY_i}{d\ln{T}}
+\end{align}
+Inserting
+\begin{align}
+	\frac{dn_i}{dt} + 3Hn_i
+	\ \	=\ \ &\sum\limits_{j\neq i} [n_j\Gamma_{j\rightarrow i} - n_i\Gamma_{i\rightarrow j}] \\
+		+ &\sum\limits_{jkl} [n_k n_l\gamma_{kl\rightarrow ij} - n_i n_j\gamma_{ij\rightarrow kl}]
+\end{align}
+and defining $\Gamma_{ij\rightarrow kl} = n_b \gamma_{ij\rightarrow kl}$, we see
+that
+\begin{align}
+		  \frac{dY_i}{d\ln{T}}
+		= \frac{1}{H}\bigg\{
+		  &\sum\limits_{j\neq i} [\frac{n_j}{n_b}\Gamma_{j\rightarrow i} - \frac{n_i}{n_b}\Gamma_{i\rightarrow j}] \\
+		+ &\sum\limits_{jkl} [\frac{n_k}{n_b}\frac{n_l}{n_b} n_b\gamma_{kl\rightarrow ij}
+													- \frac{n_i}{n_b}\frac{n_j}{n_b} n_b\gamma_{ij\rightarrow kl}]
+			\bigg\} \\
+		= \frac{1}{H}\bigg\{
+		  &\sum\limits_{j\neq i} [Y_j \Gamma_{j\rightarrow i} - Y_i \Gamma_{i\rightarrow j}] \\
+		+ &\sum\limits_{jkl} [Y_k Y_l \Gamma_{kl\rightarrow ij}
+													- Y_i Y_j \Gamma_{ij\rightarrow kl}]
+			\bigg\}
+\end{align}
+\section{Problem h)}
 
 \begin{acknowledgments}  % if you disagree with the spelling, blame Americans
 I would like thank myself for writing this beautiful document.

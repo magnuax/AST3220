@@ -1,5 +1,5 @@
 import numpy as np
-from scipy.integrate import quad, solve_ivp
+from scipy.integrate import quad, simpson, solve_ivp
 from scipy.interpolate import interp1d
 import astropy.constants as const
 import astropy.units as u
@@ -8,6 +8,10 @@ import matplotlib.pyplot as plt
 import os
 from tqdm import tqdm
 from tabulate import tabulate
+from time import perf_counter
+import warnings
+warnings.filterwarnings("ignore")
+
 plt.style.use("bmh")
 dir = os.path.dirname(os.path.abspath(__file__))
 dir = os.path.dirname(dir)
@@ -67,8 +71,16 @@ class BBN:
         # 1) n + nu <-> p + e-
         # 2) n + e- <-> p + nu_bar
         # 3) n <-> p + e- + nu_bar
+        """
         self.rate_λw_n = quad(self._I_dec, 1, np.inf, args=(self.q,T9, Tν9))[0]
         self.rate_λw_p = quad(self._I_dec, 1, np.inf, args=(-self.q,T9, Tν9))[0]
+        """
+        x = np.linspace(1,250,10001)
+        I_dec_n = self._I_dec(x, self.q, T9, Tν9)
+        I_dec_p = self._I_dec(x,-self.q, T9, Tν9)
+
+        self.rate_λw_n = simpson(I_dec_n, x=x) #quad(self._I_dec, 1, 250, args=(self.q,T9, Tν9))[0]
+        self.rate_λw_p = simpson(I_dec_p, x=x) #quad(self._I_dec, 1, 250, args=(-self.q,T9, Tν9))[0]
 
         """Table 2b) Strong & EM interactions"""
         # 1) p + n <-> D + γ
@@ -260,7 +272,7 @@ class BBN:
         Y_p = 1 - Y_n
         return [Y_p, Y_n, 0, 0, 0, 0, 0, 0]
 
-    def solve(self, T_i, T_f, Ω_b0=0.05, save=False):
+    def solve(self, T_i, T_f, Ω_b0=0.05, filename="mass_fractions.npy", save=False, pbar_desc=None):
         """
         Finds mass fractions as function of photon temperature T
         """
@@ -270,7 +282,7 @@ class BBN:
         lnT_f = np.log(T_f)
         lnT_span = [lnT_i, lnT_f]
 
-        with tqdm(total=1000, unit="‰", colour="green") as pbar:
+        with tqdm(total=1000, unit="‰", colour="green", leave=False, desc=pbar_desc) as pbar:
             self.sol = solve_ivp(Y_eom, lnT_span,
                             y0 = Y_init,
                             args = [Ω_b0, pbar, [lnT_i, (lnT_f-lnT_i)/1000]],
@@ -279,7 +291,7 @@ class BBN:
                             atol = 1e-12)
 
         if save:
-            self._store_solution(self.sol.t, *self.sol.y, "mass_fractions.npy")
+            self._store_solution(self.sol.t, self.sol.y, filename)
         else:
             return self.sol.t, self.sol.y
 
@@ -295,17 +307,23 @@ class BBN:
         """
         Docstring
         """
-        N   = 20
+        N   = 10
         T_i = 100e9
         T_f = 0.01e9
 
         Y_relic = np.zeros((8,N))
-        Ω_b0    = np.linspace(0.01, 1, N)
+        Ω_b0    = np.geomspace(0.01, 1, N)
 
+        t_start = perf_counter()
+        print("\nCalulculating relic abundances:\n")
         for i, Ω in enumerate(Ω_b0):
-            print(f"Calculating relic abundance {i+1}/{N} ... Ω_b0={Ω} ")
-            sol_t, sol_y = self.solve(T_i, T_f, Ω_b0=Ω)
+            #print(f"Calculating relic abundance {i+1}/{N} ... Ω_b0={Ω}", end="\r")
+            pbar_desc = f"Iteration {i+1}/{N},  Ω_b0={Ω:.4f}"
+            sol_t, sol_y = self.solve(T_i, T_f, Ω_b0=Ω, pbar_desc=pbar_desc)
             Y_relic[:,i] = sol_y[:,-1]
+
+        t_stop = perf_counter()
+        print(f"Done, time elapsed: {t_stop-t_start} seconds")
 
         self._store_solution(Ω_b0, Y_relic, filename)
 
@@ -313,24 +331,28 @@ class BBN:
         """
         Docstring
         """
-        N   = 20
+        N   = 10
         T_i = 100e9
         T_f = 0.01e9
 
         Y_relic = np.zeros((8,N))
         N_eff   = np.linspace(1,5,N)
 
+        t_start = perf_counter()
+        print("\nCalulculating relic abundances:\n")
         for i, _N in enumerate(N_eff):
-            print(f"Calculating relic abundance {i+1}/{N} ... N={_N} ")
+            pbar_desc = f"Iteration {i+1}/{N},  N={_N:.4f}"
             self.N_eff = _N                   # [ ]
             self.Ω_r0 = 8*np.pi**3/45 * self.G/self.H0**2 * (self.k_B*self.T0)**4 /(
                         self.hbar**3*self.c**5)*(1 + self.N_eff*7/8*(4/11)**(4/3))
 
-            sol_t, sol_y = self.solve(T_i, T_f)
+            sol_t, sol_y = self.solve(T_i, T_f, pbar_desc=pbar_desc)
             Y_relic[:,i] = sol_y[:,-1]
 
-        self.N_eff = 3
+        t_stop = perf_counter()
+        print(f"Done, time elapsed: {t_stop-t_start} seconds")
         self._store_solution(N_eff, Y_relic, filename)
+        self.N_eff = 3
 
     def _chi_square(self, data, model, error):
         """
@@ -384,9 +406,10 @@ class BBN:
         ax.set_xlabel(r"$T$ [K]")
         ax.set_ylabel(r"Mass fraction $A_i Y_i$")
         plt.legend()
+        plt.show()
 
     def _interpolate_relic_abundances(self, solution, N=1000):
-        solution = np.where(solution<1e-20, 1e-20, solution)
+        #solution = np.where(solution<1e-20, 1e-20, solution)
 
         param = solution[0,:]
         Y_p   = solution[1,:]
@@ -401,10 +424,12 @@ class BBN:
         Y_Li7 = Y_Li7 + Y_Be7
         Y_He3 = Y_He3 + Y_T
 
-        logY_D_p   = interp1d(param, np.log(Y_D/Y_p)  , kind="cubic")
-        logY_Li7_p = interp1d(param, np.log(Y_Li7/Y_p), kind="cubic")
-        logY_4xHe4 = interp1d(param, np.log(4*Y_He4)  , kind="cubic")
-        logY_He3   = interp1d(param, np.log(Y_He3/Y_p), kind="cubic")
+        Y_raw = np.array([Y_D/Y_p, Y_Li7/Y_p, 4*Y_He4, Y_He3/Y_p])
+
+        logY_D_p   = interp1d(param, np.log(Y_raw[0])  , kind="cubic")
+        logY_Li7_p = interp1d(param, np.log(Y_raw[1]), kind="cubic")
+        logY_4xHe4 = interp1d(param, np.log(Y_raw[2])  , kind="cubic")
+        logY_He3   = interp1d(param, np.log(Y_raw[3]), kind="cubic")
 
         param_interp = np.linspace(param[0], param[-1], N)
 
@@ -415,7 +440,7 @@ class BBN:
 
         Y_interp = np.array([Y_D_p, Y_Li7_p, Y_4xHe4, Y_He3])
 
-        return param_interp, Y_interp
+        return param_interp, Y_interp, Y_raw
 
     def plot_relic_abundances_Ω(self, filename="relic_abundances_j.npy"):
         """
@@ -423,7 +448,8 @@ class BBN:
         """
         solution = np.load(filename)
 
-        Ω_b0, Y_relic = self._interpolate_relic_abundances(solution)
+
+        Ω_b0, Y_relic, Y_raw = self._interpolate_relic_abundances(solution)
         Y_D_p, Y_Li7_p, Y_4xHe4, Y_He3 = Y_relic
 
         model = np.array([Y_D_p, Y_Li7_p, Y_4xHe4])
@@ -443,13 +469,14 @@ class BBN:
         ax[1].vlines(Ω_best, 1e-11, 1e-3, "k", ":")
         ax[2].vlines(Ω_best, -0.1, 1.1, "k", ":", label=f"$\chi^2=${χ_best:.3f}\n"+
                                                  r"$\Omega_{b0}=$"+f"{Ω_best:.3f}")
-
+        # Plot interpolated solution:
         ax[0].semilogx(Ω_b0, Y_4xHe4, color="C3", label="$\mathrm{He}^4$")
         ax[1].semilogx(Ω_b0, Y_D_p  , color="C0", label="$\mathrm{D}$"   )
         ax[1].semilogx(Ω_b0, Y_He3  , color="C4", label="$\mathrm{He}^3$")
         ax[1].semilogx(Ω_b0, Y_Li7_p, color="C1", label="$\mathrm{Li}^7$")
         ax[2].semilogx(Ω_b0, P, color="k")
 
+        # Plot observational data:
         axes   = [ax[1], ax[1], ax[0]]
         colors = ["C0", "C1", "C3"]
         for i, (axs, c) in enumerate(zip(axes, colors)):
@@ -457,6 +484,13 @@ class BBN:
             y2 = data[i]-error[i]
             axs.fill_between(Ω_b0, y1, y2, color=c, alpha=0.4)
 
+        # Plot solution points used for interpolation:
+        Ω_b0 = solution[0,:]
+        Y_D_p, Y_Li7_p, Y_4xHe4, Y_He3 = Y_raw
+        ax[0].scatter(Ω_b0, Y_4xHe4, color="C3", marker="|")#, linewidth=0.8)
+        ax[1].scatter(Ω_b0, Y_D_p  , color="C0", marker="|")#, linewidth=0.8)
+        ax[1].scatter(Ω_b0, Y_He3  , color="C4", marker="|")#, linewidth=0.8)
+        ax[1].scatter(Ω_b0, Y_Li7_p, color="C1", marker="|")#, linewidth=0.8)
 
         ax[0].set_ylabel(r"$4Y_{\mathrm{He}^4}$")
         ax[1].set_ylabel(r"$Y_{i} / Y_{p}$")
@@ -481,7 +515,7 @@ class BBN:
         """
         solution = np.load(filename)
 
-        N_eff, Y_relic = self._interpolate_relic_abundances(solution)
+        N_eff, Y_relic, Y_raw = self._interpolate_relic_abundances(solution)
         Y_D_p, Y_Li7_p, Y_4xHe4, Y_He3 = Y_relic
 
         model = np.array([Y_D_p, Y_Li7_p, Y_4xHe4])
@@ -501,19 +535,28 @@ class BBN:
         ax[2].vlines(N_best, 5e-10, 1e-10, "k", ":")
         ax[3].vlines(N_best, -0.1, 1.1, "k", ":", label=f"$\chi^2=${χ_best:.3f}\n"+
                                                r"$N_{eff}=$"+f"{N_best:.3f}")
-
+        # Plot interpolated solution:
         ax[0].plot(N_eff, Y_4xHe4, color="C3", label="$\mathrm{He}^4$")
         ax[1].plot(N_eff, Y_D_p  , color="C0", label="$\mathrm{D}$"   )
         ax[1].plot(N_eff, Y_He3  , color="C4", label="$\mathrm{He}^3$")
         ax[2].plot(N_eff, Y_Li7_p, color="C1", label="$\mathrm{Li}^7$")
         ax[3].plot(N_eff, P, color="k")
 
+        # Plot observational data:
         axes   = [ax[1], ax[2], ax[0]]
         colors = ["C0", "C1", "C3"]
         for i, (axs, c) in enumerate(zip(axes, colors)):
             y1 = data[i]+error[i]
             y2 = data[i]-error[i]
             axs.fill_between(N_eff, y1, y2, color=c, alpha=0.4)
+
+        # Plot solution points used for interpolation:
+        Ω_b0 = solution[0,:]
+        Y_D_p, Y_Li7_p, Y_4xHe4, Y_He3 = Y_raw
+        ax[0].scatter(Ω_b0, Y_4xHe4, color="C3", marker="|")#, linewidth=0.8)
+        ax[1].scatter(Ω_b0, Y_D_p  , color="C0", marker="|")#, linewidth=0.8)
+        ax[1].scatter(Ω_b0, Y_He3  , color="C4", marker="|")#, linewidth=0.8)
+        ax[2].scatter(Ω_b0, Y_Li7_p, color="C1", marker="|")#, linewidth=0.8)
 
         ax[0].set_ylabel(r"$4Y_{\mathrm{He}^4}$")
         ax[1].set_ylabel(r"$Y_{i} / Y_{p}$")
@@ -543,14 +586,11 @@ if __name__=="__main__":
     table = tabulate(table, headers=headers, tablefmt="github", floatfmt=".4e")
     print(table)
 
-    exit()
     """
     model.solve(T_i=100e9, T_f=0.01e9)
-    plt.savefig(dir+"densities_i.png")
     model.plot_mass_fractions()
-    model.import_solution()
-    model.calculate_relic_abundances_N_eff()
-    model.calculate_relic_abundances_Ω_b0()
+    model.calculate_relic_abundances_Ω_b0("test_k.npy")
     """
-    model.plot_relic_abundances_Ω()
-    model.plot_relic_abundances_N()
+    model.calculate_relic_abundances_N_eff("test_j.npy")
+    model.plot_relic_abundances_Ω("test_k.npy")
+    model.plot_relic_abundances_N("test_j.npy")
