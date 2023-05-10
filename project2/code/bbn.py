@@ -10,17 +10,6 @@ from tabulate import tabulate
 from time import perf_counter
 import warnings
 import matplotlib as mpl
-warnings.filterwarnings("ignore")   # Remove overflow warnings from  integrating <BBN._I_dec>
-
-plt.style.use("bmh")
-small = 14
-big   = 16
-plt.rc('font', size=small)
-plt.rc('axes', titlesize=big)
-plt.rc('axes', labelsize=big)
-plt.rc('xtick', labelsize=small)
-plt.rc('ytick', labelsize=small)
-plt.rc('legend', fontsize=big)
 
 class BigBangNucleosynthesis:
     def __init__(self):
@@ -48,21 +37,21 @@ class BigBangNucleosynthesis:
 
     def _get_cosmic_time(self, T):
         """
-        Cosmic time as a function of photon temperature
+        Calculates cosmic time as a function of photon temperature
         """
         t = 1/(2*self.H0*np.sqrt(self.Ω_r0)) * (self.T0/T)**2
         return t
 
     def _get_scale_factor(self, t):
         """
-        Scale factor as function of cosmic time [s]
+        Calculates scale factor as function of cosmic time [s]
         """
         a = np.sqrt(2*self.H0*t)*self.Ω_r0**(1/4) # [cm]
         return a
 
     def _get_hubble_parameter(self, t):
         """
-        Hubble parameter as function of cosmic time
+        Calculates Hubble parameter as function of cosmic time
         """
         a = self._get_scale_factor(t)
         H = self.H0*np.sqrt(self.Ω_r0)/(a**2)
@@ -76,10 +65,6 @@ class BigBangNucleosynthesis:
         # 1) n + nu <-> p + e-
         # 2) n + e- <-> p + nu_bar
         # 3) n <-> p + e- + nu_bar
-        """
-        self.rate_λw_n = quad(self._I_dec, 1, np.inf, args=(self.q,T9, Tν9))[0]
-        self.rate_λw_p = quad(self._I_dec, 1, np.inf, args=(-self.q,T9, Tν9))[0]
-        """
         x = np.linspace(1,250,10001)
         I_dec_n = self._I_dec(x, self.q, T9, Tν9)
         I_dec_p = self._I_dec(x,-self.q, T9, Tν9)
@@ -162,7 +147,7 @@ class BigBangNucleosynthesis:
     def _density_equations(self, lnT, Y, Ω_b0, pbar, state):
         """
         Differential equations for evolution of relative neutron/proton density
-        (pbar & state are used to generate progress bar,
+        (pbar & state are used to generate progress bar, thanks to this guy:
         https://stackoverflow.com/questions/59047892/how-to-monitor-the-process-of-scipy-odeint)
         """
         # Update progress bar:
@@ -302,7 +287,8 @@ class BigBangNucleosynthesis:
 
     def _store_solution(self, param, number_densities, filename):
         """
-        Docstring
+        For <number_densities> as function of <param>, stores solution arrays
+        as a .npy file.
         """
         solution = np.array([param, *number_densities])
         np.save(filename, solution)
@@ -310,7 +296,7 @@ class BigBangNucleosynthesis:
 
     def calculate_relic_abundances_Ω_b0(self, filename):
         """
-        Docstring
+        Calculates relic abundances for different values of <Ω_b0>
         """
         N   = 10
         T_i = 100e9
@@ -332,9 +318,9 @@ class BigBangNucleosynthesis:
 
         self._store_solution(Ω_b0, Y_relic, filename)
 
-    def calculate_relic_abundances_N_eff(self):
+    def calculate_relic_abundances_N_eff(self, filename):
         """
-        Docstring
+        Calculates relic abundances for different values of <N_eff>
         """
         N   = 10
         T_i = 100e9
@@ -361,14 +347,14 @@ class BigBangNucleosynthesis:
 
     def _chi_square(self, data, model, error):
         """
-        Docstring
+        Calculates chi^2, used to find optimal values of <Ω_b0> and <N_eff>
         """
         s = (model - data)**2/(error**2)
         return np.sum(s)
 
     def _find_best_fit(self, parameter, model, data, error):
         """
-        Docstring
+        Finds element in <parameter> that yields best fit of <model> to <data>
         """
         N = len(parameter)
         χ = np.zeros(N)
@@ -414,8 +400,9 @@ class BigBangNucleosynthesis:
         plt.show()
 
     def _interpolate_relic_abundances(self, solution, N=1000):
-        #solution = np.where(solution<1e-20, 1e-20, solution)
-
+        """
+        Interpolates array of calculated relic abundances
+        """
         param = solution[0,:]
         Y_p   = solution[1,:]
         Y_n   = solution[2,:]
@@ -449,10 +436,9 @@ class BigBangNucleosynthesis:
 
     def plot_relic_abundances_Ω(self, filename):
         """
-        Docstring
+        Plots relic abundances as function of Ω_b0
         """
         solution = np.load(filename)
-
 
         Ω_b0, Y_relic, Y_raw = self._interpolate_relic_abundances(solution)
         Y_D_p, Y_Li7_p, Y_4xHe4, Y_He3 = Y_relic
@@ -492,10 +478,10 @@ class BigBangNucleosynthesis:
         # Plot solution points used for interpolation:
         Ω_b0 = solution[0,:]
         Y_D_p, Y_Li7_p, Y_4xHe4, Y_He3 = Y_raw
-        ax[0].scatter(Ω_b0, Y_4xHe4, color="C3", marker="|")#, linewidth=0.8)
-        ax[1].scatter(Ω_b0, Y_D_p  , color="C0", marker="|")#, linewidth=0.8)
-        ax[1].scatter(Ω_b0, Y_He3  , color="C4", marker="|")#, linewidth=0.8)
-        ax[1].scatter(Ω_b0, Y_Li7_p, color="C1", marker="|")#, linewidth=0.8)
+        ax[0].scatter(Ω_b0, Y_4xHe4, color="C3", marker="|")
+        ax[1].scatter(Ω_b0, Y_D_p  , color="C0", marker="|")
+        ax[1].scatter(Ω_b0, Y_He3  , color="C4", marker="|")
+        ax[1].scatter(Ω_b0, Y_Li7_p, color="C1", marker="|")
 
         ax[0].set_ylabel(r"$4Y_{\mathrm{He}^4}$")
         ax[1].set_ylabel(r"$Y_{i} / Y_{p}$")
@@ -516,7 +502,7 @@ class BigBangNucleosynthesis:
 
     def plot_relic_abundances_N(self, filename):
         """
-        Docstring
+        Plots relic abundances as function of N_eff
         """
         solution = np.load(filename)
 
@@ -581,6 +567,24 @@ class BigBangNucleosynthesis:
         plt.show()
 
 if __name__=="__main__":
+    # Remove overflow warnings from  integrating <BBN._I_dec> hehehehe
+    warnings.filterwarnings("ignore")
+
+    # Tweak plot appearance
+    small = 14
+    big   = 16
+    plt.style.use("bmh")
+    plt.rc('font', size=small)
+    plt.rc('axes', titlesize=big)
+    plt.rc('axes', labelsize=big)
+    plt.rc('xtick', labelsize=small)
+    plt.rc('ytick', labelsize=small)
+    plt.rc('legend', fontsize=big)
+
+    # ---------
+    # PROBLEMS:
+    # ---------
+
     model = BigBangNucleosynthesis()
 
     # Problem d):
@@ -591,19 +595,14 @@ if __name__=="__main__":
     table = tabulate(table, headers=headers, tablefmt="github", floatfmt=".4e")
     print(table)
 
-    # Problems f) - i)
-    """
+    # Problems f) through i)
     model.solve(T_i=100e9, T_f=0.01e9, filename="mass_fractions.npy")
-    """
     model.plot_mass_fractions("mass_fractions.npy")
 
     # Problem j)
-    """
     model.calculate_relic_abundances_Ω_b0("relic_abundances_j.npy")
-    """
     model.plot_relic_abundances_Ω("relic_abundances_j.npy")
+
     # Problem k)
-    """
     model.calculate_relic_abundances_N_eff("relic_abundances_k.npy")
-    """
     model.plot_relic_abundances_N("relic_abundances_k.npy")

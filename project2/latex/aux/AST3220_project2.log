@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022/Debian) (preloaded format=xelatex 2023.1.30)  3 MAY 2023 19:30
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022/Debian) (preloaded format=xelatex 2023.1.30)  10 MAY 2023 15:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -641,110 +641,10 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 94.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Runaway argument?
- 
-./AST3220_project2.tex:134: Paragraph ended before \align was complete.
-<to be read again> 
-                   \par 
-l.134 
-      
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
-./AST3220_project2.tex:134: Missing $ inserted.
-<inserted text> 
-                $
-l.134 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-./AST3220_project2.tex:134: Missing \endgroup inserted.
-<inserted text> 
-                \endgroup 
-l.134 
-      
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-./AST3220_project2.tex:134: Display math should end with $$.
-<to be read again> 
-                   \tex_par:D 
-l.134 
-      
-The `$' that I just saw supposedly matches a previous `$$'.
-So I shall assume that you typed `$$' both times.
-
-./AST3220_project2.tex:135: Misplaced \cr.
-\math@cr@@@ ->\cr 
-                  
-l.135 \end{align}
-                 
-I can't figure out why you would want to use a tab mark
-or \cr or \span just now. If something like a right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-./AST3220_project2.tex:135: Misplaced \noalign.
-\math@cr@@ ... \iffalse }\fi \math@cr@@@ \noalign 
-                                                  {\vskip #1\relax }
-l.135 \end{align}
-                 
-I expect to see \noalign only after the \cr of
-an alignment. Proceed, and I'll ignore this case.
-
-./AST3220_project2.tex:135: Misplaced \noalign.
-\black@ #1->\noalign 
-                     {\ifdim #1>\displaywidth \dimen@ \prevdepth \nointerlin...
-l.135 \end{align}
-                 
-I expect to see \noalign only after the \cr of
-an alignment. Proceed, and I'll ignore this case.
-
-
-Overfull \hbox (152.04494pt too wide) detected at line 135
-[]
- []
-
-./AST3220_project2.tex:135: Extra }, or forgotten \endgroup.
-\endalign ->\math@cr \black@ \totwidth@ \egroup 
-                                                \ifingather@ \restorealignst...
-l.135 \end{align}
-                 
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-./AST3220_project2.tex:135: Missing $ inserted.
-<inserted text> 
-                $
-l.135 \end{align}
-                 
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-./AST3220_project2.tex:135: Display math should end with $$.
-<to be read again> 
-                   \endgroup 
-l.135 \end{align}
-                 
-The `$' that I just saw supposedly matches a previous `$$'.
-So I shall assume that you typed `$$' both times.
-
-./AST3220_project2.tex:137: Missing \right. inserted.
+./AST3220_project2.tex:142: Missing \right. inserted.
 <inserted text> 
                 \right .
-l.137 The relation $T_\nu = \left(4/11)^{1/3} T$
+l.142 The relation $T_\nu = \left(4/11)^{1/3} T$
                                                  can be derived from the con...
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -755,16 +655,8 @@ my insertion and my current dilemma will both disappear.
 [1]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 205.
+(hyperref)                than one, level fixed on input line 220.
 
-
-LaTeX Warning: Command \d invalid in math mode on input line 209.
-
-Missing character: There is no ạ ("1EA1) in font cmmi10!
-
-LaTeX Warning: Command \d invalid in math mode on input line 209.
-
-Missing character: There is no ạ ("1EA1) in font cmmi10!
 [2]
 File: figs//densities_f.png Graphic file (type bmp)
 <figs//densities_f.png>
@@ -773,39 +665,54 @@ File: figs//densities_h.png Graphic file (type bmp)
 File: figs//densities_i.png Graphic file (type bmp)
 <figs//densities_i.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 332--350
+Underfull \hbox (badness 10000) in paragraph at lines 347--365
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 332--350
+Underfull \hbox (badness 10000) in paragraph at lines 347--365
 
  []
 
 
-Underfull \hbox (badness 2717) in paragraph at lines 332--350
+Underfull \hbox (badness 2717) in paragraph at lines 347--365
 \TU/lmr/m/n/10 We also note that by the time the temperature
  []
 
 [3]
+Underfull \hbox (badness 10000) in paragraph at lines 367--380
+
+ []
+
+
+Underfull \hbox (badness 1748) in paragraph at lines 367--380
+\TU/lmr/m/n/10 Comparing the results with the total matter con-
+ []
+
 File: figs//relic_abundances_j.png Graphic file (type bmp)
 <figs//relic_abundances_j.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 File: figs//relic_abundances_k.png Graphic file (type bmp)
 <figs//relic_abundances_k.png>
- [4] (aux/AST3220_project2.bbl) [5] (aux/AST3220_project2.aux)
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+(aux/AST3220_project2.bbl) [4] [5] (aux/AST3220_project2.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `AST3220_project2.out' has not changed.
-(rerunfilecheck)             Checksum: 7C3099859B6F0EAC4AA06C019B89B104;2303.
+(rerunfilecheck)             Checksum: D91366C4288BFAF5D30FE4F2F0A6C3F6;1870.
  ) 
 Here is how much of TeX's memory you used:
- 24692 strings out of 475864
- 445196 string characters out of 5804336
- 987702 words of memory out of 5000000
- 45338 multiletter control sequences out of 15000+600000
+ 24693 strings out of 475864
+ 445206 string characters out of 5804336
+ 990702 words of memory out of 5000000
+ 45339 multiletter control sequences out of 15000+600000
  474476 words of font info for 56 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 84i,12n,80p,450b,421s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,12n,80p,550b,421s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on aux/AST3220_project2.xdv (5 pages, 75240 bytes).
+Output written on aux/AST3220_project2.xdv (5 pages, 94072 bytes).

@@ -119,7 +119,7 @@ Then, using the chain rule of differentiation, we can rewrite
 \end{align}
 Inserting to equation (\ref{eq:no_density}) we get
 \begin{align}
-	\frac{d n_i}{dt} &= - n_b H \frac{dY_i}{d(\ln T)} - 3 n_i H
+	\frac{d n_i}{dt} &= - n_b H \frac{dY_i}{d(\ln T)} - 3 n_i H \label{eq:dndt}
 \end{align}
 The equations for the evolution of the number densities of protons $p$ and
 neutrons $n$ are given as
@@ -128,10 +128,15 @@ neutrons $n$ are given as
 	\frac{d n_p}{dt} + 3H n_p &= n_n\Gamma_{n\rightarrow p} - n_p \Gamma_{p\rightarrow n}  \\
 														&= - \left( \frac{d n_n}{dt} + 3H n_n \right)
 \end{align}
-And by inserting Eq. (\ref{eq:rel_no_density}) and Eq. (\ref{eq:no_density})
-we finally find the evolution of the relative number densities:
+Inserting equation \ref{eq:dndt} into these, we get
 \begin{align}
-
+	-n_b H \frac{dY_n}{d(\ln T)} = n_p \Gamma_{p\rightarrow n} - n_n \Gamma_{n\rightarrow p} \\
+	-n_b H \frac{dY_p}{d(\ln T)} = n_n \Gamma_{n\rightarrow p} - n_p \Gamma_{p\rightarrow n}
+\end{align}
+Dividing by $-n_b H$ and using Eq. (\ref{eq:rel_no_density}) we finally get:
+\begin{align}
+	\frac{dY_n}{d(\ln T)} = -\frac{1}{H}\left[Y_p\Gamma_{p\rightarrow n} - Y_n \Gamma_{n\rightarrow p}\right] \\
+	\frac{dY_p}{d(\ln T)} = -\frac{1}{H}\left[Y_n\Gamma_{n\rightarrow p} - Y_p \Gamma_{p\rightarrow n}\right]
 \end{align}
 \section{Problem b)}
 The relation $T_\nu = \left(4/11)^{1/3} T$ can be derived from the conservation
@@ -151,38 +156,50 @@ Since electrons and positrons will still anihilate through the process
 \begin{align}
 	e^+ + e^- \rightarrow \gamma + \gamma
 \end{align}
-most of the positrons and electrons will then dissapear. Assuming this happened
+and most of the positrons and electrons will then dissapear. Assuming this happened
 immediately, and that the universe is in thermal equilibrium ($T_i=T$), the
 effective number of degrees of freedom before and after can be written
 \begin{align}
-	g_{*s}^{before} &= g_\nu + \frac{7}{8}(g_{e^-} + g_{e^+}) \\
+	g_{*s}^\mathrm{before} &= g_\nu + \frac{7}{8}(g_{e^-} + g_{e^+}) \\
 									&= 2 + \frac{7}{8}4 \\
 									&= \frac{11}{2} \\
-	g_{*s}^{after} &= g_\nu \\
+	g_{*s}^\mathrm{after} &= g_\nu \\
 								 &= 2
 \end{align}
 If we also assume the scale factor $a$ is the same before and after, the
 conservation of entropy gives us
 \begin{align}
-	\frac{11}{2}(aT)_{before}^3 = 2(aT)_{after}^3 \\
-	\Rightarrow T_{after} = (\frac{11}{4})^{1/3} T_{before}
+	\frac{11}{2}(aT)_\mathrm{before}^3 = 2(aT)_\mathrm{after}^3 \\
+	\Rightarrow T_\mathrm{after} = (\frac{11}{4})^{1/3} T_\mathrm{before}
 \end{align}
-Since neutrinos are decoupled, we then have
+Assuming neutrinos were already decoupled before this time, the neutrino temperature
+would remain unaffected:
 \begin{align}
-	T_{\nu,after} = T_{\nu,before} = T_{before} = \left(\frac{4}{11}\right)^{1/3} \ T_{after}
+	T_{\nu,\mathrm{after}} = T_{\nu,\mathrm{before}}
 \end{align}
-Finally giving us
+If we then choose $T_{\nu,\mathrm{before}}$ to be some time before neutrino decoupling,
+we expect neutrinos and photons to be in a state of thermal equilibrium,
+such that the neutron temperature and photon temperature are equal
+\begin{align}
+	T_{\nu,\mathrm{before}} = T_\mathrm{before}
+\end{align}
+We then find that
+\begin{align}
+	T_{\nu,\mathrm{after}} = T_{\nu,\mathrm{before}} = T_\mathrm{before} = \left(\frac{4}{11}\right)^{1/3} \ T_\mathrm{after}
+\end{align}
+Finally giving us an expression for the neutrino temperature today
 \begin{align}
 	T_\nu = \left(\frac{4}{11}\right)^{1/3} \ T
 \end{align}
-
+Where we have renamed $T_{\nu,\mathrm{after}} = T_{\nu,\mathrm{before}} = T_\nu$, as well as
+$T_\mathrm{after} = T$.
 \section{Problem c)}
 In the early universe, dominated by radiation, we have
 \begin{align}
 	\rho c^2 \approx \frac{\pi^2}{30} g_* \frac{(k_b T)^4}{(\hbar c)^3}
 \end{align}
 Where $g_*$ is the effective number of relativistic degrees of freedom. Assuming
-all the radiation is composed of photons and $N_eff$ number of neutrino species,
+all the radiation is composed of photons and $N_\mathrm{eff}$ number of neutrino species,
 $g_*$ is
 \begin{align}
 	g_* &= 1 + N_{\mathrm{eff}}\ g_\nu	\left( \frac{T_i}{T} \right)^4 \\ %\Sum\limits_{i=\mathrm{bosons}}g_i\frac{}{}
@@ -199,13 +216,11 @@ With $\rho_{c0}=\frac{3H_0^2}{8\pi G}$ as the critical density, we then find
 							&= \frac{4\pi^3}{45}\frac{G}{H_0^2}\frac{(k_b T_0)^4}{\hbar^3 c^5}
 								\left[1 + N_{\mathrm{eff}}\ \frac{7}{8}	\left(\frac{4}{11}\right)^{4/3}\right]
 \end{align}
-BLABLABLBALBALABSdpåkaslåldkoåad
-
 \section{Problem d)}
 \subsubsection{Scale factor}
-At the BBN, the Friedmann equations simplify to
+At the time of the BBN, the Friedmann equations simplify to
 \begin{align}
-	\frac{1}{a} \d{a}{t} = H_0 \sqrt{\Omega_{r0}a^{-2}}
+	\frac{1}{a} \frac{da}{dt} = \frac{1}{a^2}H_0 \sqrt{\Omega_{r0}}
 \end{align}
 With some rearranging we see this is a separable differential equation, which
 we solve for $a(t)$:
@@ -223,7 +238,7 @@ relation
 \begin{align}
 	T = T_0 a^{-1} \ \ \Rightarrow \ \ a = \frac{T_0}{T}
 \end{align}
-Inserting this into eq. (\ref{eq:a(t)}) and squaring both sides we get
+Inserting this into equation (\ref{eq:a(t)}) and squaring both sides we get
 \begin{align}
 	\left(\frac{T_0}{T}\right)^2 &= 2 H_0 t \sqrt{(\Omega_{r0})} \\
 \end{align}
@@ -242,7 +257,7 @@ is attached in table (\ref{tab:t(T)})
 	\hline
 	 $10^{10}$ 			& $\ \ \ \ \ \ 1.7774\ \mathrm{Sec}  $\\
 	 $10^9$    			& $\ \ \ \ \ \ 2\ \mathrm{Min},\ \ 57.7400\ \mathrm{Sec}$ \\
-	 $10^8$    			& $\ \ \ \ \ \ 5\ \mathrm{Hr},\  56\ \mathrm{Min},\ 14.0000\ \mathrm{Sec}$ \\
+	 $10^8$    			& $\ \ \ \ \ \ 4\ \mathrm{Hr},\  56\ \mathrm{Min},\ 14.0000\ \mathrm{Sec}$ \\
 	\hline
 	\hline
 	\end{tabular}
@@ -321,14 +336,14 @@ Implementing the additional reactions results in Fig. (\ref{fig:problem_h}).
 The plot shows a drop in proton and neutron mass fraction as the temperature
 decreases past $\sim 10^9$K. This is due to the formation of deuterium, which
 has a sharp increase in its mass fraction before it stabilizes at
-$A_{D} Y_{D} \sim \frac{1}{4}$ due to neutrons supply being exhausted.
+$A_{D} Y_{D} \sim \frac{1}{4}$ due to exhausting the neutron supply.
 \begin{figure}[h]
 	\includegraphics[width=\columnwidth]{densities_h.png}
 	\caption{Caption.}
 	\label{fig:problem_h}
 \end{figure}
 
-\section{Problem i)}
+\section{Problem i)} \label{ref:task_i)}
 Implementing the remaining reactions we get the plot shown in Fig.
 (\ref{fig:problem_i}). Ignoring neutrons and protons, the plot shows the
 production of most elements happens in the range $\sim 10^{10} - 10^9$ K with
@@ -349,18 +364,44 @@ production of elements seems to have halted completely.
 \end{figure}
 
 \section{Problem j)}
-Blablabla logspace blabla. Plot in Fig. (\ref{fig:problem_j}).
+To compute the relic abundances from BBN, we simply pick out the last values
+from the simulation in the previous task. In order to find the optimal value for
+the baryonic matter content $\Omega_{b0}$, we compute the relic abundances for
+$\Omega_{b0}\in[0.01,1]$, and use the chi square method to find the best
+fit given the data. This gives an optimal value of $\Omega_{b0}=0.05$. A plot
+of the results is attached in Fig. (\ref{fig:problem_j}).
+\\ \\
+Comparing the results with the total matter content $\Omega_{m0}\approx0.3$,
+we see that baryonic matter only makes up around $\Omega_{b0}/\Omega_{m0} = 16.7\%$
+of total matter in the universe. Given that most of $\Omega_{m0}$ is in the form
+of dark matter, this indicates dark matter is a sort of non-baryonic matter.
+For example, one possibility is that dark matter is composed of some unknown
+elementary particles.
+
 \begin{figure}[h]
 	\includegraphics[width=\columnwidth]{relic_abundances_j.png}
-	\caption{Caption.}
+	\caption{Relic abundances of elements produced in BBN as function of the baryonic
+					matter content $\Omega_{b0}$, as well as the likelihood of different
+					$\Omega_{b0}$ given the data. The relic abundances are calculated for
+					10 different values of $\Omega_{b0}$ (indicated by notches), which are
+					interpolated in order to create smooth functions of $\Omega_{b0}$.}
 	\label{fig:problem_j}
 \end{figure}
 
 \section{Problem k)}
-Blabla 3 neutrinos species (wow!) blablabla. Plot in Fig. (\ref{fig:problem_k}).
+Computing the relic abundances for $N_{\mathrm{eff}} \in [1, 5]$ we find that
+the best fit given the data is $N_{\mathrm{eff}}=3.002$ effective number of
+neutrino species (Fig. \ref{fig:problem_k}). This matches well with what we
+expect from the standard model, which predicts three neutrino species from its
+three generations of elementary particles.
 \begin{figure}[h]
 	\includegraphics[width=\columnwidth]{relic_abundances_k.png}
-	\caption{Caption.}
+	\caption{Relic abundances of elements produced in BBN as function of the
+					effective number of neutrino species $N_{\mathrm{eff}}$, and the
+					likelihood of different values for $N_{\mathrm{eff}}$ given the data.
+					The relic abundances are calculated for 10 different values of
+					$N_{\mathrm{eff}}$ (indicated by notches), which are interpolated in
+					order to produce smooth functions of $N_{\mathrm{eff}}$.}
 	\label{fig:problem_k}
 \end{figure}
 
@@ -369,33 +410,5 @@ Blabla 3 neutrinos species (wow!) blablabla. Plot in Fig. (\ref{fig:problem_k}).
 \begin{acknowledgments}  % if you disagree with the spelling, blame Americans
 I would like thank myself for writing this beautiful document.
 \end{acknowledgments}
-
-
-%% When it comes to the bibliography I personally generate it using BibLaTeX. (see the link above if you're interested)
-%% You're obviously allowed to create the references section however you like.
-%% I'll keep it simple here.
-\section*{References}  % the asterisk (*) after \section makes the section numbering go away
-\begin{itemize}
-\item[-]Reference 1
-\item[-]Reference 2
-\end{itemize}
-
-\newpage
-%% if you want to include an appendix, this is how you do it
-\appendix
-\section{Name of appendix}
-This will be the body of the appendix.
-\section{This is another appendix}\label{appendix}
-Tada.
-%% all \section commands following \appendix are automatically taken as appendices
-
-%% Note that \label{appendix} command on line 115. What this does is setup a reference point for LaTeX that you can
-%% access wherever you want using \ref{appendix}.
-%% You can place labels on most environments such as equations, figures, tables, etc.
-
-
-%% If you want to include figure:
-%\includegraphics[scale=1.0]{filename}
-%% check https://en.wikibooks.org/wiki/LaTeX/Importing_Graphics if you want to know more
 
 \end{document}
