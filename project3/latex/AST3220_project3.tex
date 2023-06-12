@@ -154,11 +154,13 @@ Which can be inserted to the (????) equation, giving
 Dividing both sides by $H_i^2 E_p$ and using the definition $h=H/H_i$, this
 reduces to
 \begin{align}
-	\frac{d^2\psi}{d\tau^2} + 3h\frac{d\psi}{d\tau} + \frac{dv}{d\psi} = 0
+	\frac{d^2\psi}{d\tau^2} + 3h\frac{d\psi}{d\tau} + \frac{dv}{d\psi} = 0 \label{eq:eom}
 \end{align}
 \subsubsection{Hubble parameter}
 afgasfas
-
+\begin{align}
+	h^2 = \frac{8\pi}{3}\left[ \frac{1}{2}\left(\frac{d\psi}{d\tau}\right)^2 + v(\psi)\right] \label{eq:h}
+\end{align}
 \section{Problem c)}
 Read up on this shit
 
@@ -197,19 +199,126 @@ or in terms of the dimensionless field:
 \end{align}
 Which evaluates to $\psi_i \approx 8.925$ for $500$ e-folds of inflation.
 
-\section{Problem e)}
-\section{Problem f)}
-\section{Problem g)}
-\section{Problem h)}
-\section{Problem i)}
-\section{Problem j)}
-\section{Problem k)}
-\section{Problem l)}
-\section{Problem m)}
-\section{Problem n)}
-\section{Problem o)}
-\section{Problem p)}
+\section{Problem e) \& f)}
+To solve the equations of motion of the field, we rename
+$\xi = \frac{d\psi}{d\tau}$ so equation \ref{eq:eom} can instead be written as
+a set of two first order equations:
+\begin{align}
+	\frac{d\psi}{d\tau} &= \xi \label{eq:eom_1} \\
+	\frac{d\xi}{d\tau}  &= -3h(\xi, \psi) \xi - \frac{d}{d\psi}v(\psi) \label{eq:eom_2}
+\end{align}
+where $h$ is then given by
+\begin{align}
+	h^2 = \frac{8\pi}{3}\left[ \frac{1}{2}\xi^2 + v(\psi)\right]
+\end{align}
+and $v(\psi)$ is given by our choice of potential. Equations \ref{eq:eom_1} and
+\ref{eq:eom_2} are then easily solved using a numerical integrator. A plot of
+the resulting field $\psi$ plotted against $\tau$ is attached in Figure
+(\ref{fig:quad_psi}), along with the slow-roll solution.
+\\ \\
+With the
+solutions $\xi$ and $\psi$ we can easily find $\ln\left(\frac{a}{a_i}\right)$
+by numerically evaluating the integral
+\begin{align}
+	\ln\left(\frac{a}{a_i}\right) &= \int_0^t H dt \\
+																&= \int_0^\tau h(\xi, \psi) d\tau
+\end{align}
+The results are plotted in Figure (\ref{fig:quad_a}), along with the slow-roll
+solution
+\\ \\
+Based on the lectures, we expect the field to decay until it reaches $\psi_{end}$.
+When it reaches $\psi_{end}$ it should then start behaving like a damped oscillator
+centered around $\psi=0$. This is in agreement with the numerical solution
+(Figure \ref{fig:quad_psi}), which starts oscillating at $\tau\approx 1000$.
+This is also when the slow-roll approximation starts deviating significantly
+from the exact solution, as it instead continues decaying at a constant rate.
+\\ \\
+This is around the same time the slow-roll approximation for the scale factor
+deviates from the exact solution (Figure \ref{fig:quad_a}), as one might expect.
+BLABLABLABLA
+\begin{figure}[h!]
+	\includegraphics[width=\linewidth]{QuadraticPotential_field-value.png}
+	\caption{}
+	\label{fig:quad_psi}
+\end{figure}
 
+\begin{figure}[h!]
+	\includegraphics[width=\linewidth]{QuadraticPotential_scale-factor.png}
+	\caption{}
+	\label{fig:quad_a}
+\end{figure}
+
+\section{Problem g)}
+\begin{figure}[h!]
+	\includegraphics[width=\linewidth]{QuadraticPotential_slowroll-tau.png}
+	\caption{}
+	\label{}
+\end{figure}
+
+\section{Problem h)}
+SHOW CALCULATION
+
+\section{Problem i)}
+\begin{figure}[h!]
+	\includegraphics[width=\linewidth]{QuadraticPotential_field-eos.png}
+	\caption{}
+	\label{}
+\end{figure}
+
+\section{Problem j)}
+\begin{figure}[h!]
+	\includegraphics[width=\linewidth]{QuadraticPotential_slowroll-N.png}
+	\caption{}
+	\label{}
+\end{figure}
+
+\section{Problem k)}
+\begin{figure}[h!]
+	\includegraphics[width=\linewidth]{QuadraticPotential_slowroll-nr.png}
+	\caption{}
+	\label{}
+\end{figure}
+
+\section{Problem l)}
+SHOW CALCULATION
+
+\section{Problem m)}
+\begin{figure}[h!]
+	\includegraphics[width=\linewidth]{StarobinskyPotential_field-value.png}
+	\caption{}
+	\label{}
+\end{figure}
+
+\begin{figure}[h!]
+	\includegraphics[width=\linewidth]{StarobinskyPotential_scale-factor.png}
+	\caption{}
+	\label{}
+\end{figure}
+
+\section{Problem n)}
+\begin{figure}[h!]
+	\includegraphics[width=\linewidth]{StarobinskyPotential_slowroll-N.png}
+	\caption{}
+	\label{}
+\end{figure}
+
+\begin{figure}[h!]
+	\includegraphics[width=\linewidth]{StarobinskyPotential_slowroll-tau.png}
+	\caption{}
+	\label{}
+\end{figure}
+
+\begin{figure}[h!]
+	\includegraphics[width=\linewidth]{StarobinskyPotential_slowroll-nr.png}
+	\caption{}
+	\label{}
+\end{figure}
+
+\section{Problem o)}
+SHOW CALCULATION
+
+\section{Problem p)}
+READ STUFF
 
 \begin{acknowledgments}  % if you disagree with the spelling, blame Americans
 I would like thank myself for writing this beautiful document.

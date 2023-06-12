@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022/Debian) (preloaded format=xelatex 2023.5.31)  11 JUN 2023 20:00
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022/Debian) (preloaded format=xelatex 2023.5.31)  12 JUN 2023 17:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -588,7 +588,32 @@ Class revtex4-1 Info: Unrecognized LaTeX tabular. Please update this document cl
 Class revtex4-1 Info: cite was not loaded (OK!) on input line 87.
 Class revtex4-1 Info: mcite was not loaded (OK!) on input line 87.
 Class revtex4-1 Info: multicol was not loaded (OK!) on input line 87.
- (aux/AST3220_project3.aux)
+ (aux/AST3220_project3.aux
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+)
 \openout1 = `AST3220_project3.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 87.
@@ -636,17 +661,65 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Trying to load font information for U+msb on input line 98.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1] (aux/AST3220_project3.bbl) [2] (aux/AST3220_project3.aux)
+) [1]
+Underfull \hbox (badness 10000) in paragraph at lines 213--222
+
+ []
+
+File: figs//QuadraticPotential_field-value.png Graphic file (type bmp)
+<figs//QuadraticPotential_field-value.png>
+
+Underfull \hbox (badness 10000) in paragraph at lines 225--244
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 225--244
+
+ []
+
+File: figs//QuadraticPotential_scale-factor.png Graphic file (type bmp)
+<figs//QuadraticPotential_scale-factor.png>
+File: figs//QuadraticPotential_slowroll-tau.png Graphic file (type bmp)
+<figs//QuadraticPotential_slowroll-tau.png>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[2]
+
+LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 261.
+
+File: figs//QuadraticPotential_field-eos.png Graphic file (type bmp)
+<figs//QuadraticPotential_field-eos.png>
+File: figs//QuadraticPotential_slowroll-N.png Graphic file (type bmp)
+<figs//QuadraticPotential_slowroll-N.png>
+File: figs//QuadraticPotential_slowroll-nr.png Graphic file (type bmp)
+<figs//QuadraticPotential_slowroll-nr.png>
+File: figs//StarobinskyPotential_field-value.png Graphic file (type bmp)
+<figs//StarobinskyPotential_field-value.png>
+File: figs//StarobinskyPotential_scale-factor.png Graphic file (type bmp)
+<figs//StarobinskyPotential_scale-factor.png>
+File: figs//StarobinskyPotential_slowroll-N.png Graphic file (type bmp)
+<figs//StarobinskyPotential_slowroll-N.png>
+[3]
+File: figs//StarobinskyPotential_slowroll-tau.png Graphic file (type bmp)
+<figs//StarobinskyPotential_slowroll-tau.png>
+File: figs//StarobinskyPotential_slowroll-nr.png Graphic file (type bmp)
+<figs//StarobinskyPotential_slowroll-nr.png>
+ (aux/AST3220_project3.bbl) [4] (aux/AST3220_project3.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `AST3220_project3.out' has not changed.
-(rerunfilecheck)             Checksum: 75E201CBE916C74A441B6ECD5C422D60;2822.
+(rerunfilecheck)             Checksum: 58FCD35017BD96F8F04D93C518CC8F33;2747.
  ) 
 Here is how much of TeX's memory you used:
- 24613 strings out of 475864
- 443697 string characters out of 5804336
- 985704 words of memory out of 5000000
- 45268 multiletter control sequences out of 15000+600000
+ 24744 strings out of 475864
+ 448722 string characters out of 5804336
+ 988704 words of memory out of 5000000
+ 45384 multiletter control sequences out of 15000+600000
  471406 words of font info for 48 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  84i,10n,80p,450b,421s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on aux/AST3220_project3.xdv (2 pages, 30300 bytes).
+Output written on aux/AST3220_project3.xdv (4 pages, 49584 bytes).
