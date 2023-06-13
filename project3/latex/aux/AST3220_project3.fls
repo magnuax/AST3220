@@ -926,8 +926,6 @@ INPUT ./figs//StarobinskyPotential_scale-factor.png
 INPUT figs//StarobinskyPotential_scale-factor.png
 INPUT ./figs//StarobinskyPotential_slowroll-N.png
 INPUT figs//StarobinskyPotential_slowroll-N.png
-INPUT ./figs//StarobinskyPotential_slowroll-tau.png
-INPUT figs//StarobinskyPotential_slowroll-tau.png
 INPUT ./figs//StarobinskyPotential_slowroll-nr.png
 INPUT figs//StarobinskyPotential_slowroll-nr.png
 INPUT aux/AST3220_project3.bbl

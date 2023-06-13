@@ -139,7 +139,7 @@ we see that
 Similarly we continue using the chain rule to rewrite $\dot{\phi}$,
 $\ddot{\phi}$ and $V$' in terms of $\tau$ and $\psi$:
 \begin{align}
-	\frac{d\phi}{dt} &= \frac{d\tau}{dt}\frac{d\phi}{d\psi}\frac{d\psi}{d\tau}
+	\frac{d\phi}{dt} &= \frac{d\tau}{dt}\frac{d\phi}{d\psi}\frac{d\psi}{d\tau} \label{eq:dphidt}
 									 = H_i E_p \frac{d\psi}{d\tau} \\
   \frac{d^2\phi}{dt^2} &= \frac{d\tau}{dt}\frac{d}{d\tau}\frac{d\phi}{dt}
 									 = H_i^2 E_p \frac{d^2\psi}{d\tau^2} \\
@@ -157,7 +157,19 @@ reduces to
 	\frac{d^2\psi}{d\tau^2} + 3h\frac{d\psi}{d\tau} + \frac{dv}{d\psi} = 0 \label{eq:eom}
 \end{align}
 \subsubsection{Hubble parameter}
-afgasfas
+Lastly, we rewrite the Hubble parameterin terms of the dimensionless quantities.
+We have
+\begin{align}
+	H^2 &= \frac{8\pi G}{3 c^2}\left[ \frac{1}{2\hbar c^3}\dot{\phi} + V(\phi)\right] \\
+			&= \frac{8\pi G}{3 c^2}\left[ \frac{H_i^2 E_p^2}{2\hbar c^3}\left(\frac{d\psi}{d\tau}\right)^2 + V(\phi)\right] \\
+			&= \frac{8\pi G}{3 c^2}\frac{H_i^2 E_p^2}{\hbar c^3}\left[\frac{1}{2}\left(\frac{d\psi}{d\tau}\right)^2 + v(\psi)\right]
+\end{align}
+Where we used equation (\ref{eq:dphidt}) and the definition of $v$. Next,
+inserting the definition of the planck energy
+\begin{align}
+	E_p^2 = \frac{\hbar c^5}{G}
+\end{align}
+and dividing both sides by $H_i$, we finally get:
 \begin{align}
 	h^2 = \frac{8\pi}{3}\left[ \frac{1}{2}\left(\frac{d\psi}{d\tau}\right)^2 + v(\psi)\right] \label{eq:h}
 \end{align}
@@ -249,6 +261,7 @@ BLABLABLABLA
 \end{figure}
 
 \section{Problem g)}
+SLOW ROLL PARAMETERS AGAINST TAU
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{QuadraticPotential_slowroll-tau.png}
 	\caption{}
@@ -256,9 +269,39 @@ BLABLABLABLA
 \end{figure}
 
 \section{Problem h)}
-SHOW CALCULATION
+We now want to express the equation of state parameter in terms of the
+dimensionless variables. The equation of state of the scalar field is given by
+\begin{align}
+ w_\phi =	\frac{p_\phi}{\rho_\phi c^2}
+	= \frac{ \frac{1}{2\hbar c^3}\left(\frac{d\phi}{dt}\right)^2 - V }
+				 { \frac{1}{2\hbar c^3}\left(\frac{d\phi}{dt}\right)^2 + V }
+\end{align}
+From before, we know that
+\begin{align}
+	\frac{d\phi}{dt} = H_i E_p \frac{d\psi}{d\tau}
+\end{align}
+and by definition we have
+\begin{align}
+	V = \frac{H_i^2 E_p^2}{\hbar c^3} v
+\end{align}
+Inserting these into the equation of state, we then get
+\begin{align}
+	w_\phi
+	 = \frac{\ \frac{H_i^2E_p^2}{2\hbar c^3} \ }{\frac{H_i^2E_p^2}{2\hbar c^3}}
+	 \frac{ \frac{1}{2}\left(\frac{d\psi}{d\tau}\right)^2 - v }
+					{ \frac{1}{2}\left(\frac{d\psi}{d\tau}\right)^2	+ v }
+	 = \frac{ \frac{1}{2}\left(\frac{d\psi}{d\tau}\right)^2 - v }
+ 				 { \frac{1}{2}\left(\frac{d\psi}{d\tau}\right)^2 + v }
+\end{align}
 
 \section{Problem i)}
+In the slow-roll regime we expect a small $\frac{d\psi}{d\tau}$, giving
+$\left(\frac{d\psi}{d\tau}\right)^2 \approx 0$. The equation of state then
+becomes
+\begin{align}
+	w_\phi \approx \frac{-v}{v} = -1
+\end{align}
+
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{QuadraticPotential_field-eos.png}
 	\caption{}
@@ -266,52 +309,88 @@ SHOW CALCULATION
 \end{figure}
 
 \section{Problem j)}
+Plotting the slowroll parameters against $N$ we get the plot shown in Figure
+(\ref{fig:quadratic_slowroll-N}).
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{QuadraticPotential_slowroll-N.png}
 	\caption{}
-	\label{}
+	\label{fig:quadratic_slowroll-N}
 \end{figure}
 
 \section{Problem k)}
+The predicted curve in the $n$-$r$ plane for
+$N\in[50,60]$ can be seen in Figure (\ref{fig:quadratic_slowroll-nr})
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{QuadraticPotential_slowroll-nr.png}
 	\caption{}
-	\label{}
+	\label{fig:quadratic_slowroll-nr}
 \end{figure}
 
 \section{Problem l)}
-SHOW CALCULATION
-
+Substituting $y=-\sqrt{\frac{2}{3}}\frac{\phi}{M_p}$, we can write
+\begin{align}
+	V(\phi) = \frac{3 M^2 M_P^2}{4} \left(1-e^y)^2
+\end{align}
+We also have
+\begin{align}
+	y' = -\sqrt{\frac{2}{3}}\frac{1}{M_p}, \ \ \ y'' = 0
+\end{align}
+We then get
+\begin{align}
+	V' &= -\frac{3 M^2 M_p^2}{2}\left(1 - e^y) \cdot e^y \cdot y' \label{eq:V_diff1} \\
+		 &= \sqrt{\frac{2}{3}} \frac{2}{M_p} \frac{e^y}{1-e^y} V
+\end{align}
+And, differentiating equation (\ref{eq:V_diff1}), we find
+\begin{align}
+	V'' &= y' \frac{3M^2 M_p^2}{2} \frac{d}{d\phi}\left( e^{2y} - e^y \right) \\
+			&= y'^2 \frac{3M^2 M_p^2}{2}\left( 2e^{2y}- e^y \right) \\
+			&= \frac{2}{3}\frac{3M^2}{2}\left( 2e^{2y} - e^y \right) \\
+			&= \frac{4}{3}\frac{1}{M_p^2}\frac{\left(2e^{2y} - e^y\right)}{\left( 1 - e^y\right)^2} V
+\end{align}
+We can then find the slow roll parameters. Using $M_p = \frac{E_p^2}{8\pi}$,
+these can be written
+\begin{align}
+	\epsilon &= \frac{M_p^2}{2} \left(\frac{V'}{V}\right)^2 \\
+  \eta 		 &= M_p^2 \frac{V''}{V}
+\end{align}
+By insertion, we then get
+\begin{align}
+	\epsilon &= \frac{4}{3}\frac{e^{2y}}{\left( 1 - e^y \right)^2} \\
+  \eta 		 &= \frac{4}{3} \frac{\left(2e^{2y} - e^y\right)}{\left( 1 - e^y\right)^2}
+\end{align}
 \section{Problem m)}
+The governing equations are then solved just like before, only exchanging the
+quadratic potentiakl with the Starobinsky potential. The resulting dimensionless
+field $\psi$ is then shown in Figure (\ref{fig:Starobinsky_psi}), and the scale
+factor can be seen in Figure (\ref{fig:Starobinsky_a}).
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{StarobinskyPotential_field-value.png}
 	\caption{}
-	\label{}
+	\label{fig:Starobinsky_psi}
 \end{figure}
 
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{StarobinskyPotential_scale-factor.png}
 	\caption{}
-	\label{}
+	\label{fig:Starobinsky_a}
 \end{figure}
 
 \section{Problem n)}
+Plotting the slowroll parameters against $N$ we get the plot shown in Figure
+(\ref{fig:starobinsky_slowroll-N}). The predicted curve in the $n$-$r$ plane for
+$N\in[50,60]$ can be seen in Figure (\ref{fig:starobinsky_slowroll-nr})
+
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{StarobinskyPotential_slowroll-N.png}
 	\caption{}
-	\label{}
+	\label{fig:starobinsky_slowroll-N}
 \end{figure}
 
-\begin{figure}[h!]
-	\includegraphics[width=\linewidth]{StarobinskyPotential_slowroll-tau.png}
-	\caption{}
-	\label{}
-\end{figure}
 
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{StarobinskyPotential_slowroll-nr.png}
 	\caption{}
-	\label{}
+	\label{fig:starobinsky_slowroll-nr}
 \end{figure}
 
 \section{Problem o)}

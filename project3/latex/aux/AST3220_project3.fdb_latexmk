@@ -1,16 +1,16 @@
 # Fdb version 3
-["bibtex aux/AST3220_project3"] 1686585414 "aux/AST3220_project3.aux" "aux/AST3220_project3.bbl" "aux/AST3220_project3" 1686585416
+["bibtex aux/AST3220_project3"] 1686671516 "aux/AST3220_project3.aux" "aux/AST3220_project3.bbl" "aux/AST3220_project3" 1686671812
   "/usr/share/texlive/texmf-dist/bibtex/bst/revtex4-1/apsrev4-1.bst" 1602107945 71515 e333383ed72bf24aa6de7e8cabb55f84 ""
-  "aux/AST3220_project3.aux" 1686585415 4970 bfc9c99be266bdc2489b8bf2546ada57 "xelatex"
-  "aux/AST3220_project3Notes.bib" 1686585415 103 48ad29797468f16e2853d8797278d7af "xelatex"
+  "aux/AST3220_project3.aux" 1686671573 5096 bf1058d02def11cb40d586663b0175e9 "xelatex"
+  "aux/AST3220_project3Notes.bib" 1686671573 103 48ad29797468f16e2853d8797278d7af "xelatex"
   (generated)
   "aux/AST3220_project3.bbl"
   "aux/AST3220_project3.blg"
-["xdvipdfmx"] 1686585415 "aux/AST3220_project3.xdv" "aux/AST3220_project3.pdf" "aux/AST3220_project3" 1686585416
-  "aux/AST3220_project3.xdv" 1686585415 49584 99badac9bd6ce6b950ade9d9ea2b8f59 "xelatex"
+["xdvipdfmx"] 1686671811 "aux/AST3220_project3.xdv" "aux/AST3220_project3.pdf" "aux/AST3220_project3" 1686671812
+  "aux/AST3220_project3.xdv" 1686671573 72796 91f6f3baf54b0cf201610475fcf542aa "xelatex"
   (generated)
   "aux/AST3220_project3.pdf"
-["xelatex"] 1686585414 "AST3220_project3.tex" "aux/AST3220_project3.xdv" "AST3220_project3" 1686585416
+["xelatex"] 1686671572 "AST3220_project3.tex" "aux/AST3220_project3.xdv" "AST3220_project3" 1686671812
   "/etc/texmf/web2c/texmf.cnf" 1661242560 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
@@ -162,21 +162,20 @@
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1658757727 39561 34c98e380bf7c7201ee6a7909aff625a ""
   "/usr/share/texmf/web2c/texmf.cnf" 1658757727 39561 34c98e380bf7c7201ee6a7909aff625a ""
   "/var/lib/texmf/web2c/xetex/xelatex.fmt" 1685529408 5471034 d8c2e21c538cf3e6363a8edb27105fe8 ""
-  "AST3220_project3.tex" 1686585414 11444 79b0acbdfb5b0460f09074d6a5813762 ""
-  "aux/AST3220_project3.aux" 1686585415 4970 bfc9c99be266bdc2489b8bf2546ada57 "xelatex"
-  "aux/AST3220_project3.bbl" 1686585414 1983 c789b8b2e2ff60989c671635ad8473c2 "bibtex aux/AST3220_project3"
-  "aux/AST3220_project3.out" 1686585415 2747 58fcd35017bd96f8f04d93c518cc8f33 "xelatex"
-  "figs//QuadraticPotential_field-eos.png" 1686581179 92112 4f5fcfe86e57430a959b03d7a02b0234 ""
-  "figs//QuadraticPotential_field-value.png" 1686581178 61200 e02eed013988a6b8682361caf13ee95b ""
-  "figs//QuadraticPotential_scale-factor.png" 1686581178 51977 bfac6733eaffe58883d76042e563079e ""
-  "figs//QuadraticPotential_slowroll-N.png" 1686581179 70273 aa075633916c026fdeb3eedf9eb93277 ""
-  "figs//QuadraticPotential_slowroll-nr.png" 1686581180 47955 34888600647e19d9276eddfc83d283bd ""
-  "figs//QuadraticPotential_slowroll-tau.png" 1686581179 74158 6d92617ac1331eda33240d95131e7831 ""
-  "figs//StarobinskyPotential_field-value.png" 1686581182 58538 fc8b9ccea176d7825c781c0f75e5609d ""
-  "figs//StarobinskyPotential_scale-factor.png" 1686581183 49758 3d82aca37c7c73642ead5d7b2f6db6eb ""
-  "figs//StarobinskyPotential_slowroll-N.png" 1686581184 51686 0988c652c02b4f6245fa2e4b8ddb3361 ""
-  "figs//StarobinskyPotential_slowroll-nr.png" 1686581184 51102 c90e425d23463405d01e7e0627a82f56 ""
-  "figs//StarobinskyPotential_slowroll-tau.png" 1686581183 89638 047e98eab5ba1155060e2b145ac94440 ""
+  "AST3220_project3.tex" 1686671811 15259 4c2b68ea8a3980d92bf4d4d7f7796945 ""
+  "aux/AST3220_project3.aux" 1686671573 5096 bf1058d02def11cb40d586663b0175e9 "xelatex"
+  "aux/AST3220_project3.bbl" 1686671516 1983 c789b8b2e2ff60989c671635ad8473c2 "bibtex aux/AST3220_project3"
+  "aux/AST3220_project3.out" 1686671573 2747 58fcd35017bd96f8f04d93c518cc8f33 "xelatex"
+  "figs//QuadraticPotential_field-eos.png" 1686669372 90244 36ff33144cb63cdc1271286492b78b0c ""
+  "figs//QuadraticPotential_field-value.png" 1686669371 61250 8fad892b8cdfb19d376e62c5eee53ea4 ""
+  "figs//QuadraticPotential_scale-factor.png" 1686669371 52001 1897b3e1b6ed868c3d1d1123297d6a04 ""
+  "figs//QuadraticPotential_slowroll-N.png" 1686669373 62519 40029a584ee8a0d8b70bf9d9ac10cb31 ""
+  "figs//QuadraticPotential_slowroll-nr.png" 1686669373 46992 3f711ad164ab5d4ae81468a45f814eb1 ""
+  "figs//QuadraticPotential_slowroll-tau.png" 1686669372 92678 7125ca4fc5df28f56c8acbff0c5202b8 ""
+  "figs//StarobinskyPotential_field-value.png" 1686669375 58467 a241ff2911ae788f5e83dc7cecbc95c6 ""
+  "figs//StarobinskyPotential_scale-factor.png" 1686669375 49771 7f705f1200ad7ef4cba87ccccc3b341a ""
+  "figs//StarobinskyPotential_slowroll-N.png" 1686669376 61529 c3717a7064b9edae5c8560bca86ac067 ""
+  "figs//StarobinskyPotential_slowroll-nr.png" 1686669377 61419 f45b9a38ac1cdad3222bba45133b797b ""
   (generated)
   "aux/AST3220_project3.aux"
   "aux/AST3220_project3.log"
