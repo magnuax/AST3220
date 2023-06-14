@@ -180,36 +180,40 @@ Read up on this shit
 During slow-roll, the number of remaining e-folds until inflation ends can be
 calculated as
 \begin{align}
-	N(t) &= \frac{8\pi}{E_p^2} \int_{\phi_{\mathrm{end}}}^\phi \frac{V}{V'} d\phi \\
+	N &= \frac{8\pi}{E_p^2} \int_{\phi_{\mathrm{end}}}^\phi \frac{V}{V'}\ d\phi
 \end{align}
-Where we easily find
+Where we make the substitution $d\phi = E_p d\psi$ and have
 \begin{align}
-	\frac{V}{V'} = \frac{1}{2}\phi
+	\frac{V}{V'} = \frac{1}{2}\phi = \frac{E_p}{2}\psi
 \end{align}
-and $\psi_{\mathrm{end}}$ is given by requiring $\epsilon(\phi_{\mathrm{end}})=1$:
+Giving
 \begin{align}
-	\epsilon(\phi_{\mathrm{end}}) &= \frac{E_p^2}{16\pi} \left(\frac{V'}{V}\right)^2 \\
-											 &= \frac{E_p^2}{4\pi \phi_{\mathrm{end}}^2} \\
+	N &= 4\pi \int_{\psi_{\mathrm{end}}}^\psi \psi\ d\psi \\
+	  &= 2\pi \bigg( \psi^2 - \psi_{end}^2 \bigg)	\label{eq:N-psi_i}
+\end{align}
+where $\psi_{\mathrm{end}}$ is given by taking $\epsilon(\phi_{\mathrm{end}})=1$
+as the end of inflation:
+\begin{align}
+	\epsilon(\phi_{\mathrm{end}}) = \frac{E_p^2}{16\pi} \left(\frac{V'}{V}\right)^2
+	 	&= \frac{1}{16\pi}\left(\frac{dv}{d\psi}\right) \\
+											 &= \frac{1}{4\pi \psi_{\mathrm{end}}^2} \\
 											 &= 1 \\
-	\Rightarrow \ \ \ \ \phi_{\mathrm{end}} &= \frac{E_p}{\sqrt{4\pi}}
 \end{align}
-We can then calculate the integral:
+Solving for $\psi_end$ this gives
 \begin{align}
-	N(t) &= \frac{8\pi}{E_p^2} \int_{\phi_{\mathrm{end}}}^\phi \frac{1}{2}\phi d\phi \\
-					&= \frac{2\pi}{E_p^2} \left(\phi -\frac{E_p^2}{4\pi} \right) \\
-					&= \frac{2\pi}{E_p^2} \phi^2 - \frac{1}{2}
+	\Rightarrow \ \ \ \ \psi_{\mathrm{end}}^2 &= \frac{1}{4\pi}
 \end{align}
-By definition, the number of remaining e-folds at the initial time $t=t_i$ is
+Inserting this, the number of remaining e-folds is
+\begin{align}
+	N = 2\pi \psi^2 - \frac{1}{2}
+\end{align}
+The number of remaining e-folds at the initial time $t=t_i$ is
 the total number of e-folds $N_tot$. Evaluating $N(t)$ at $t_i$ and solving for
-the initial field value $\phi_i$ we then get:
-\begin{align}
-	\phi_i = \frac{E_p}{\sqrt{2\pi}}\sqrt{N_{tot} + \frac{1}{2}}
-\end{align}
-or in terms of the dimensionless field:
+the initial field value $\psi_i$ we then get:
 \begin{align}
 	\psi_i = \sqrt{ \frac{1}{2\pi} \left(N_{tot} + \frac{1}{2} \right) }
 \end{align}
-Which evaluates to $\psi_i \approx 8.925$ for $500$ e-folds of inflation.
+Which evaluates to $\psi_i \approx 8.925$ for $500$ total e-folds of inflation.
 
 \section{Problem e) \& f)}
 To solve the equations of motion of the field, we rename
@@ -250,13 +254,17 @@ deviates from the exact solution (Figure \ref{fig:quad_a}), as one might expect.
 BLABLABLABLA
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{QuadraticPotential_field-value.png}
-	\caption{}
+	\caption{The dimensionless scalar field $\psi$ for the quadratic potential,
+	along with it's approximation in the slow-roll regime. Plotted against the
+	dimensionless time $\tau$.}
 	\label{fig:quad_psi}
 \end{figure}
 
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{QuadraticPotential_scale-factor.png}
-	\caption{}
+	\caption{The logarithm of the scale factor $\ln\left(\frac{a}{a_i}\right)}$
+	for a quadratic potential, along with the slow-roll approximation.
+	Plotted as a function of the dimensionless time $\tau$.}
 	\label{fig:quad_a}
 \end{figure}
 
@@ -264,7 +272,8 @@ BLABLABLABLA
 SLOW ROLL PARAMETERS AGAINST TAU
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{QuadraticPotential_slowroll-tau.png}
-	\caption{}
+	\caption{The slow-roll parameters $\epsilon$ and $\eta$ for a quadratic potential,
+	plotted against dimensionless time $\tau$.}
 	\label{}
 \end{figure}
 
@@ -304,7 +313,8 @@ becomes
 
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{QuadraticPotential_field-eos.png}
-	\caption{}
+	\caption{The scalar field $\phi$'s equation of state, given a quadratic
+	potential, plotted against the dimensionless time $\tau$.}
 	\label{}
 \end{figure}
 
@@ -322,11 +332,12 @@ The predicted curve in the $n$-$r$ plane for
 $N\in[50,60]$ can be seen in Figure (\ref{fig:quadratic_slowroll-nr})
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{QuadraticPotential_slowroll-nr.png}
-	\caption{}
+	\caption{The spectral index $n$ and the tensor-to-scalar ratio of the
+	quadratic potential, for $N\in[50,60]$.}
 	\label{fig:quadratic_slowroll-nr}
 \end{figure}
 
-\section{Problem l)}
+\section{Problem l)} \label{section:problem_l}
 Substituting $y=-\sqrt{\frac{2}{3}}\frac{\phi}{M_p}$, we can write
 \begin{align}
 	V(\phi) = \frac{3 M^2 M_P^2}{4} \left(1-e^y)^2
@@ -363,15 +374,29 @@ The governing equations are then solved just like before, only exchanging the
 quadratic potentiakl with the Starobinsky potential. The resulting dimensionless
 field $\psi$ is then shown in Figure (\ref{fig:Starobinsky_psi}), and the scale
 factor can be seen in Figure (\ref{fig:Starobinsky_a}).
+\\ \\
+From Figure (\ref{fig:Starobinsky_a}) we note that the logarithm of the scale
+factor goes as
+\begin{align}
+	\ln\left( \frac{a}{a_i}\right) = \tau
+\end{align}
+Giving an exponential scale factor during inflation
+\begin{align}
+	a = a_i e^\tau = a_i e^{H_i t}
+\end{align}
+In other words the Starobinsky potential gives rise to inflation following
+the de Sitter model.
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{StarobinskyPotential_field-value.png}
-	\caption{}
+	\caption{The value of the dimensionless field $\psi$ for Starobinsky inflation,
+	plotted as a function of the dimensionless time $\tau$.}
 	\label{fig:Starobinsky_psi}
 \end{figure}
 
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{StarobinskyPotential_scale-factor.png}
-	\caption{}
+	\caption{The logarithm of the scale factor $\ln\left(\frac{a}{a_i}\right)$
+	for Starobinsky inflation. Plotted against the dimensionless time $\tau$.}
 	\label{fig:Starobinsky_a}
 \end{figure}
 
@@ -382,25 +407,101 @@ $N\in[50,60]$ can be seen in Figure (\ref{fig:starobinsky_slowroll-nr})
 
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{StarobinskyPotential_slowroll-N.png}
-	\caption{}
+	\caption{The slow-roll parameters $\epsilon$ and $\eta$ plotted against
+	$N$, the number $e$-folds remaining before the end of inflation.}
 	\label{fig:starobinsky_slowroll-N}
 \end{figure}
 
 
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{StarobinskyPotential_slowroll-nr.png}
-	\caption{}
+	\caption{The spectral index $n$ and the tensor-to-scalar ratio of the
+	Starobinsky potential, for $N\in[50,60]$.}
 	\label{fig:starobinsky_slowroll-nr}
 \end{figure}
 
 \section{Problem o)}
-SHOW CALCULATION
+\subsection{Remaining e-folds $N$}
+From before, we have that
+\begin{align}
+	\frac{V}{V'} &= \sqrt{\frac{3}{2}}\frac{M_p}{2} \frac{1-e^y}{e^y} \\
+							 &= \sqrt{\frac{3}{16\pi}}\frac{E_p}{2} \bigg( e^{-y} -1 \bigg) \\
+\end{align}
+Using $y=-\sqrt{\frac{16\pi}{3}} \frac{\phi}{E_p}$, the remaining number of
+e-foldings becomes
+\begin{align}
+	N &= \frac{8\pi}{E_p^2} \int_{\phi_{end}}^\phi \frac{V}{V'}\ d\phi \\
+		&= -\frac{8\pi}{E_p} \sqrt{\frac{3}{16\pi}}\int_{y_{end}}^y \frac{V}{V'}\ d\tilde{y} \\
+		&= -\frac{3}{4}\int_{y_{end}}^y e^{-\tilde{y}} -1\ d\tilde{y} \\
+		&= \frac{3}{4}\bigg[ e^{-\tilde{y}} + \tilde{y}\bigg]_{\tilde{y}=y_{end}}^y
+\end{align}
+Where we on the last line applied the slow-roll criterion
+\begin{align}
+	\phi \gg \phi_{end} \ \ \ \Rightarrow \ \ \ y \gg y_{end}
+\end{align}
+Such that
+\begin{align}
+ N &\approx \frac{3}{4}\bigg( e^{-y} + y\bigg)
+\end{align}
+Assuming the field is on the order $\phi\sim\phi_i = 2$, we have $y \approx -8$,
+giving
+\begin{align}
+	e^{-y} \gg y
+\end{align}
+With which we use to further approximate $N$ as
+\begin{align}
+	N \approx \frac{3}{4} e^{-y}
+\end{align}
 
+\subsection{Slow-roll parameters}
+The slow-roll parameters are found in a similar manner. Using
+\begin{align}
+	e^y \ll 1	\label{eq:ey_gg}
+\end{align}
+we have that $1-e^y\approx 1$, so that $\epsilon$ can be approximated as
+\begin{align}
+	\epsilon = \frac{4}{3} \frac{e^{2y}}{(1-e^y)^2}
+		 \approx \frac{4}{3} e^{2y}
+		 = \frac{3}{4}\frac{1}{N^2}
+\end{align}
+Similarly, $\eta$ becomes
+\begin{align}
+	\eta = \frac{4}{3} \frac{(2e^{2y} - e^y)}{(1-e^y)^2}
+		 \approx \frac{4}{3} (2e^{2y} - e^y)
+\end{align}
+WeMultiplying equation (\ref{eq:ey_gg}) by $e^y$ on both sides, we get
+\begin{align}
+	e^{2y} \ll e^y
+\end{align}
+and $\eta$ is further simplified to
+\begin{align}
+	\eta \approx -\frac{4}{3}e^y = -\frac{1}{N}
+\end{align}
+
+\subsection{Tensor-to-scalar ratio and spectral index}
+To approximate the tensor-to-scalar ratio $r$ we simply insert our approximation
+of $\epsilon$, giving
+\begin{align}
+	r = 16\epsilon \approx \frac{12}{N^2}
+\end{align}
+Similarly, the spectral index is approximated
+\begin{align}
+	n = 1 - 6\epsilon + 2\eta &\approx 1 - \frac{9}{2}\frac{1}{N^2} - \frac{2}{N} \\
+														&\approx 1 - \frac{2}{N}
+\end{align}
+where we used that $N$ will be a large number during slow-roll, making the
+second order term negligble.
 \section{Problem p)}
 READ STUFF
 
 \begin{acknowledgments}  % if you disagree with the spelling, blame Americans
 I would like thank myself for writing this beautiful document.
 \end{acknowledgments}
+
+\section*{References}
+
+\begin{itemize}
+	\bibitem{name} reference
+\end{itemize}
 
 \end{document}

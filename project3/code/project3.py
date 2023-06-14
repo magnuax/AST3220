@@ -40,8 +40,10 @@ class Inflation:
         """
         calculates total number of efolds
         """
+        ϵ = self._get_slow_roll_param_eps(ψ)
+        idx_end = np.argwhere(ϵ>1)[0][0]
         h = self._get_hubble_param(τ, ψ, dψdτ)
-        N_tot = np.trapz(h, x=τ)
+        N_tot = np.trapz(h[:idx_end], x=τ[:idx_end])
 
         return N_tot
 
@@ -57,14 +59,14 @@ class Inflation:
         h = self._get_hubble_param(τ, ψ, ξ)
         dvdψ = self._get_potential_diff(ψ)
 
-        dξdτ = -3*h*ξ - dvdψ
         dψdτ = ξ
+        dξdτ = -3*h*ξ - dvdψ
 
         return [dψdτ, dξdτ]
 
     def solve(self, τ_span):
         y_init = [self.ψ_i, 0]
-        self.sol = solve_ivp(self._eom, τ_span, y_init, rtol=1e-10, atol=1e-10)
+        self.sol = solve_ivp(self._eom, τ_span, y_init, rtol=1e-13, atol=1e-14, method="BDF")
 
         self.τ = self.sol.t
         self.ψ  = self.sol.y[0]
@@ -74,6 +76,8 @@ class Inflation:
         self.η = self._get_slow_roll_param_eta(self.ψ)
 
         self.h = self._get_hubble_param(self.τ, self.ψ, self.dψ)
+
+        idx_end = np.where(self.ϵ>1)[0][0]
         self.ln_a = cumulative_trapezoid(self.h, x=self.τ, initial=0)
         self.N_tot = self._get_total_efolds(self.τ, self.ψ, self.dψ)
         self.N = self.N_tot - self.ln_a
@@ -82,7 +86,7 @@ class Inflation:
         plt.figure(figsize=(10,5), tight_layout=True)
         plt.title("Value of scalar field $\psi$, for " + self.V_repr)
 
-        plt.plot(self.τ, self.ψ, label="Numerical solution")
+        plt.plot(self.τ, self.ψ, "r", label="Numerical solution")
         plt.xlabel(r"$\tau$")
         plt.ylabel(r"$\psi$")
         plt.legend()
@@ -91,32 +95,37 @@ class Inflation:
     def plot_scale_factor(self):
         plt.figure(figsize=(10,5), tight_layout=True)
         plt.title("Scale factor, for " + self.V_repr)
-        plt.plot(self.τ, self.ln_a, label="Numerical solution")
+        plt.plot(self.τ, self.ln_a, "r", label="Numerical solution")
         plt.legend()
         plt.xlabel(r"$\tau$")
         plt.ylabel(r"$\ln\left( a/a_i \right)$")
         plt.savefig(f"{self.subclassName}_scale-factor")
 
     def plot_slow_roll_param_against_tau(self):
+        idx_ϵ = np.where(self.ϵ>1)[0][0]
+        idx_η = np.where(self.η>1)[0][0]
+
         plt.figure(figsize=(10,5), tight_layout=True)
         plt.title(r"Slow roll parameters against $\tau$, for " + self.V_repr)
-        plt.semilogy(self.τ, self.ϵ, label=r"$\epsilon$")
-        plt.semilogy(self.τ, self.η, label=r"$\eta$")
-        plt.axhline(1, color="k", linestyle="--")
+        plt.plot(self.τ[:idx_ϵ], self.ϵ[:idx_ϵ], "r", label=r"$\epsilon$")
+        plt.plot(self.τ[:idx_η], self.η[:idx_η], "k", label=r"$\eta$")
+        plt.axhline(1, color="k", linestyle=":")
 
         plt.xlabel(r"$\tau$")
         plt.legend()
         plt.savefig(f"{self.subclassName}_slowroll-tau")
 
     def plot_slow_roll_param_against_N(self):
-        idx_end = np.where(self.ϵ>1)[0][0]
+        abs_η = np.abs(self.η)
+        idx_ϵ = np.where(self.ϵ>1.5)[0][0]
+        idx_η = np.where(abs_η>1.5)[0][0]
 
         plt.figure(figsize=(10,5), tight_layout=True)
         plt.title(r"Slow roll parameters against $N$, for " + self.V_repr)
 
-        plt.semilogx(self.N[:idx_end], self.ϵ[:idx_end], label=r"$\epsilon$")
-        plt.semilogx(self.N[:idx_end], self.η[:idx_end], label=r"$\eta$")
-        plt.axhline(1, color="k", linestyle="--")
+        plt.semilogx(self.N[:idx_ϵ], self.ϵ[:idx_ϵ], "r", label=r"$\epsilon$")
+        plt.semilogx(self.N[:idx_η],  abs_η[:idx_η], "k", label=r"$| \eta |$")
+        plt.axhline(1, color="k", linestyle=":")
 
         ax = plt.gca()
         ax.invert_xaxis()
@@ -129,7 +138,7 @@ class Inflation:
 
         fig = plt.figure(figsize=(10,5), tight_layout=True)
         plt.title(r"Equation of state $w_\phi$, for " + self.V_repr)
-        plt.plot(self.τ, w_ϕ)
+        plt.plot(self.τ, w_ϕ, "r")
         plt.xlabel(r"$\tau$")
         plt.ylabel(r"$w_\phi$")
         plt.savefig(f"{self.subclassName}_field-eos")
@@ -147,7 +156,7 @@ class Inflation:
 
         plt.figure(figsize=(10,5), tight_layout=True)
         plt.title("TITLE")
-        plt.plot(n, r, label="Numerical solution")
+        plt.plot(n, r, "r", label="Numerical solution")
         plt.legend()
         plt.xlabel("n")
         plt.ylabel("r")
@@ -169,7 +178,7 @@ class QuadraticPotential(Inflation):
         return dvdψ
 
     def _get_slow_roll_param_eps(self, ψ):
-        ϵ = 1/(4*np.pi*ψ)
+        ϵ = 1/(4*np.pi*ψ**2)
         return ϵ
 
     def _get_slow_roll_param_eta(self, ψ):
@@ -180,8 +189,8 @@ class QuadraticPotential(Inflation):
         super().plot_field_value()
 
         ψ_slowroll = self.SlowRoll._get_field_value(self.τ)
-        plt.plot(self.τ, ψ_slowroll, "--", label="Slow roll approximation")
-        plot_inset(plt.gca(), [0.5,0.05,0.35,0.35], xlim=[1050,1500], ylim=[-0.2,0.2])
+        plt.plot(self.τ, ψ_slowroll, "r--", label="Slow roll approximation")
+        plot_inset(plt.gca(), [0.64,0.5,0.35,0.35], xlim=[1050,1500], ylim=[-0.2,0.2])
 
         plt.legend()
         plt.savefig(f"{self.subclassName}_field-value")
@@ -192,34 +201,43 @@ class QuadraticPotential(Inflation):
         dψ_slowroll = self.SlowRoll._get_field_value_derivative(self.τ)
         h_slowroll  = self._get_hubble_param(self.τ, ψ_slowroll, dψ_slowroll)
         ln_a_slowroll = cumulative_trapezoid(h_slowroll, x=self.τ, initial=0)
-        plt.plot(self.τ, ln_a_slowroll, "--", label="Slow-roll approximation")
+        plt.plot(self.τ, ln_a_slowroll, "r--", label="Slow-roll approximation")
+        plt.legend()
         plt.savefig(f"{self.subclassName}_scale-factor")
 
     def plot_slow_roll_param_against_tau(self):
         super().plot_slow_roll_param_against_tau()
-        ψ_slowroll = self.SlowRoll._get_field_value(self.τ)
-        ϵ_slowroll = self._get_slow_roll_param_eps(ψ_slowroll)
-        η_slowroll = self._get_slow_roll_param_eta(ψ_slowroll)
 
-        plt.plot(self.τ, ϵ_slowroll, "--", label="$\epsilon$ - slow-roll approximation")
-        plt.plot(self.τ, η_slowroll, "--", label="$\eta$ - slow-roll approximation")
+        # Plot slow-roll approximation as well:
+        ψ = self.SlowRoll._get_field_value(self.τ)
+        ϵ = self._get_slow_roll_param_eps(ψ)
+        η = self._get_slow_roll_param_eta(ψ)
+        idx_ϵ = np.where(self.ϵ>1)[0][0]
+        idx_η = np.where(self.η>1)[0][0]
+
+        plt.semilogy(self.τ[:idx_ϵ], ϵ[:idx_ϵ], "r--", label="$\epsilon$ - slow-roll approximation", zorder=0)
+        plt.semilogy(self.τ[:idx_η], η[:idx_η], "k--", label="$\eta$ - slow-roll approximation", zorder=0)
+        plot_inset(plt.gca(), [0.45,0.5,0.35,0.35], xlim=[900,980], ylim=[0.1,1.5])
 
         plt.legend()
         plt.savefig(f"{self.subclassName}_slowroll-tau")
 
     def plot_slow_roll_param_against_N(self):
         super().plot_slow_roll_param_against_N()
-        ϵ = self._get_slow_roll_param_eps(self.ψ)
         N = self.N_tot - self.ln_a
-        idx_end = np.where(ϵ>1)[0][0]
 
         ψ_slowroll = self.SlowRoll._get_field_value(self.τ)
         ϵ = self._get_slow_roll_param_eps(ψ_slowroll)
         η = self._get_slow_roll_param_eta(ψ_slowroll)
+        abs_η = np.abs(η)
 
-        plt.semilogy(N[:idx_end], ϵ[:idx_end], "--", label="$\epsilon$ - slow-roll approximation")
-        plt.semilogy(N[:idx_end], η[:idx_end], "--", label="$\eta$ - slow-roll approximation")
-        plt.legend()
+        idx_ϵ = np.where(    ϵ > 1)[0][0]
+        idx_η = np.where(abs_η > 1)[0][0]
+
+        plt.plot(N[:idx_ϵ],     ϵ[:idx_ϵ], "r--", label="$\epsilon$ - slow-roll approximation")
+        plt.plot(N[:idx_η], abs_η[:idx_η], "k--", label="$| \eta |$ - slow-roll approximation")
+        plt.xlim(1e3, 1e-3)
+        plt.ylim(-0.05, 1.05)
         plt.legend()
         plt.savefig(f"{self.subclassName}_slowroll-N")
 
@@ -233,7 +251,7 @@ class QuadraticPotential(Inflation):
         r = 16*ϵ
 
         idx = np.logical_and(self.N>50, self.N<60)
-        plt.plot(n[idx], r[idx], "--", label="Slow-roll approximation")
+        plt.plot(n[idx], r[idx], "r--", label="Slow-roll approximation")
         plt.legend()
         plt.savefig(f"{self.subclassName}_slowroll-nr")
 
@@ -279,17 +297,19 @@ class StarobinskyPotential(Inflation):
 
     def plot_slow_roll_param_against_N(self):
         super().plot_slow_roll_param_against_N()
-        ϵ = self._get_slow_roll_param_eps(self.ψ)
-        idx_end = np.where(ϵ>1)[0][0]
-
         y = -np.sqrt(16*np.pi/3)*self.ψ
         N = 3/4*np.exp(-y)
-
         ϵ = 3/(4*N**2)
         η = -1/N
+        abs_η = np.abs(η)
 
-        plt.plot(N[:idx_end], ϵ[:idx_end], "--", label="$\epsilon$ - slow-roll approximation")
-        plt.plot(N[:idx_end], η[:idx_end], "--", label="$\eta$ - slow-roll approximation")
+        idx_ϵ = np.where(    ϵ > 1)[0][0]
+        idx_η = np.where(abs_η > 1)[0][0]
+
+        plt.plot(N[:idx_ϵ],     ϵ[:idx_ϵ], "r--", label="$\epsilon$ - slow-roll approximation", zorder=0)
+        plt.plot(N[:idx_η], abs_η[:idx_η], "k--", label="$| \eta |$ - slow-roll approximation")
+        plt.xlim(1e3, 1e-3)
+        plt.ylim(-0.05, 1.05)
         plt.legend()
         plt.savefig(f"{self.subclassName}_slowroll-N")
 
@@ -301,7 +321,7 @@ class StarobinskyPotential(Inflation):
         r = 12/N**2
 
         idx = np.logical_and(N>50, N<60)
-        plt.plot(n[idx], r[idx], "--", label="Slow-roll approximation")
+        plt.plot(n[idx], r[idx], "r--", label="Slow-roll approximation")
         plt.legend()
         plt.savefig(f"{self.subclassName}_slowroll-nr")
 
@@ -345,7 +365,7 @@ if __name__=="__main__":
 
     ###### Quadratic potential ######
     InflationQuadratic = QuadraticPotential()
-    InflationQuadratic.solve(τ_span=[0, 2000])
+    InflationQuadratic.solve(τ_span=[0, 1500])
 
     # e) & f)
     InflationQuadratic.plot_field_value()
@@ -353,6 +373,7 @@ if __name__=="__main__":
 
     # g)
     InflationQuadratic.plot_slow_roll_param_against_tau()
+    print(f"Total e-folds, quadratic potential: N_tot={InflationQuadratic.N_tot}")
 
     # h)
     InflationQuadratic.plot_field_eos()
@@ -366,7 +387,7 @@ if __name__=="__main__":
 
     ###### Starobinsky potential ######
     InflationStarobinsky = StarobinskyPotential()
-    InflationStarobinsky.solve(τ_span=[0, 3000])
+    InflationStarobinsky.solve(τ_span=[0, 2750])
 
     # m)
     InflationStarobinsky.plot_field_value()
@@ -377,3 +398,5 @@ if __name__=="__main__":
     # n) & o)
     InflationStarobinsky.plot_slow_roll_param_against_N()
     InflationStarobinsky.plot_slow_roll_param_nr_plane()
+
+    print(f"Total e-folds, Starobinsky potential: N_tot={InflationStarobinsky.N_tot}")
