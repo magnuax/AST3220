@@ -14,3 +14,9 @@
         plot_inset(plt.gca(), [0.21,0.14,0.35,0.35], xlim=[2695,2750], ylim=[0.9,2.1])
 
         plt.savefig(f"{self.subclassName}_slowroll-tau")
+		
+	\bibitem{BahngSchwarzild}
+		Bahng, J. \& Schwarzschild, M. 1961.
+		\textit{The Temperature Fluctuations in the Solar Granulation}.
+		 \textit{\apj}, \textbf{134}, 337-342. \\
+		\url{https://doi.org/10.1086/147163}

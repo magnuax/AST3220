@@ -155,7 +155,7 @@ class Inflation:
         r = 16*ϵ
 
         plt.figure(figsize=(10,5), tight_layout=True)
-        plt.title("TITLE")
+        plt.title("Tensor-to-scalar ratio and spectral index, $N\in[50,60]$")
         plt.plot(n, r, "r", label="Numerical solution")
         plt.legend()
         plt.xlabel("n")
@@ -322,6 +322,9 @@ class StarobinskyPotential(Inflation):
 
         idx = np.logical_and(N>50, N<60)
         plt.plot(n[idx], r[idx], "r--", label="Slow-roll approximation")
+        #plt.axvline(0.9649-0.0042, color="k", linestyle=":", label=r"$n=0.9649 \pm 0.0042$")
+        #plt.axvline(0.9649+0.0042, color="k", linestyle=":")
+
         plt.legend()
         plt.savefig(f"{self.subclassName}_slowroll-nr")
 

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022/Debian) (preloaded format=xelatex 2023.5.31)  14 JUN 2023 16:58
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022/Debian) (preloaded format=xelatex 2023.5.31)  15 JUN 2023 16:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -588,11 +588,7 @@ Class revtex4-1 Info: Unrecognized LaTeX tabular. Please update this document cl
 Class revtex4-1 Info: cite was not loaded (OK!) on input line 87.
 Class revtex4-1 Info: mcite was not loaded (OK!) on input line 87.
 Class revtex4-1 Info: multicol was not loaded (OK!) on input line 87.
- (aux/AST3220_project3.aux
-
-LaTeX Warning: Label `' multiply defined.
-
-)
+ (aux/AST3220_project3.aux)
 \openout1 = `AST3220_project3.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 87.
@@ -633,76 +629,67 @@ Class revtex4-1 Info: Taking \maketitle back from hyperref on input line 87.
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\\' on input line 93.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 98.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 97.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 98.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 97.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1]
-Underfull \hbox (badness 10000) in paragraph at lines 229--238
+)
+Underfull \hbox (badness 10000) in paragraph at lines 97--103
 
+ []
+
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 133.
+
+[1]
+Underfull \hbox (badness 10000) in paragraph at lines 245--254
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 257--273
+
+ []
+
+
+Underfull \hbox (badness 1297) in paragraph at lines 257--273
+\TU/lmr/m/n/10 slow-roll approximation starts deviating significantly
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 257--273
+
+ []
+
+
+Underfull \hbox (badness 1990) in paragraph at lines 257--273
+\TU/lmr/m/n/10 numerical solution shows the expansion halting as
  []
 
 File: figs//QuadraticPotential_field-value.png Graphic file (type bmp)
 <figs//QuadraticPotential_field-value.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 241--262
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 241--262
-
- []
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 File: figs//QuadraticPotential_scale-factor.png Graphic file (type bmp)
 <figs//QuadraticPotential_scale-factor.png>
-./AST3220_project3.tex:265: Missing $ inserted.
-<inserted text> 
-                $
-l.265 ...le factor $\ln\left(\frac{a}{a_i}\right)}
-                                                  $
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-./AST3220_project3.tex:267: Missing $ inserted.
-<inserted text> 
-                $
-l.267 ... function of the dimensionless time $\tau
-                                                  $.}
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-Overfull \hbox (22.70967pt too wide) in paragraph at lines 265--267
- \OML/cmm/m/it/9 rollapproximation:Plottedasafunctionofthedimensionlesstime$$^^\$\TU/lmr/m/n/9 . 
- []
-
-./AST3220_project3.tex:269: Extra }, or forgotten \endgroup.
-\@endfloatbox ...pagefalse \outer@nobreak \egroup 
-                                                  \color@endbox 
-l.269 \end{figure}
-                  
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[2]
+
+LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 295.
 
 File: figs//QuadraticPotential_slowroll-tau.png Graphic file (type bmp)
 <figs//QuadraticPotential_slowroll-tau.png>
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[2]
-
-LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 283.
-
+[3]
 File: figs//QuadraticPotential_field-eos.png Graphic file (type bmp)
 <figs//QuadraticPotential_field-eos.png>
 File: figs//QuadraticPotential_slowroll-N.png Graphic file (type bmp)
@@ -710,146 +697,11 @@ File: figs//QuadraticPotential_slowroll-N.png Graphic file (type bmp)
 File: figs//QuadraticPotential_slowroll-nr.png Graphic file (type bmp)
 <figs//QuadraticPotential_slowroll-nr.png>
 
+
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-./AST3220_project3.tex:344: Extra }, or forgotten \right.
-<template> }
-            $}\ifmeasuring@ \savefieldlength@ \fi \set@field \endtemplate 
-l.344 \end{align}
-                 
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-./AST3220_project3.tex:344: Missing \right. inserted.
-<inserted text> 
-                \right .
-l.344 \end{align}
-                 
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-./AST3220_project3.tex:344: Missing } inserted.
-<inserted text> 
-                }
-l.344 \end{align}
-                 
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-./AST3220_project3.tex:344: Extra }, or forgotten \right.
-<template> }
-            $}\ifmeasuring@ \savefieldlength@ \fi \set@field \endtemplate 
-l.344 \end{align}
-                 
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-./AST3220_project3.tex:344: Missing \right. inserted.
-<inserted text> 
-                \right .
-l.344 \end{align}
-                 
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-./AST3220_project3.tex:344: Missing } inserted.
-<inserted text> 
-                }
-l.344 \end{align}
-                 
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-[3]
-
-LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 344.
-
-./AST3220_project3.tex:353: Extra }, or forgotten \right.
-<template> }
-            $}\ifmeasuring@ \savefieldlength@ \fi \set@field \hfil \endtempl...
-l.353 \end{align}
-                 
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-./AST3220_project3.tex:353: Missing \right. inserted.
-<inserted text> 
-                \right .
-l.353 \end{align}
-                 
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-./AST3220_project3.tex:353: Missing } inserted.
-<inserted text> 
-                }
-l.353 \end{align}
-                 
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-./AST3220_project3.tex:353: Extra }, or forgotten \right.
-<template> }
-            $}\ifmeasuring@ \savefieldlength@ \fi \set@field \hfil \endtempl...
-l.353 \end{align}
-                 
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-./AST3220_project3.tex:353: Missing \right. inserted.
-<inserted text> 
-                \right .
-l.353 \end{align}
-                 
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-./AST3220_project3.tex:353: Missing } inserted.
-<inserted text> 
-                }
-l.353 \end{align}
-                 
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 373--380
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 428--435
 
  []
 
@@ -857,6 +709,9 @@ File: figs//StarobinskyPotential_field-value.png Graphic file (type bmp)
 <figs//StarobinskyPotential_field-value.png>
 File: figs//StarobinskyPotential_scale-factor.png Graphic file (type bmp)
 <figs//StarobinskyPotential_scale-factor.png>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 File: figs//StarobinskyPotential_slowroll-N.png Graphic file (type bmp)
 <figs//StarobinskyPotential_slowroll-N.png>
 
@@ -868,31 +723,94 @@ File: figs//StarobinskyPotential_slowroll-nr.png Graphic file (type bmp)
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 424.
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 481.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 424.
+(hyperref)                removing `math shift' on input line 481.
 
-[4]
 
-LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 429.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 481.
 
-[5] (aux/AST3220_project3.bbl) [6] (aux/AST3220_project3.aux)
+[5]
 
-LaTeX Warning: There were multiply-defined labels.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 513.
 
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\epsilon' on input line 513.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 513.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 513.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\eta' on input line 513.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 513.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 538.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 538.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 538.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 538.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 548--552
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 553--569
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 553--569
+
+ []
+
+
+Underfull \hbox (badness 1694) in paragraph at lines 553--569
+\TU/lmr/m/n/10 On the other hand, the predictions made by the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 574--578
+ [][]$[][][][][] [] [] [] [][][] [] [][][] [] [][] [] [][][][] [] [][][][][][][][][][] []
+ []
+
+(aux/AST3220_project3.bbl) [6] (aux/AST3220_project3.aux)
 Package rerunfilecheck Info: File `AST3220_project3.out' has not changed.
-(rerunfilecheck)             Checksum: BE678FE4060F09344B245D2FCAACD0D5;3445.
+(rerunfilecheck)             Checksum: 260105D3F8D1CD17B57BFA8BA0E95224;3347.
  ) 
 Here is how much of TeX's memory you used:
- 24767 strings out of 475864
- 448701 string characters out of 5804336
- 991704 words of memory out of 5000000
- 45401 multiletter control sequences out of 15000+600000
- 474508 words of font info for 60 fonts, out of 8000000 for 9000
+ 24781 strings out of 475864
+ 449066 string characters out of 5804336
+ 992704 words of memory out of 5000000
+ 45409 multiletter control sequences out of 15000+600000
+ 474532 words of font info for 63 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  84i,12n,80p,450b,421s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on aux/AST3220_project3.xdv (6 pages, 101616 bytes).
+Output written on aux/AST3220_project3.xdv (6 pages, 132176 bytes).

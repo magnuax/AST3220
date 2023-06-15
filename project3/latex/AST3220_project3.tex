@@ -94,13 +94,18 @@
 
 % the fundamental components of scientific reports:
 \section{Problem a)}
-Using the convention of represent
-As $H_i$ neccesarily has the same dimensions as $H$ it is clear that $h$ must
-be dimensionless:
+We will in this section let $\LL$, $\TT$ and $\MM$ represent dimensions length, time
+and mass respectively.
+\\
+\\
+As $H_i$ necessarily has the same dimensions as $H$ it is immediately
+clear that $h$ must be dimensionless:
 \begin{align}
 	[h] = [H] [H_i]^{-1} = 1
 \end{align}
-The hubble parameter has dimension velocity per distance, which can be written
+To check the units of $\tau$ we first examine the dimensions of the Hubble
+parameter. The Hubble parameter has dimension velocity per distance, which can
+be written
 \begin{align}
 	[H] = (\LL \TT^{-1}) \LL^{-1} = \TT^{-1}
 \end{align}
@@ -108,25 +113,25 @@ so that $\tau$ is dimensionless as well:
 \begin{align}
   [\tau] = [H] [t] = \TT^{-1} \TT = 1
 \end{align}
-Both $\phi$ and the Planck energy has units of energy, making $\psi$ dimensionless
+Both $\phi$ and the Planck energy $E_p$ has units of energy, making $\psi$ dimensionless
 as well:
 \begin{align}
 	[\psi] = [\phi] [E_p]^{-1} = \MM \LL^2 \TT^{-2} (\MM \LL^2 \TT^{-2})^{-1} = 1
 \end{align}
-Lastly, we rewrite the potential $v$ using the definiton $E_p^2 = \hbar c^5/G$,
+Lastly, we rewrite the potential $v$ using the definition $E_p^2 = \hbar c^5/G$,
 so that
 \begin{align}
 	v = \frac{\hbar c^3}{H_i^2 E_p^2} = \frac{1}{H_i^2} \frac{G}{c^2}V
 \end{align}
-Using the definiton of $H_i$, we then see that
+Using the definition of $H_i$, we then see that
 \begin{align}
 	[v] = [H_i]^{-1} [G c^{-2} V] = [H_i]^{-1}[H_i] = 1
 \end{align}
 so $v$ is dimensionless as well
 
 \section{Problem b)}
-\subsection{Hubble parameter and scale factor}
-Using the definitons of the dimensionless variables and applying the chain rule,
+\subsubsection{Hubble parameter and scale factor}
+Using the definitions of the dimensionless variables and applying the chain rule,
 we see that
 \begin{align}
 	\frac{d}{d\tau}\left(\ln \frac{a}{a_i}\right)
@@ -135,8 +140,8 @@ we see that
 				&= \frac{H}{H_i} \\
 				&= h
 \end{align}
-\subsection{Continuity equation (name???)}
-Similarly we continue using the chain rule to rewrite $\dot{\phi}$,
+\subsubsection{Equation of motion}
+Similarly, we continue using the chain rule to rewrite $\dot{\phi}$,
 $\ddot{\phi}$ and $V$' in terms of $\tau$ and $\psi$:
 \begin{align}
 	\frac{d\phi}{dt} &= \frac{d\tau}{dt}\frac{d\phi}{d\psi}\frac{d\psi}{d\tau} \label{eq:dphidt}
@@ -146,7 +151,7 @@ $\ddot{\phi}$ and $V$' in terms of $\tau$ and $\psi$:
 	\frac{dV}{d\phi} &= \frac{d\psi}{d\phi}\frac{dV}{dv}\frac{dv}{d\psi}
 									 = \frac{1}{E_p} \frac{H_i^2 E_p^2}{\hbar c^3} \frac{dv}{d\psi}
 \end{align}
-Which can be inserted to the (????) equation, giving
+Which can be inserted into the equation of motion, giving
 \begin{align}
 	H_i^2 E_p \frac{d^2\psi}{d\tau^2} + 3H H_i E_p \frac{d\psi}{d\tau}
 				+ H_i^2 E_p \frac{dv}{d\psi} = 0
@@ -156,8 +161,8 @@ reduces to
 \begin{align}
 	\frac{d^2\psi}{d\tau^2} + 3h\frac{d\psi}{d\tau} + \frac{dv}{d\psi} = 0 \label{eq:eom}
 \end{align}
-\subsubsection{Hubble parameter}
-Lastly, we rewrite the Hubble parameterin terms of the dimensionless quantities.
+\subsubsection{First Friedmann equation}
+Lastly, we rewrite the first Friedmann equation in terms of the dimensionless quantities.
 We have
 \begin{align}
 	H^2 &= \frac{8\pi G}{3 c^2}\left[ \frac{1}{2\hbar c^3}\dot{\phi} + V(\phi)\right] \\
@@ -165,7 +170,7 @@ We have
 			&= \frac{8\pi G}{3 c^2}\frac{H_i^2 E_p^2}{\hbar c^3}\left[\frac{1}{2}\left(\frac{d\psi}{d\tau}\right)^2 + v(\psi)\right]
 \end{align}
 Where we used equation (\ref{eq:dphidt}) and the definition of $v$. Next,
-inserting the definition of the planck energy
+inserting the definition of the Planck energy
 \begin{align}
 	E_p^2 = \frac{\hbar c^5}{G}
 \end{align}
@@ -174,7 +179,18 @@ and dividing both sides by $H_i$, we finally get:
 	h^2 = \frac{8\pi}{3}\left[ \frac{1}{2}\left(\frac{d\psi}{d\tau}\right)^2 + v(\psi)\right] \label{eq:h}
 \end{align}
 \section{Problem c)}
-Read up on this shit
+In the slow-roll regime, $\frac{d^2\psi}{d\tau^2}$ is small
+\begin{align}
+	\frac{d^2\psi}{d\tau^2} \ll \frac{dv}{d\psi}
+\end{align}
+Inserting, the equation of motion can then be approximated as
+\begin{align}
+	3h\frac{d\psi}{d\tau} + \frac{dv}{d\psi} = 0
+\end{align}
+This is a first-order differential equation, which only requires an initial
+value for $\psi$. Thus, when in the slow-roll approximation, the initial value
+of $\frac{d\psi}{d\tau}$ does not matter as long as it fulfils the
+slow-roll conditions.
 
 \section{Problem d)}
 During slow-roll, the number of remaining e-folds until inflation ends can be
@@ -182,20 +198,20 @@ calculated as
 \begin{align}
 	N &= \frac{8\pi}{E_p^2} \int_{\phi_{\mathrm{end}}}^\phi \frac{V}{V'}\ d\phi
 \end{align}
-Where we make the substitution $d\phi = E_p d\psi$ and have
+Substituting $d\phi = E_p d\psi$, we then have
 \begin{align}
 	\frac{V}{V'} = \frac{1}{2}\phi = \frac{E_p}{2}\psi
 \end{align}
 Giving
 \begin{align}
 	N &= 4\pi \int_{\psi_{\mathrm{end}}}^\psi \psi\ d\psi \\
-	  &= 2\pi \bigg( \psi^2 - \psi_{end}^2 \bigg)	\label{eq:N-psi_i}
+	  &= 2\pi \bigg( \psi^2 - \psi_{\mathrm{end}}^2 \bigg)	\label{eq:N-psi_i}
 \end{align}
 where $\psi_{\mathrm{end}}$ is given by taking $\epsilon(\phi_{\mathrm{end}})=1$
 as the end of inflation:
 \begin{align}
 	\epsilon(\phi_{\mathrm{end}}) = \frac{E_p^2}{16\pi} \left(\frac{V'}{V}\right)^2
-	 	&= \frac{1}{16\pi}\left(\frac{dv}{d\psi}\right) \\
+	 	&= \frac{1}{16\pi}\left(\frac{\frac{dv}{d\psi}}{v}\right) \\
 											 &= \frac{1}{4\pi \psi_{\mathrm{end}}^2} \\
 											 &= 1 \\
 \end{align}
@@ -208,22 +224,22 @@ Inserting this, the number of remaining e-folds is
 	N = 2\pi \psi^2 - \frac{1}{2}
 \end{align}
 The number of remaining e-folds at the initial time $t=t_i$ is
-the total number of e-folds $N_tot$. Evaluating $N(t)$ at $t_i$ and solving for
+the total number of e-folds $N_{\mathrm{tot}}$. Evaluating $N(t)$ at $t_i$ and solving for
 the initial field value $\psi_i$ we then get:
 \begin{align}
-	\psi_i = \sqrt{ \frac{1}{2\pi} \left(N_{tot} + \frac{1}{2} \right) }
+	\psi_i = \sqrt{ \frac{1}{2\pi} \left(N_{\mathrm{tot}} + \frac{1}{2} \right) }
 \end{align}
 Which evaluates to $\psi_i \approx 8.925$ for $500$ total e-folds of inflation.
 
 \section{Problem e) \& f)}
 To solve the equations of motion of the field, we rename
 $\xi = \frac{d\psi}{d\tau}$ so equation \ref{eq:eom} can instead be written as
-a set of two first order equations:
+a set of two first-order equations:
 \begin{align}
 	\frac{d\psi}{d\tau} &= \xi \label{eq:eom_1} \\
 	\frac{d\xi}{d\tau}  &= -3h(\xi, \psi) \xi - \frac{d}{d\psi}v(\psi) \label{eq:eom_2}
 \end{align}
-where $h$ is then given by
+where $h$ is again given by the first Friedmann equation
 \begin{align}
 	h^2 = \frac{8\pi}{3}\left[ \frac{1}{2}\xi^2 + v(\psi)\right]
 \end{align}
@@ -242,39 +258,59 @@ by numerically evaluating the integral
 The results are plotted in Figure (\ref{fig:quad_a}), along with the slow-roll
 solution
 \\ \\
-Based on the lectures, we expect the field to decay until it reaches $\psi_{end}$.
-When it reaches $\psi_{end}$ it should then start behaving like a damped oscillator
-centered around $\psi=0$. This is in agreement with the numerical solution
-(Figure \ref{fig:quad_psi}), which starts oscillating at $\tau\approx 1000$.
+Based on the lectures, we expect the field to decay until it reaches $\psi_{\mathrm{end}}$.
+When it reaches $\psi_{\mathrm{end}}$ it should then start behaving like a damped oscillator
+centred around $\psi=0$. This is in agreement with the numerical solution
+(Figure \ref{fig:quad_psi}), which shows the field decaying linearly until it
+enters the oscillating phase at $\tau\approx 1000$, indicating the end of inflation.
 This is also when the slow-roll approximation starts deviating significantly
 from the exact solution, as it instead continues decaying at a constant rate.
 \\ \\
 This is around the same time the slow-roll approximation for the scale factor
-deviates from the exact solution (Figure \ref{fig:quad_a}), as one might expect.
-BLABLABLABLA
+deviates from the exact solution (Figure \ref{fig:quad_a}), as one expects.
+While the exact numerical solution shows the expansion halting as inflation ends,
+the slow-roll approximation continues expanding shortly after.
+
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{QuadraticPotential_field-value.png}
 	\caption{The dimensionless scalar field $\psi$ for the quadratic potential,
-	along with it's approximation in the slow-roll regime. Plotted against the
+	along with its approximation in the slow-roll regime. Plotted against the
 	dimensionless time $\tau$.}
 	\label{fig:quad_psi}
 \end{figure}
 
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{QuadraticPotential_scale-factor.png}
-	\caption{The logarithm of the scale factor $\ln\left(\frac{a}{a_i}\right)}$
+	\caption{The logarithm of the scale factor $\ln\left(\frac{a}{a_i}\right)$
 	for a quadratic potential, along with the slow-roll approximation.
 	Plotted as a function of the dimensionless time $\tau$.}
 	\label{fig:quad_a}
 \end{figure}
 
 \section{Problem g)}
-SLOW ROLL PARAMETERS AGAINST TAU
+The slow-roll parameters are plotted against $\tau$ in Figure
+(\ref{fig:QuadraticPotential_slowroll-tau}), along with the slow-roll
+approximations.
+For the quadratic potential, the slow-roll parameters are
+\begin{align}
+	\epsilon = \eta = \frac{1}{4 \pi}\frac{1}{\psi^2}
+\end{align}
+To find the total number of e-folds, we  numerically integrated
+\begin{align}
+	N_{\mathrm{tot}} = \int_{t_{\mathrm{end}}}^{t_i} H\ dt = \int_{\tau_{\mathrm{end}}}^{\tau_i} h\ d\tau
+\end{align}
+where the boundary $\tau_{\mathrm{end}}$ is taken care of by cutting off the solution
+arrays $\tau$ and $h$ where $\epsilon=1$. This gives a total
+\begin{align}
+	N_{\mathrm{tot}} = 501.4
+\end{align}
+$e$-foldings produced during inflation, slightly more than the $500$ e-foldings
+predicted by the slow-roll approximation.
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{QuadraticPotential_slowroll-tau.png}
 	\caption{The slow-roll parameters $\epsilon$ and $\eta$ for a quadratic potential,
 	plotted against dimensionless time $\tau$.}
-	\label{}
+	\label{fig:QuadraticPotential_slowroll-tau}
 \end{figure}
 
 \section{Problem h)}
@@ -285,7 +321,7 @@ dimensionless variables. The equation of state of the scalar field is given by
 	= \frac{ \frac{1}{2\hbar c^3}\left(\frac{d\phi}{dt}\right)^2 - V }
 				 { \frac{1}{2\hbar c^3}\left(\frac{d\phi}{dt}\right)^2 + V }
 \end{align}
-From before, we know that
+Earlier, we found that
 \begin{align}
 	\frac{d\phi}{dt} = H_i E_p \frac{d\psi}{d\tau}
 \end{align}
@@ -302,25 +338,40 @@ Inserting these into the equation of state, we then get
 	 = \frac{ \frac{1}{2}\left(\frac{d\psi}{d\tau}\right)^2 - v }
  				 { \frac{1}{2}\left(\frac{d\psi}{d\tau}\right)^2 + v }
 \end{align}
-
+which is what we wanted to show.
 \section{Problem i)}
-In the slow-roll regime we expect a small $\frac{d\psi}{d\tau}$, giving
+In the slow-roll regime we expect a small $\frac{d\psi}{d\tau}\ll1$, giving
 $\left(\frac{d\psi}{d\tau}\right)^2 \approx 0$. The equation of state then
 becomes
 \begin{align}
 	w_\phi \approx \frac{-v}{v} = -1
 \end{align}
-
+However, this should change when the field enters the oscillating phase.
+Initially, when the field reaches $psi=0$, the potential becomes $v(0) =0$ which
+gives an equation of state
+\begin{align}
+	w_\phi = \frac{\ \frac{1}{2}\left(\frac{d\psi}{d\tau}\right)^2 \ }{\frac{1}{2}\left(\frac{d\psi}{d\tau}\right)^2} = 1
+\end{align}
+However, the field will soon after reach a small peak where $\frac{d\psi}{d\tau}$
+has to be zero, again giving an equation of state
+\begin{align}
+	w_\phi = \frac{-v}{v} = -1
+\end{align}
+As the field oscillates, this behaviour should repeat and we get an equation of
+state oscillating between $w_\phi=-1$ and $w_\phi=1$. This is exactly what we
+see in the numerical results seen in Figure (\ref{fig:QuadraticPotential_field-eos}).
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{QuadraticPotential_field-eos.png}
 	\caption{The scalar field $\phi$'s equation of state, given a quadratic
 	potential, plotted against the dimensionless time $\tau$.}
-	\label{}
+	\label{fig:QuadraticPotential_field-eos}
 \end{figure}
 
 \section{Problem j)}
-Plotting the slowroll parameters against $N$ we get the plot shown in Figure
-(\ref{fig:quadratic_slowroll-N}).
+Plotting the slow-roll parameters against $N$ we get the plot shown in Figure
+(\ref{fig:quadratic_slowroll-N}). As expected we see that the exact numerical
+solution of $\epsilon$ ($=\eta$) approaches $\epsilon=1$ as $N$ approaches zero
+and inflation ends.
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{QuadraticPotential_slowroll-N.png}
 	\caption{}
@@ -329,7 +380,10 @@ Plotting the slowroll parameters against $N$ we get the plot shown in Figure
 
 \section{Problem k)}
 The predicted curve in the $n$-$r$ plane for
-$N\in[50,60]$ can be seen in Figure (\ref{fig:quadratic_slowroll-nr})
+$N\in[50,60]$ can be seen in Figure (\ref{fig:quadratic_slowroll-nr}).
+The prediction shows a spectral index $n$ in the approximate range of $0.960$ to
+$0.966$, and a tensor-to-scalar ratio $r$ in the approximate range
+$0.135$ to $0.160$.
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{QuadraticPotential_slowroll-nr.png}
 	\caption{The spectral index $n$ and the tensor-to-scalar ratio of the
@@ -338,28 +392,29 @@ $N\in[50,60]$ can be seen in Figure (\ref{fig:quadratic_slowroll-nr})
 \end{figure}
 
 \section{Problem l)} \label{section:problem_l}
-Substituting $y=-\sqrt{\frac{2}{3}}\frac{\phi}{M_p}$, we can write
+Substituting $y=-\sqrt{\frac{2}{3}}\frac{\phi}{M_p}$, the potential can be
+written
 \begin{align}
-	V(\phi) = \frac{3 M^2 M_P^2}{4} \left(1-e^y)^2
+	V(\phi) = \frac{3 M^2 M_P^2}{4} \left(1-e^y\right)^2
 \end{align}
 We also have
 \begin{align}
 	y' = -\sqrt{\frac{2}{3}}\frac{1}{M_p}, \ \ \ y'' = 0
 \end{align}
-We then get
+So that the derivative of the potential $\frac{dV}{d\phi}$ becomes
 \begin{align}
-	V' &= -\frac{3 M^2 M_p^2}{2}\left(1 - e^y) \cdot e^y \cdot y' \label{eq:V_diff1} \\
+	V' &= -\frac{3 M^2 M_p^2}{2}\left(1 - e^y\right) \cdot e^y \cdot y' \label{eq:V_diff1} \\
 		 &= \sqrt{\frac{2}{3}} \frac{2}{M_p} \frac{e^y}{1-e^y} V
 \end{align}
-And, differentiating equation (\ref{eq:V_diff1}), we find
+And, differentiating equation (\ref{eq:V_diff1}) once again, we find
 \begin{align}
 	V'' &= y' \frac{3M^2 M_p^2}{2} \frac{d}{d\phi}\left( e^{2y} - e^y \right) \\
 			&= y'^2 \frac{3M^2 M_p^2}{2}\left( 2e^{2y}- e^y \right) \\
 			&= \frac{2}{3}\frac{3M^2}{2}\left( 2e^{2y} - e^y \right) \\
 			&= \frac{4}{3}\frac{1}{M_p^2}\frac{\left(2e^{2y} - e^y\right)}{\left( 1 - e^y\right)^2} V
 \end{align}
-We can then find the slow roll parameters. Using $M_p = \frac{E_p^2}{8\pi}$,
-these can be written
+We can use these to find the slow roll parameters. Using $M_p = \frac{E_p^2}{8\pi}$,
+the slow-roll parameters are
 \begin{align}
 	\epsilon &= \frac{M_p^2}{2} \left(\frac{V'}{V}\right)^2 \\
   \eta 		 &= M_p^2 \frac{V''}{V}
@@ -370,8 +425,8 @@ By insertion, we then get
   \eta 		 &= \frac{4}{3} \frac{\left(2e^{2y} - e^y\right)}{\left( 1 - e^y\right)^2}
 \end{align}
 \section{Problem m)}
-The governing equations are then solved just like before, only exchanging the
-quadratic potentiakl with the Starobinsky potential. The resulting dimensionless
+The governing equations are then solved just like before, only switching the
+quadratic potential with the Starobinsky potential. The resulting dimensionless
 field $\psi$ is then shown in Figure (\ref{fig:Starobinsky_psi}), and the scale
 factor can be seen in Figure (\ref{fig:Starobinsky_a}).
 \\ \\
@@ -384,7 +439,7 @@ Giving an exponential scale factor during inflation
 \begin{align}
 	a = a_i e^\tau = a_i e^{H_i t}
 \end{align}
-In other words the Starobinsky potential gives rise to inflation following
+In other words, the Starobinsky potential gives rise to inflation following
 the de Sitter model.
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{StarobinskyPotential_field-value.png}
@@ -401,9 +456,11 @@ the de Sitter model.
 \end{figure}
 
 \section{Problem n)}
-Plotting the slowroll parameters against $N$ we get the plot shown in Figure
-(\ref{fig:starobinsky_slowroll-N}). The predicted curve in the $n$-$r$ plane for
-$N\in[50,60]$ can be seen in Figure (\ref{fig:starobinsky_slowroll-nr})
+The slow-roll parameters plotted against $N$ are shown in Figure
+(\ref{fig:starobinsky_slowroll-N}), along with the slow-roll approximations
+calculated in problem o). The predicted curve in the $n$-$r$ plane for
+$N\in[50,60]$ can be seen in Figure (\ref{fig:starobinsky_slowroll-nr}), also
+with the slow-roll approximations.
 
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{StarobinskyPotential_slowroll-N.png}
@@ -421,8 +478,8 @@ $N\in[50,60]$ can be seen in Figure (\ref{fig:starobinsky_slowroll-nr})
 \end{figure}
 
 \section{Problem o)}
-\subsection{Remaining e-folds $N$}
-From before, we have that
+\subsubsection{Remaining e-folds $N$}
+From earlier, we have that
 \begin{align}
 	\frac{V}{V'} &= \sqrt{\frac{3}{2}}\frac{M_p}{2} \frac{1-e^y}{e^y} \\
 							 &= \sqrt{\frac{3}{16\pi}}\frac{E_p}{2} \bigg( e^{-y} -1 \bigg) \\
@@ -430,14 +487,14 @@ From before, we have that
 Using $y=-\sqrt{\frac{16\pi}{3}} \frac{\phi}{E_p}$, the remaining number of
 e-foldings becomes
 \begin{align}
-	N &= \frac{8\pi}{E_p^2} \int_{\phi_{end}}^\phi \frac{V}{V'}\ d\phi \\
-		&= -\frac{8\pi}{E_p} \sqrt{\frac{3}{16\pi}}\int_{y_{end}}^y \frac{V}{V'}\ d\tilde{y} \\
-		&= -\frac{3}{4}\int_{y_{end}}^y e^{-\tilde{y}} -1\ d\tilde{y} \\
-		&= \frac{3}{4}\bigg[ e^{-\tilde{y}} + \tilde{y}\bigg]_{\tilde{y}=y_{end}}^y
+	N &= \frac{8\pi}{E_p^2} \int_{\phi_{\mathrm{end}}}^\phi \frac{V}{V'}\ d\phi \\
+		&= -\frac{8\pi}{E_p} \sqrt{\frac{3}{16\pi}}\int_{y_{\mathrm{end}}}^y \frac{V}{V'}\ d\tilde{y} \\
+		&= -\frac{3}{4}\int_{y_{\mathrm{end}}}^y e^{-\tilde{y}} -1\ d\tilde{y} \\
+		&= \frac{3}{4}\bigg[ e^{-\tilde{y}} + \tilde{y}\bigg]_{\tilde{y}=y_{\mathrm{end}}}^y
 \end{align}
 Where we on the last line applied the slow-roll criterion
 \begin{align}
-	\phi \gg \phi_{end} \ \ \ \Rightarrow \ \ \ y \gg y_{end}
+	\phi \gg \phi_{\mathrm{end}} \ \ \ \Rightarrow \ \ \ y \gg y_{\mathrm{end}}
 \end{align}
 Such that
 \begin{align}
@@ -448,17 +505,17 @@ giving
 \begin{align}
 	e^{-y} \gg y
 \end{align}
-With which we use to further approximate $N$ as
+Which we use to further approximate $N$ as
 \begin{align}
 	N \approx \frac{3}{4} e^{-y}
 \end{align}
 
-\subsection{Slow-roll parameters}
-The slow-roll parameters are found in a similar manner. Using
+\subsubsection{Slow-roll parameters $\epsilon$ \& $\eta$}
+The slow-roll parameters are found similarly. Using
 \begin{align}
 	e^y \ll 1	\label{eq:ey_gg}
 \end{align}
-we have that $1-e^y\approx 1$, so that $\epsilon$ can be approximated as
+we have that $1-e^y\approx 1$, so that $\epsilon$ can be approximated as
 \begin{align}
 	\epsilon = \frac{4}{3} \frac{e^{2y}}{(1-e^y)^2}
 		 \approx \frac{4}{3} e^{2y}
@@ -469,7 +526,7 @@ Similarly, $\eta$ becomes
 	\eta = \frac{4}{3} \frac{(2e^{2y} - e^y)}{(1-e^y)^2}
 		 \approx \frac{4}{3} (2e^{2y} - e^y)
 \end{align}
-WeMultiplying equation (\ref{eq:ey_gg}) by $e^y$ on both sides, we get
+Multiplying equation (\ref{eq:ey_gg}) by $e^y$ on both sides, we get
 \begin{align}
 	e^{2y} \ll e^y
 \end{align}
@@ -478,8 +535,8 @@ and $\eta$ is further simplified to
 	\eta \approx -\frac{4}{3}e^y = -\frac{1}{N}
 \end{align}
 
-\subsection{Tensor-to-scalar ratio and spectral index}
-To approximate the tensor-to-scalar ratio $r$ we simply insert our approximation
+\subsubsection{Tensor-to-scalar ratio $r$ \& spectral index $n$}
+To approximate the tensor-to-scalar ratio $r$ we insert our approximation
 of $\epsilon$, giving
 \begin{align}
 	r = 16\epsilon \approx \frac{12}{N^2}
@@ -490,21 +547,34 @@ Similarly, the spectral index is approximated
 														&\approx 1 - \frac{2}{N}
 \end{align}
 where we used that $N$ will be a large number during slow-roll, making the
-second order term negligble.
+second-order term negligible.
+\\
 \section{Problem p)}
-The latest constraints from observations (REFERENCE) suggests an upper limit
-on the tensor-to-scalar ratio $r<0.044$. This is clearly not consistent with
-the $\phi^2$ potential (\ref{fig:starobinsky_slowroll-nr})
-READ STUFF
-
-\begin{acknowledgments}  % if you disagree with the spelling, blame Americans
-I would like thank myself for writing this beautiful document.
-\end{acknowledgments}
+Analysis of the 2018 Planck CMB anisotropy measurements (Ref. \cite{Planck})
+gives constraints on the values of the spectral index and the
+tensor-to-scalar ratio. Specifically, they suggest a spectral index
+$n = 0.9649 \pm 0.0042$ and put an upper limit $r<0.056<<$ on the tensor-to-scalar
+ration.
+\\ \\
+While the predicted spectral index of the $\phi^2$-potential (Figure
+\ref{fig:quadratic_slowroll-nr}) is consistent with this, the
+predicted values of the tensor-to-scalar ratio are far above the upper limit,
+ruling this potential out.
+\\ \\
+On the other hand, the predictions made by the Starobinsky model (Figure
+\ref{fig:starobinsky_slowroll-nr}) are fully consistent with these
+constraints. We see that this model predicts a spectral index within the
+range observed range, and tensor-to-scalar ratios well below
+the upper limit.
 
 \section*{References}
 
 \begin{itemize}
-	\bibitem{name} reference
+	\bibitem{Planck}
+	Planck Collaboration, 2020,
+	\textit{Planck 2018 results - X. Constraints on inflation}.
+	\textit{A\&A} \textbf{641} A10 \\
+	\url{https://doi.org/10.1051/0004-6361/201833887}
 \end{itemize}
 
 \end{document}
