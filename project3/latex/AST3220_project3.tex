@@ -125,7 +125,7 @@ so that
 \end{align}
 Using the definition of $H_i$, we then see that
 \begin{align}
-	[v] = [H_i]^{-1} [G c^{-2} V] = [H_i]^{-1}[H_i] = 1
+	[v] = [H_i]^{-2} [G c^{-2} V] = [H_i]^{-2}[H_i]^2 = 1
 \end{align}
 so $v$ is dimensionless as well
 
@@ -215,7 +215,7 @@ as the end of inflation:
 											 &= \frac{1}{4\pi \psi_{\mathrm{end}}^2} \\
 											 &= 1 \\
 \end{align}
-Solving for $\psi_end$ this gives
+Solving for $\psi_{\mathrm{end}}$ this gives
 \begin{align}
 	\Rightarrow \ \ \ \ \psi_{\mathrm{end}}^2 &= \frac{1}{4\pi}
 \end{align}
@@ -249,14 +249,14 @@ the resulting field $\psi$ plotted against $\tau$ is attached in Figure
 (\ref{fig:quad_psi}), along with the slow-roll solution.
 \\ \\
 With the
-solutions $\xi$ and $\psi$ we can easily find $\ln\left(\frac{a}{a_i}\right)$
+solutions $\xi$ and $\psi$ we can find $\ln\left(\frac{a}{a_i}\right)$
 by numerically evaluating the integral
 \begin{align}
 	\ln\left(\frac{a}{a_i}\right) &= \int_0^t H dt \\
 																&= \int_0^\tau h(\xi, \psi) d\tau
 \end{align}
-The results are plotted in Figure (\ref{fig:quad_a}), along with the slow-roll
-solution
+The results of which are plotted in Figure (\ref{fig:quad_a}), along with the slow-roll
+solution.
 \\ \\
 Based on the lectures, we expect the field to decay until it reaches $\psi_{\mathrm{end}}$.
 When it reaches $\psi_{\mathrm{end}}$ it should then start behaving like a damped oscillator
@@ -347,17 +347,18 @@ becomes
 	w_\phi \approx \frac{-v}{v} = -1
 \end{align}
 However, this should change when the field enters the oscillating phase.
-Initially, when the field reaches $psi=0$, the potential becomes $v(0) =0$ which
+Initially, when the field reaches $\psi=0$, the potential becomes $v(0)=0$, which
 gives an equation of state
 \begin{align}
 	w_\phi = \frac{\ \frac{1}{2}\left(\frac{d\psi}{d\tau}\right)^2 \ }{\frac{1}{2}\left(\frac{d\psi}{d\tau}\right)^2} = 1
 \end{align}
-However, the field will soon after reach a small peak where $\frac{d\psi}{d\tau}$
+However, as the field oscillates it will at some point reach a peak, where $\frac{d\psi}{d\tau}$
 has to be zero, again giving an equation of state
 \begin{align}
 	w_\phi = \frac{-v}{v} = -1
 \end{align}
-As the field oscillates, this behaviour should repeat and we get an equation of
+With the field oscillating back and forth, this behaviour repeats and we should
+get an equation of
 state oscillating between $w_\phi=-1$ and $w_\phi=1$. This is exactly what we
 see in the numerical results seen in Figure (\ref{fig:QuadraticPotential_field-eos}).
 \begin{figure}[h!]
@@ -429,6 +430,8 @@ The governing equations are then solved just like before, only switching the
 quadratic potential with the Starobinsky potential. The resulting dimensionless
 field $\psi$ is then shown in Figure (\ref{fig:Starobinsky_psi}), and the scale
 factor can be seen in Figure (\ref{fig:Starobinsky_a}).
+Calculating the total number of $e$-folds, we found that the Starobinsky inflation
+gave about $N_\mathrm{tot}=2690$ $e$-folds of inflation.
 \\ \\
 From Figure (\ref{fig:Starobinsky_a}) we note that the logarithm of the scale
 factor goes as
@@ -492,20 +495,11 @@ e-foldings becomes
 		&= -\frac{3}{4}\int_{y_{\mathrm{end}}}^y e^{-\tilde{y}} -1\ d\tilde{y} \\
 		&= \frac{3}{4}\bigg[ e^{-\tilde{y}} + \tilde{y}\bigg]_{\tilde{y}=y_{\mathrm{end}}}^y
 \end{align}
-Where we on the last line applied the slow-roll criterion
+This can be further simplified by applying slow-roll criterion
 \begin{align}
-	\phi \gg \phi_{\mathrm{end}} \ \ \ \Rightarrow \ \ \ y \gg y_{\mathrm{end}}
+	\phi \gg \phi_{\mathrm{end}} \ \ \ \Rightarrow \ \ \ -y \gg -y_{\mathrm{end}}
 \end{align}
-Such that
-\begin{align}
- N &\approx \frac{3}{4}\bigg( e^{-y} + y\bigg)
-\end{align}
-Assuming the field is on the order $\phi\sim\phi_i = 2$, we have $y \approx -8$,
-giving
-\begin{align}
-	e^{-y} \gg y
-\end{align}
-Which we use to further approximate $N$ as
+(Remember $y\propto-\phi$). Thus, the exponential term $e^{-y}$ will dominate, giving
 \begin{align}
 	N \approx \frac{3}{4} e^{-y}
 \end{align}

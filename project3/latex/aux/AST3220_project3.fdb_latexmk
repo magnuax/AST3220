@@ -1,16 +1,16 @@
 # Fdb version 3
-["bibtex aux/AST3220_project3"] 1686837855 "aux/AST3220_project3.aux" "aux/AST3220_project3.bbl" "aux/AST3220_project3" 1686838303
+["bibtex aux/AST3220_project3"] 1686849944 "aux/AST3220_project3.aux" "aux/AST3220_project3.bbl" "aux/AST3220_project3" 1686849946
   "/usr/share/texlive/texmf-dist/bibtex/bst/revtex4-1/apsrev4-1.bst" 1602107945 71515 e333383ed72bf24aa6de7e8cabb55f84 ""
-  "aux/AST3220_project3.aux" 1686838295 8294 23c8dbeba37d342a85ce8642e4375db0 "xelatex"
-  "aux/AST3220_project3Notes.bib" 1686838295 103 48ad29797468f16e2853d8797278d7af "xelatex"
+  "aux/AST3220_project3.aux" 1686849945 8294 aadcae19b87034b60210ad758681342b "xelatex"
+  "aux/AST3220_project3Notes.bib" 1686849945 103 48ad29797468f16e2853d8797278d7af "xelatex"
   (generated)
   "aux/AST3220_project3.bbl"
   "aux/AST3220_project3.blg"
-["xdvipdfmx"] 1686838302 "aux/AST3220_project3.xdv" "aux/AST3220_project3.pdf" "aux/AST3220_project3" 1686838303
-  "aux/AST3220_project3.xdv" 1686838295 132176 52577bd5fbb4c4e8b4cc0fb7cad90716 "xelatex"
+["xdvipdfmx"] 1686849945 "aux/AST3220_project3.xdv" "aux/AST3220_project3.pdf" "aux/AST3220_project3" 1686849946
+  "aux/AST3220_project3.xdv" 1686849945 132832 9d09ec5dd79fe5d66c7de68ca4e11efa "xelatex"
   (generated)
   "aux/AST3220_project3.pdf"
-["xelatex"] 1686838294 "AST3220_project3.tex" "aux/AST3220_project3.xdv" "AST3220_project3" 1686838303
+["xelatex"] 1686849944 "AST3220_project3.tex" "aux/AST3220_project3.xdv" "AST3220_project3" 1686849946
   "/etc/texmf/web2c/texmf.cnf" 1661242560 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
@@ -169,10 +169,10 @@
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1658757727 39561 34c98e380bf7c7201ee6a7909aff625a ""
   "/usr/share/texmf/web2c/texmf.cnf" 1658757727 39561 34c98e380bf7c7201ee6a7909aff625a ""
   "/var/lib/texmf/web2c/xetex/xelatex.fmt" 1685529408 5471034 d8c2e21c538cf3e6363a8edb27105fe8 ""
-  "AST3220_project3.tex" 1686838302 23338 021a871cad9703ff27a46c58dddadfc5 ""
-  "aux/AST3220_project3.aux" 1686838295 8294 23c8dbeba37d342a85ce8642e4375db0 "xelatex"
-  "aux/AST3220_project3.bbl" 1686837855 1983 c789b8b2e2ff60989c671635ad8473c2 "bibtex aux/AST3220_project3"
-  "aux/AST3220_project3.out" 1686838295 3347 260105d3f8d1cd17b57bfa8ba0e95224 "xelatex"
+  "AST3220_project3.tex" 1686849943 23368 6811df965f15fae09f2690decf50a45d ""
+  "aux/AST3220_project3.aux" 1686849945 8294 aadcae19b87034b60210ad758681342b "xelatex"
+  "aux/AST3220_project3.bbl" 1686849944 1983 c789b8b2e2ff60989c671635ad8473c2 "bibtex aux/AST3220_project3"
+  "aux/AST3220_project3.out" 1686849945 3347 260105d3f8d1cd17b57bfa8ba0e95224 "xelatex"
   "figs//QuadraticPotential_field-eos.png" 1686838013 68771 3a95110e33c54cbc5df194650cc8c33d ""
   "figs//QuadraticPotential_field-value.png" 1686838011 60076 cbebe0a90853f6122dade8d0753644b5 ""
   "figs//QuadraticPotential_scale-factor.png" 1686838012 56024 f8ecb28fc0effd072a6abe2dc9206f73 ""
